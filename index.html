@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ROI & REINE — Action ou Vérité, Édition Rouge. Une expérience de séduction pour deux adultes."
+    >
+
+    <title>
+        ROI & REINE — Édition Rouge
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         ÉCRAN 18+
+    ========================================================== -->
+
+    <div
+        class="age-screen"
+        id="ageScreen"
+    >
+
+        <div class="age-screen-background"></div>
+
+        <div class="age-screen-content">
+
+            <span class="eyebrow">
+                ACTION OU VÉRITÉ · ÉDITION ROUGE
+            </span>
+
+            <h1>
+                ROI
+                <span>&</span>
+                REINE
+            </h1>
+
+            <h2>
+                Une expérience
+                <em>pour deux adultes.</em>
+            </h2>
+
+            <p>
+                Ce site présente un jeu de séduction
+                destiné exclusivement aux personnes
+                âgées de 18 ans ou plus.
+            </p>
+
+
+            <div class="age-buttons">
+
+                <button
+                    type="button"
+                    id="enterSite"
+                    class="button button-red"
+                >
+                    J’ai 18 ans ou plus
+                </button>
+
+                <button
+                    type="button"
+                    id="leaveSite"
+                    class="button button-dark"
+                >
+                    Quitter
+                </button>
+
+            </div>
+
+
+            <small>
+                18+ · Consentement · Respect des limites
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <header
+        class="site-header"
+        id="siteHeader"
+    >
+
+
+        <a
+            href="#accueil"
+            class="brand"
+        >
+
+            <span class="brand-name">
+                ROI
+                <strong>&</strong>
+                REINE
+            </span>
+
+            <span class="brand-edition">
+                ACTION OU VÉRITÉ · ÉDITION ROUGE
+            </span>
+
+        </a>
+
+
+
+        <nav class="desktop-nav">
+
+            <a href="#accueil">
+                Accueil
+            </a>
+
+            <a href="#regard">
+                L’expérience
+            </a>
+
+            <a href="#cartes">
+                Les cartes
+            </a>
+
+            <a href="#jouer">
+                Comment jouer
+            </a>
+
+            <a href="#commander">
+                Commander
+            </a>
+
+        </nav>
+
+
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                id="marketButton"
+                class="market-button"
+            >
+                🇨🇩 Kinshasa
+            </button>
+
+            <a
+                href="#commander"
+                class="header-order-button"
+            >
+                Commander
+            </a>
+
+        </div>
+
+
+
+        <button
+            type="button"
+            id="mobileMenuButton"
+            class="mobile-menu-button"
+            aria-label="Ouvrir le menu"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+        <div class="scroll-progress">
+
+            <div id="scrollProgressBar"></div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         MENU MOBILE
+    ========================================================== -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <div class="mobile-menu-background"></div>
+
+
+        <div class="mobile-menu-inner">
+
+            <span class="mobile-menu-brand">
+                ROI
+                <strong>&</strong>
+                REINE
+            </span>
+
+
+            <nav>
+
+                <a href="#accueil">
+                    <small>01</small>
+                    Accueil
+                </a>
+
+                <a href="#regard">
+                    <small>02</small>
+                    L’expérience
+                </a>
+
+                <a href="#cartes">
+                    <small>03</small>
+                    Les cartes
+                </a>
+
+                <a href="#jouer">
+                    <small>04</small>
+                    Comment jouer
+                </a>
+
+                <a href="#commander">
+                    <small>05</small>
+                    Commander
+                </a>
+
+            </nav>
+
+
+            <button
+                type="button"
+                id="mobileMarketButton"
+            >
+                🇨🇩 Kinshasa
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         MARCHÉ
+    ========================================================== -->
+
+    <div
+        class="market-modal"
+        id="marketModal"
+    >
+
+        <div class="market-modal-panel">
+
+            <button
+                type="button"
+                id="marketModalClose"
+                class="market-modal-close"
+            >
+                ×
+            </button>
+
+
+            <span class="eyebrow">
+                VOTRE MARCHÉ
+            </span>
+
+            <h2>
+                Où souhaitez-vous
+                recevoir ROI & REINE ?
+            </h2>
+
+
+            <div class="market-grid">
+
+
+                <button
+                    type="button"
+                    class="market-choice"
+                    data-market="kinshasa"
+                >
+
+                    <span class="market-flag">
+                        🇨🇩
+                    </span>
+
+                    <strong>
+                        Kinshasa
+                    </strong>
+
+                    <small>
+                        République démocratique du Congo
+                    </small>
+
+                    <b>
+                        23,90 $
+                    </b>
+
+                </button>
+
+
+
+                <button
+                    type="button"
+                    class="market-choice"
+                    data-market="brazzaville"
+                >
+
+                    <span class="market-flag">
+                        🇨🇬
+                    </span>
+
+                    <strong>
+                        Brazzaville
+                    </strong>
+
+                    <small>
+                        République du Congo
+                    </small>
+
+                    <b>
+                        13 500 F CFA
+                    </b>
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <main>
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section
+            class="hero"
+            id="accueil"
+        >
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/hero-couple.jpg"
+                    alt="Couple adulte dans une ambiance de séduction"
+                >
+
+            </div>
+
+
+            <div class="hero-overlay"></div>
+            <div class="red-light"></div>
+
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    ACTION OU VÉRITÉ · ÉDITION ROUGE
+                </span>
+
+
+                <h1>
+
+                    Ce soir,
+
+                    <span>
+                        ne dites
+                        pas tout.
+                    </span>
+
+                    <em>
+                        Jouez.
+                    </em>
+
+                </h1>
+
+
+                <p>
+                    54 cartes conçues pour provoquer
+                    des regards, des confidences,
+                    de la proximité et ces moments
+                    que l’on n’ose pas toujours créer soi-même.
+                </p>
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="#commander"
+                        class="button button-red"
+                    >
+                        Commander le jeu
+                        <span>→</span>
+                    </a>
+
+                    <a
+                        href="#regard"
+                        class="text-link"
+                    >
+                        Entrer dans l’expérience
+                    </a>
+
+                </div>
+
+
+                <div class="hero-details">
+
+                    <span>
+                        54 cartes
+                    </span>
+
+                    <span>
+                        2 adultes
+                    </span>
+
+                    <span>
+                        18+
+                    </span>
+
+                    <span>
+                        Consentement
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="hero-cards">
+
+                <img
+                    src="images/cards/carte-01-regard.png"
+                    class="hero-card hero-card-front"
+                    alt="Carte ROI & REINE"
+                >
+
+                <img
+                    src="images/cards/verso-carte.png"
+                    class="hero-card hero-card-back"
+                    alt="Verso ROI & REINE"
+                >
+
+            </div>
+
+
+
+            <div class="scroll-indicator">
+
+                <span>
+                    DÉCOUVRIR
+                </span>
+
+                <i></i>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             REGARD
+        ====================================================== -->
+
+        <section
+            class="experience-scene scene-left"
+            id="regard"
+        >
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/regard.jpg"
+                    alt="Deux adultes se regardant intensément"
+                >
+
+            </div>
+
+
+            <div class="scene-overlay"></div>
+
+
+            <div class="scene-content">
+
+                <span class="scene-number">
+                    01
+                </span>
+
+                <span class="eyebrow">
+                    LE REGARD
+                </span>
+
+                <h2>
+                    REGARDE-MOI.
+                </h2>
+
+                <p class="scene-main">
+                    Pas un mot.
+                </p>
+
+                <p class="scene-description">
+                    Quelques secondes suffisent parfois
+                    pour comprendre ce que l’autre
+                    ne dit pas encore.
+                </p>
+
+
+                <img
+                    src="images/cards/carte-01-regard.png"
+                    class="scene-real-card"
+                    alt="Carte Regard ROI & REINE"
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             MURMURE
+        ====================================================== -->
+
+        <section
+            class="experience-scene scene-right"
+            id="murmure"
+        >
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/murmure.jpg"
+                    alt="Murmure entre deux adultes"
+                >
+
+            </div>
+
+
+            <div class="scene-overlay"></div>
+
+
+            <div class="scene-content">
+
+                <span class="scene-number">
+                    02
+                </span>
+
+                <span class="eyebrow">
+                    LE MURMURE
+                </span>
+
+                <h2>
+                    APPROCHE-TOI.
+                </h2>
+
+                <p class="scene-main">
+                    Certaines choses
+                    ne devraient jamais
+                    être dites trop fort.
+                </p>
+
+                <p class="scene-description">
+                    Une phrase.
+                    Une oreille.
+                    Quelques centimètres seulement.
+                </p>
+
+
+                <img
+                    src="images/cards/carte-04-murmure.png"
+                    class="scene-real-card"
+                    alt="Carte Murmure ROI & REINE"
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PROXIMITÉ
+        ====================================================== -->
+
+        <section
+            class="experience-scene scene-left"
+            id="proximite"
+        >
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/proximite.jpg"
+                    alt="Deux adultes très proches"
+                >
+
+            </div>
+
+
+            <div class="scene-overlay"></div>
+
+
+            <div class="scene-content">
+
+                <span class="scene-number">
+                    03
+                </span>
+
+                <span class="eyebrow">
+                    LA PROXIMITÉ
+                </span>
+
+                <h2>
+                    PLUS PRÈS.
+                </h2>
+
+                <p class="scene-main">
+                    La distance
+                    fait aussi partie du jeu.
+                </p>
+
+                <p class="scene-description">
+                    Quelques centimètres
+                    peuvent parfois changer
+                    toute l’atmosphère.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TOUCHER
+        ====================================================== -->
+
+        <section
+            class="experience-scene scene-right"
+            id="toucher"
+        >
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/toucher.jpg"
+                    alt="Geste tendre entre deux adultes"
+                >
+
+            </div>
+
+
+            <div class="scene-overlay"></div>
+
+
+            <div class="scene-content">
+
+                <span class="scene-number">
+                    04
+                </span>
+
+                <span class="eyebrow">
+                    LE TOUCHER
+                </span>
+
+                <h2>
+                    LENTEMENT.
+                </h2>
+
+                <p class="scene-main">
+                    Le geste compte
+                    autant que l’endroit.
+                </p>
+
+                <p class="scene-description">
+                    Une main.
+                    Une nuque.
+                    Une épaule.
+                    Et quelques secondes de plus.
+                </p>
+
+
+                <img
+                    src="images/cards/carte-20-massage.png"
+                    class="scene-real-card"
+                    alt="Carte Toucher ROI & REINE"
+                >
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TENSION
+        ====================================================== -->
+
+        <section
+            class="experience-scene scene-center"
+            id="tension"
+        >
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/tension.png"
+                    alt="Deux adultes juste avant un baiser"
+                >
+
+            </div>
+
+
+            <div class="scene-overlay"></div>
+
+
+            <div class="scene-content">
+
+                <span class="scene-number">
+                    05
+                </span>
+
+                <span class="eyebrow">
+                    LA TENSION
+                </span>
+
+                <h2>
+                    PAS ENCORE.
+                </h2>
+
+                <p class="scene-main">
+                    Parfois,
+                    l’instant juste avant
+                    est le plus puissant.
+                </p>
+
+                <p class="scene-description">
+                    Laissez la carte décider
+                    combien de temps
+                    vous devrez encore attendre.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             LES CARTES
+        ====================================================== -->
+
+        <section
+            class="cards-section"
+            id="cartes"
+        >
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/cartes-table.png"
+                    alt="Cartes ROI & REINE posées dans une ambiance de soirée"
+                >
+
+            </div>
+
+
+            <div class="cards-section-overlay"></div>
+
+
+            <div class="cards-intro">
+
+                <span class="eyebrow">
+                    LE JEU
+                </span>
+
+                <h2>
+
+                    54 cartes.
+
+                    <span>
+                        Aucune soirée identique.
+                    </span>
+
+                </h2>
+
+                <p>
+                    Chaque carte contient
+                    une Action et une Vérité.
+
+                    À vous de choisir
+                    jusqu’où vous souhaitez
+                    laisser la partie avancer.
+                </p>
+
+            </div>
+
+
+
+            <div class="cards-fan">
+
+                <img
+                    src="images/cards/carte-04-murmure.png"
+                    class="fan-card fan-card-1"
+                    alt="Carte 04"
+                >
+
+                <img
+                    src="images/cards/carte-10-danse.png"
+                    class="fan-card fan-card-2"
+                    alt="Carte 10"
+                >
+
+                <img
+                    src="images/cards/carte-20-massage.png"
+                    class="fan-card fan-card-3"
+                    alt="Carte 20"
+                >
+
+                <img
+                    src="images/cards/carte-37-regard-mur.png"
+                    class="fan-card fan-card-4"
+                    alt="Carte 37"
+                >
+
+                <img
+                    src="images/cards/verso-carte.png"
+                    class="fan-card fan-card-5"
+                    alt="Verso ROI & REINE"
+                >
+
+            </div>
+
+
+            <div class="cards-signature">
+
+                <span>
+                    ACTION
+                </span>
+
+                <i></i>
+
+                <span>
+                    OU
+                </span>
+
+                <i></i>
+
+                <span>
+                    VÉRITÉ
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             COMMENT JOUER
+        ====================================================== -->
+
+        <section
+            class="how-section"
+            id="jouer"
+        >
+
+
+            <header class="how-header">
+
+
+                <span class="eyebrow">
+                    COMMENT JOUER
+                </span>
+
+
+                <h2>
+                    Une soirée.
+                    <span>
+                        Quatre étapes.
+                    </span>
+                </h2>
+
+
+                <p>
+                    Rien de compliqué.
+                    Le reste dépend de vous.
+                </p>
+
+
+            </header>
+
+
+
+            <!-- =================================================
+                 01 — INSTALLEZ-VOUS
+            ================================================== -->
+
+            <article class="how-row how-row-left">
+
+
+                <div class="how-photo">
+
+                    <img
+                        src="images/installez-vous.png"
+                        alt="Ambiance préparée pour jouer à ROI & REINE"
+                    >
+
+                </div>
+
+
+                <div class="how-row-overlay"></div>
+
+
+                <div class="how-copy">
+
+                    <span class="how-number">
+                        01
+                    </span>
+
+                    <span class="eyebrow">
+                        AVANT DE COMMENCER
+                    </span>
+
+                    <h3>
+                        INSTALLEZ-VOUS.
+                    </h3>
+
+                    <p>
+                        Laissez le reste
+                        du monde dehors.
+                    </p>
+
+                    <small>
+                        Une ambiance.
+                        Deux personnes.
+                        Aucune distraction.
+                    </small>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 02 — PIOCHEZ
+            ================================================== -->
+
+            <article class="how-row how-row-right">
+
+
+                <div class="how-photo">
+
+                    <img
+                        src="images/piochez.png"
+                        alt="Main piochant une carte ROI & REINE"
+                    >
+
+                </div>
+
+
+                <div class="how-row-overlay"></div>
+
+
+                <div class="how-copy">
+
+                    <span class="how-number">
+                        02
+                    </span>
+
+                    <span class="eyebrow">
+                        LE JEU COMMENCE
+                    </span>
+
+                    <h3>
+                        PIOCHEZ.
+                    </h3>
+
+                    <p>
+                        Une seule carte
+                        peut changer l’ambiance.
+                    </p>
+
+                    <small>
+                        Prenez une carte
+                        à tour de rôle.
+                    </small>
+
+
+                    <img
+                        src="images/cards/carte-04-murmure.png"
+                        class="how-real-card"
+                        alt="Carte ROI & REINE"
+                    >
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 03 — CHOISISSEZ
+            ================================================== -->
+
+            <article class="how-row how-row-left">
+
+
+                <div class="how-photo">
+
+                    <img
+                        src="images/choisissez.png"
+                        alt="Choix Action ou Vérité"
+                    >
+
+                </div>
+
+
+                <div class="how-row-overlay"></div>
+
+
+                <div class="how-copy">
+
+                    <span class="how-number">
+                        03
+                    </span>
+
+                    <span class="eyebrow">
+                        À VOUS DE DÉCIDER
+                    </span>
+
+                    <h3>
+                        CHOISISSEZ.
+                    </h3>
+
+                    <p class="choice-question">
+
+                        <strong>
+                            ACTION
+                        </strong>
+
+                        <span>
+                            OU
+                        </span>
+
+                        <strong>
+                            VÉRITÉ
+                        </strong>
+
+                        ?
+
+                    </p>
+
+                    <small>
+                        Répondez.
+                        Osez.
+                        Ou passez la carte.
+                    </small>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 04 — RESPECTEZ
+            ================================================== -->
+
+            <article class="how-row how-row-right">
+
+
+                <div class="how-photo">
+
+                    <img
+                        src="images/respectez.png"
+                        alt="Deux adultes partageant un moment de proximité"
+                    >
+
+                </div>
+
+
+                <div class="how-row-overlay"></div>
+
+
+                <div class="how-copy">
+
+                    <span class="how-number">
+                        04
+                    </span>
+
+                    <span class="eyebrow">
+                        TOUJOURS
+                    </span>
+
+                    <h3>
+                        RESPECTEZ.
+                    </h3>
+
+                    <p>
+                        Le désir n’a de valeur
+                        que lorsqu’il est partagé.
+                    </p>
+
+                    <small>
+                        Rien n’est obligatoire.
+                        Une carte peut toujours être passée.
+                    </small>
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CARTE 54
+        ====================================================== -->
+
+        <section class="final-section">
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/fin-soiree.png"
+                    alt="Ambiance de fin de soirée"
+                >
+
+            </div>
+
+
+            <div class="final-overlay"></div>
+
+
+
+            <div class="final-card">
+
+                <img
+                    src="images/cards/carte-54-fin-partie.png"
+                    alt="Carte 54 ROI & REINE"
+                >
+
+            </div>
+
+
+
+            <div class="final-content">
+
+                <span class="eyebrow">
+                    CARTE 54
+                </span>
+
+                <h2>
+                    Et maintenant ?
+                </h2>
+
+                <p>
+                    Le jeu peut s’arrêter ici.
+                </p>
+
+                <strong>
+                    La soirée, pas forcément.
+                </strong>
+
+                <a
+                    href="#commander"
+                    class="text-link"
+                >
+                    Commencer votre partie
+                    <span>→</span>
+                </a>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             COMMANDE
+        ====================================================== -->
+
+        <section
+            class="order-section"
+            id="commander"
+        >
+
+
+            <div class="full-background">
+
+                <img
+                    src="images/commander.jpg"
+                    alt="ROI & REINE dans une ambiance élégante"
+                >
+
+            </div>
+
+
+            <div class="order-overlay"></div>
+
+
+
+            <div class="order-product">
+
+
+                <span class="eyebrow">
+                    COMMANDER
+                </span>
+
+
+                <h2>
+                    ROI
+                    <span>&</span>
+                    REINE
+                </h2>
+
+
+                <h3>
+                    ÉDITION ROUGE
+                </h3>
+
+
+                <p>
+                    Jeu complet de 54 cartes
+                    pour deux adultes.
+                </p>
+
+
+
+                <div class="product-card">
+
+                    <img
+                        src="images/cards/verso-carte.png"
+                        alt="ROI & REINE Édition Rouge"
+                    >
+
+                    <div>
+
+                        <span>
+                            ROI & REINE
+                        </span>
+
+                        <small>
+                            Édition Rouge
+                        </small>
+
+                        <strong id="productPrice">
+                            23,90 $
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="quantity-line">
+
+                    <span>
+                        Quantité
+                    </span>
+
+                    <div>
+
+                        <button
+                            type="button"
+                            id="decreaseQuantity"
+                        >
+                            −
+                        </button>
+
+                        <strong id="quantityValue">
+                            1
+                        </strong>
+
+                        <button
+                            type="button"
+                            id="increaseQuantity"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="total-line">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="orderTotal">
+                        23,90 $
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <form
+                class="order-form"
+                id="orderForm"
+            >
+
+
+                <span class="eyebrow">
+                    VOTRE COMMANDE
+                </span>
+
+
+                <h3>
+                    Prêt à commencer ?
+                </h3>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Nom complet
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Téléphone / WhatsApp
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Adresse e-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            Ville
+                        </label>
+
+                        <select id="city">
+
+                            <option value="Kinshasa">
+                                Kinshasa
+                            </option>
+
+                            <option value="Brazzaville">
+                                Brazzaville
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Adresse / Commune / Quartier
+                    </label>
+
+                    <textarea
+                        id="address"
+                        rows="3"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="note">
+                        Note
+                    </label>
+
+                    <textarea
+                        id="note"
+                        rows="3"
+                    ></textarea>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="button button-red order-submit"
+                >
+                    Passer ma commande
+                    <span>→</span>
+                </button>
+
+
+                <small class="privacy-note">
+                    Vos informations servent uniquement
+                    au traitement de votre commande.
+                </small>
+
+
+            </form>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-brand">
+
+            <strong>
+                ROI
+                <span>&</span>
+                REINE
+            </strong>
+
+            <small>
+                ACTION OU VÉRITÉ · ÉDITION ROUGE
+            </small>
+
+        </div>
+
+
+
+        <div class="footer-markets">
+
+            <button
+                type="button"
+                data-footer-market="kinshasa"
+            >
+                🇨🇩 Kinshasa
+            </button>
+
+            <button
+                type="button"
+                data-footer-market="brazzaville"
+            >
+                🇨🇬 Brazzaville
+            </button>
+
+        </div>
+
+
+
+        <div class="footer-info">
+
+            <span>
+                18+ · Consentement
+            </span>
+
+            <small>
+                © 2026 ROI & REINE.
+                Tous droits réservés.
+            </small>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
