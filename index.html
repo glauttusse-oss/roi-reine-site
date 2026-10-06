@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ROI & REINE — Action ou Vérité, Édition Rouge. 54 cartes. Deux adultes. Une expérience dont vous ne connaissez jamais la prochaine étape."
+    >
+
+    <meta
+        name="theme-color"
+        content="#030102"
+    >
+
+    <title>
+        ROI & REINE — Jusqu’où irez-vous ?
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================================
+         18+
+    ========================================================== -->
+
+    <div
+        class="age-screen"
+        id="ageScreen"
+    >
+
+        <div class="age-screen-visual">
+
+            <img
+                src="images/hero-couple.jpg"
+                alt=""
+            >
+
+        </div>
+
+        <div class="age-screen-darkness"></div>
+
+
+        <div class="age-screen-content">
+
+            <span class="age-mini">
+                UNE EXPÉRIENCE POUR DEUX ADULTES
+            </span>
+
+
+            <h1>
+                ROI
+                <span>&</span>
+                REINE
+            </h1>
+
+
+            <p class="age-question">
+                Êtes-vous vraiment prêt
+                à découvrir la prochaine carte ?
+            </p>
+
+
+            <div class="age-actions">
+
+                <button
+                    type="button"
+                    id="enterSite"
+                    class="button-primary"
+                >
+                    J’ai 18 ans ou plus
+                </button>
+
+
+                <button
+                    type="button"
+                    id="leaveSite"
+                    class="button-ghost"
+                >
+                    Quitter
+                </button>
+
+            </div>
+
+
+            <small>
+                18+ · Consentement · Respect des limites
+            </small>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header
+        class="site-header"
+        id="siteHeader"
+    >
+
+
+        <a
+            href="#accueil"
+            class="brand"
+        >
+
+            <span class="brand-main">
+
+                ROI
+
+                <strong>
+                    &
+                </strong>
+
+                REINE
+
+            </span>
+
+
+            <span class="brand-sub">
+                ÉDITION ROUGE
+            </span>
+
+        </a>
+
+
+
+        <nav class="desktop-navigation">
+
+            <a href="#experience">
+                L’expérience
+            </a>
+
+            <a href="#mystere">
+                Le mystère
+            </a>
+
+            <a href="#cartes">
+                Les cartes
+            </a>
+
+            <a href="#commander">
+                Commander
+            </a>
+
+        </nav>
+
+
+
+        <div class="header-actions">
+
+            <button
+                type="button"
+                class="market-button"
+                id="marketButton"
+            >
+                🇨🇩 Kinshasa
+            </button>
+
+
+            <a
+                href="#commander"
+                class="header-order-button"
+            >
+                Obtenir le jeu
+            </a>
+
+        </div>
+
+
+
+        <button
+            type="button"
+            id="mobileMenuButton"
+            class="mobile-menu-button"
+            aria-label="Ouvrir le menu"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+
+
+        <div class="scroll-progress">
+
+            <div id="scrollProgressBar"></div>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================================
+         MENU MOBILE
+    ========================================================== -->
+
+    <div
+        class="mobile-menu"
+        id="mobileMenu"
+    >
+
+        <div class="mobile-menu-bg"></div>
+
+
+        <div class="mobile-menu-inner">
+
+
+            <div class="mobile-brand">
+
+                ROI
+
+                <span>
+                    &
+                </span>
+
+                REINE
+
+            </div>
+
+
+            <nav>
+
+                <a href="#accueil">
+
+                    <small>
+                        01
+                    </small>
+
+                    Accueil
+
+                </a>
+
+
+                <a href="#experience">
+
+                    <small>
+                        02
+                    </small>
+
+                    L’expérience
+
+                </a>
+
+
+                <a href="#mystere">
+
+                    <small>
+                        03
+                    </small>
+
+                    Le mystère
+
+                </a>
+
+
+                <a href="#cartes">
+
+                    <small>
+                        04
+                    </small>
+
+                    Les cartes
+
+                </a>
+
+
+                <a href="#commander">
+
+                    <small>
+                        05
+                    </small>
+
+                    Commander
+
+                </a>
+
+            </nav>
+
+
+            <button
+                type="button"
+                id="mobileMarketButton"
+                class="mobile-market-button"
+            >
+                🇨🇩 Kinshasa
+            </button>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         MARCHÉS
+    ========================================================== -->
+
+    <div
+        class="market-modal"
+        id="marketModal"
+    >
+
+        <div class="market-panel">
+
+
+            <button
+                type="button"
+                id="marketModalClose"
+                class="market-close"
+                aria-label="Fermer"
+            >
+                ×
+            </button>
+
+
+            <span class="mini-title">
+                OÙ ÊTES-VOUS ?
+            </span>
+
+
+            <h2>
+                Votre ville change
+                <em>
+                    votre commande.
+                </em>
+            </h2>
+
+
+            <p>
+                Sélectionnez votre marché pour afficher
+                le prix et les moyens de paiement disponibles.
+            </p>
+
+
+
+            <div class="market-grid">
+
+
+                <!-- KINSHASA -->
+
+                <button
+                    type="button"
+                    class="market-choice"
+                    data-market="kinshasa"
+                >
+
+                    <span class="market-flag">
+                        🇨🇩
+                    </span>
+
+                    <span class="market-country">
+                        RDC
+                    </span>
+
+                    <strong>
+                        Kinshasa
+                    </strong>
+
+                    <b>
+                        23,90 $
+                    </b>
+
+                    <small>
+                        Commander à Kinshasa
+                    </small>
+
+                </button>
+
+
+
+                <!-- BRAZZAVILLE -->
+
+                <button
+                    type="button"
+                    class="market-choice"
+                    data-market="brazzaville"
+                >
+
+                    <span class="market-flag">
+                        🇨🇬
+                    </span>
+
+                    <span class="market-country">
+                        CONGO
+                    </span>
+
+                    <strong>
+                        Brazzaville
+                    </strong>
+
+                    <b>
+                        13 500 F CFA
+                    </b>
+
+                    <small>
+                        Commander à Brazzaville
+                    </small>
+
+                </button>
+
+
+
+                <!-- LIBREVILLE -->
+
+                <button
+                    type="button"
+                    class="market-choice"
+                    data-market="libreville"
+                >
+
+                    <span class="market-flag">
+                        🇬🇦
+                    </span>
+
+                    <span class="market-country">
+                        GABON
+                    </span>
+
+                    <strong>
+                        Libreville
+                    </strong>
+
+                    <b id="librevilleModalPrice">
+                        Prix à confirmer
+                    </b>
+
+                    <small>
+                        Commander à Libreville
+                    </small>
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <main>
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section
+            class="hero"
+            id="accueil"
+        >
+
+
+            <div class="hero-photo">
+
+                <img
+                    src="images/hero-couple.jpg"
+                    alt="Couple noir adulte dans l'univers ROI & REINE"
+                >
+
+            </div>
+
+
+            <div class="hero-darkness"></div>
+            <div class="hero-red-light"></div>
+
+
+
+            <div class="hero-content">
+
+
+                <span class="mini-title">
+                    ACTION OU VÉRITÉ · ÉDITION ROUGE
+                </span>
+
+
+                <h1>
+
+                    Vous connaissez
+
+                    <span>
+                        votre partenaire.
+                    </span>
+
+                    <em>
+                        Du moins,
+                        c’est ce que vous pensez.
+                    </em>
+
+                </h1>
+
+
+
+                <p class="hero-intro">
+
+                    54 cartes.
+
+                    Deux adultes.
+
+                    Et aucune certitude
+                    sur ce qui arrivera ensuite.
+
+                </p>
+
+
+
+                <div class="hero-actions">
+
+                    <a
+                        href="#experience"
+                        class="button-primary"
+                    >
+                        Entrer dans l’expérience
+                        <span>→</span>
+                    </a>
+
+
+                    <a
+                        href="#commander"
+                        class="mystery-link"
+                    >
+                        Je veux le jeu
+                    </a>
+
+                </div>
+
+
+
+                <div class="hero-proof">
+
+                    <span>
+                        54 cartes
+                    </span>
+
+                    <span>
+                        54 actions
+                    </span>
+
+                    <span>
+                        54 vérités
+                    </span>
+
+                    <span>
+                        18+
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="hero-product">
+
+                <img
+                    src="images/cards/carte-01-regard.png"
+                    class="floating-card floating-card-one"
+                    alt="Carte ROI & REINE"
+                >
+
+                <img
+                    src="images/cards/verso-carte.png"
+                    class="floating-card floating-card-two"
+                    alt="Verso d'une carte ROI & REINE"
+                >
+
+            </div>
+
+
+
+            <a
+                href="#experience"
+                class="discover-indicator"
+            >
+
+                <span>
+                    NE VOUS ARRÊTEZ PAS ICI
+                </span>
+
+                <i></i>
+
+            </a>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TRANSITION
+        ====================================================== -->
+
+        <section class="statement-section">
+
+
+            <span>
+                54 CARTES
+            </span>
+
+
+            <h2>
+
+                Certaines feront parler.
+
+                <strong>
+                    D’autres feront taire.
+                </strong>
+
+            </h2>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             EXPÉRIENCE
+        ====================================================== -->
+
+        <section
+            class="experience-section"
+            id="experience"
+        >
+
+
+            <!-- REGARD -->
+
+            <article class="experience-panel panel-left">
+
+
+                <div class="experience-photo">
+
+                    <img
+                        src="images/regard.jpg"
+                        alt="Regard entre deux adultes"
+                    >
+
+                </div>
+
+
+                <div class="experience-darkness"></div>
+
+
+                <div class="experience-copy">
+
+                    <span class="experience-count">
+                        01
+                    </span>
+
+
+                    <span class="mini-title">
+                        PREMIÈRE CARTE
+                    </span>
+
+
+                    <h2>
+                        REGARDE-MOI.
+                    </h2>
+
+
+                    <p>
+                        Pas un mot.
+                    </p>
+
+
+                    <small>
+                        Combien de secondes avant
+                        que l’un de vous détourne les yeux ?
+                    </small>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- MURMURE -->
+
+            <article class="experience-panel panel-right">
+
+
+                <div class="experience-photo">
+
+                    <img
+                        src="images/murmure.jpg"
+                        alt="Murmure entre deux adultes"
+                    >
+
+                </div>
+
+
+                <div class="experience-darkness"></div>
+
+
+                <div class="experience-copy">
+
+                    <span class="experience-count">
+                        02
+                    </span>
+
+
+                    <span class="mini-title">
+                        QUELQUES CENTIMÈTRES
+                    </span>
+
+
+                    <h2>
+                        APPROCHE-TOI.
+                    </h2>
+
+
+                    <p>
+                        Certaines choses
+                        ne devraient jamais
+                        être dites trop fort.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- PROXIMITÉ -->
+
+            <article class="experience-panel panel-left">
+
+
+                <div class="experience-photo">
+
+                    <img
+                        src="images/proximite.jpg"
+                        alt="Deux adultes très proches"
+                    >
+
+                </div>
+
+
+                <div class="experience-darkness"></div>
+
+
+                <div class="experience-copy">
+
+                    <span class="experience-count">
+                        03
+                    </span>
+
+
+                    <span class="mini-title">
+                        LA DISTANCE
+                    </span>
+
+
+                    <h2>
+                        PLUS PRÈS.
+                    </h2>
+
+
+                    <p>
+                        Parfois,
+                        quelques centimètres
+                        changent toute l’ambiance.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- TOUCHER -->
+
+            <article class="experience-panel panel-right">
+
+
+                <div class="experience-photo">
+
+                    <img
+                        src="images/toucher.jpg"
+                        alt="Contact entre deux adultes"
+                    >
+
+                </div>
+
+
+                <div class="experience-darkness"></div>
+
+
+                <div class="experience-copy">
+
+                    <span class="experience-count">
+                        04
+                    </span>
+
+
+                    <span class="mini-title">
+                        LE GESTE
+                    </span>
+
+
+                    <h2>
+                        LENTEMENT.
+                    </h2>
+
+
+                    <p>
+                        Le geste compte
+                        autant que l’endroit.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             LE MYSTÈRE
+        ====================================================== -->
+
+        <section
+            class="mystery-section"
+            id="mystere"
+        >
+
+
+            <div class="mystery-photo">
+
+                <img
+                    src="images/tension.png"
+                    alt="Tension entre deux adultes"
+                >
+
+            </div>
+
+
+            <div class="mystery-darkness"></div>
+
+
+
+            <div class="mystery-content">
+
+
+                <span class="mini-title">
+                    CARTE SUIVANTE
+                </span>
+
+
+                <h2>
+                    PAS ENCORE.
+                </h2>
+
+
+                <p>
+                    Vous voulez savoir
+                    ce qu’elle demande ?
+                </p>
+
+
+                <strong>
+                    Nous ne vous la montrerons pas.
+                </strong>
+
+
+                <span class="mystery-warning">
+                    Le jeu commence justement
+                    là où vous ne savez plus
+                    ce qui vient ensuite.
+                </span>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CARTES / RÉVÉLATION PARTIELLE
+        ====================================================== -->
+
+        <section
+            class="cards-section"
+            id="cartes"
+        >
+
+
+            <div class="cards-background">
+
+                <img
+                    src="images/cartes-table.png"
+                    alt="Cartes ROI & REINE"
+                >
+
+            </div>
+
+
+            <div class="cards-darkness"></div>
+
+
+
+            <div class="cards-heading">
+
+                <span class="mini-title">
+                    NOUS VOUS EN MONTRONS QUELQUES-UNES
+                </span>
+
+
+                <h2>
+
+                    Vous en avez vu
+
+                    <strong>
+                        assez.
+                    </strong>
+
+                </h2>
+
+
+                <p>
+
+                    Pas assez
+                    pour savoir
+                    ce qui vous attend.
+
+                </p>
+
+            </div>
+
+
+
+            <div class="card-reveal-stage">
+
+
+                <img
+                    src="images/cards/carte-04-murmure.png"
+                    class="reveal-card reveal-card-one"
+                    alt="Carte ROI & REINE"
+                >
+
+
+                <img
+                    src="images/cards/carte-10-danse.png"
+                    class="reveal-card reveal-card-two"
+                    alt="Carte ROI & REINE"
+                >
+
+
+                <img
+                    src="images/cards/carte-20-massage.png"
+                    class="reveal-card reveal-card-three"
+                    alt="Carte ROI & REINE"
+                >
+
+
+                <div class="hidden-cards">
+
+                    <span>
+                        +51
+                    </span>
+
+                    <small>
+                        À découvrir
+                        dans votre jeu.
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+
+            <a
+                href="#commander"
+                class="button-primary cards-buy-button"
+            >
+                Je veux découvrir les autres
+                <span>→</span>
+            </a>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             QUESTION
+        ====================================================== -->
+
+        <section class="choice-section">
+
+
+            <div class="choice-photo">
+
+                <img
+                    src="images/choisissez.png"
+                    alt="Choisissez Action ou Vérité"
+                >
+
+            </div>
+
+
+            <div class="choice-darkness"></div>
+
+
+
+            <div class="choice-content">
+
+                <span class="mini-title">
+                    À CHAQUE TOUR
+                </span>
+
+
+                <h2>
+
+                    ACTION
+
+                    <span>
+                        OU
+                    </span>
+
+                    VÉRITÉ ?
+
+                </h2>
+
+
+                <p>
+                    Choisir est facile.
+                </p>
+
+
+                <strong>
+                    Assumer la carte suivante,
+                    beaucoup moins.
+                </strong>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             COMMENT ÇA COMMENCE
+        ====================================================== -->
+
+        <section class="journey-section">
+
+
+            <header class="journey-heading">
+
+                <span class="mini-title">
+                    LA PARTIE
+                </span>
+
+
+                <h2>
+                    Quatre étapes.
+                    <strong>
+                        Et après ?
+                    </strong>
+                </h2>
+
+            </header>
+
+
+
+            <!-- 1 -->
+
+            <article class="journey-card">
+
+
+                <div class="journey-image">
+
+                    <img
+                        src="images/installez-vous.png"
+                        alt="Installez-vous"
+                    >
+
+                </div>
+
+
+                <div class="journey-overlay"></div>
+
+
+                <div class="journey-copy">
+
+                    <span>
+                        01
+                    </span>
+
+                    <h3>
+                        INSTALLEZ-VOUS.
+                    </h3>
+
+                    <p>
+                        Fermez la porte.
+                        Éloignez le téléphone.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- 2 -->
+
+            <article class="journey-card journey-card-right">
+
+
+                <div class="journey-image">
+
+                    <img
+                        src="images/piochez.png"
+                        alt="Piochez une carte"
+                    >
+
+                </div>
+
+
+                <div class="journey-overlay"></div>
+
+
+                <div class="journey-copy">
+
+                    <span>
+                        02
+                    </span>
+
+                    <h3>
+                        PIOCHEZ.
+                    </h3>
+
+                    <p>
+                        Une seule carte
+                        peut suffire.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- 3 -->
+
+            <article class="journey-card">
+
+
+                <div class="journey-image">
+
+                    <img
+                        src="images/choisissez.png"
+                        alt="Choisissez Action ou Vérité"
+                    >
+
+                </div>
+
+
+                <div class="journey-overlay"></div>
+
+
+                <div class="journey-copy">
+
+                    <span>
+                        03
+                    </span>
+
+                    <h3>
+                        CHOISISSEZ.
+                    </h3>
+
+                    <p>
+                        Action.
+                        Ou Vérité.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- 4 -->
+
+            <article class="journey-card journey-card-right">
+
+
+                <div class="journey-image">
+
+                    <img
+                        src="images/respectez.png"
+                        alt="Respect et consentement"
+                    >
+
+                </div>
+
+
+                <div class="journey-overlay"></div>
+
+
+                <div class="journey-copy">
+
+                    <span>
+                        04
+                    </span>
+
+                    <h3>
+                        RESPECTEZ.
+                    </h3>
+
+                    <p>
+                        Le désir n’a de valeur
+                        que lorsqu’il est partagé.
+                    </p>
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CARTE 54
+        ====================================================== -->
+
+        <section class="last-card-section">
+
+
+            <div class="last-card-photo">
+
+                <img
+                    src="images/fin-soiree.png"
+                    alt="Fin de partie ROI & REINE"
+                >
+
+            </div>
+
+
+            <div class="last-card-darkness"></div>
+
+
+
+            <div class="last-card-product">
+
+                <img
+                    src="images/cards/carte-54-fin-partie.png"
+                    alt="Carte 54 ROI & REINE"
+                >
+
+            </div>
+
+
+
+            <div class="last-card-copy">
+
+                <span class="mini-title">
+                    CARTE 54
+                </span>
+
+
+                <h2>
+                    FIN DE PARTIE.
+                </h2>
+
+
+                <p>
+                    Enfin…
+                </p>
+
+
+                <strong>
+                    C’est ce qui est écrit
+                    sur la carte.
+                </strong>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             PRE-COMMANDE
+        ====================================================== -->
+
+        <section class="pre-order-section">
+
+
+            <span class="mini-title">
+                VOUS ÊTES ARRIVÉ JUSQU’ICI
+            </span>
+
+
+            <h2>
+
+                Vous avez vu assez
+
+                <strong>
+                    pour comprendre.
+                </strong>
+
+            </h2>
+
+
+            <p>
+                Mais pas assez
+                pour savoir ce qui vous attend.
+            </p>
+
+
+            <a
+                href="#commander"
+                class="button-primary"
+            >
+                Commander ROI & REINE
+                <span>→</span>
+            </a>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             COMMANDE
+        ====================================================== -->
+
+        <section
+            class="order-section"
+            id="commander"
+        >
+
+
+            <div class="order-background">
+
+                <img
+                    src="images/commander.jpg"
+                    alt="Commander ROI & REINE"
+                >
+
+            </div>
+
+
+            <div class="order-darkness"></div>
+
+
+
+            <!-- PRODUIT -->
+
+            <div class="order-product">
+
+
+                <span class="mini-title">
+                    VOTRE JEU
+                </span>
+
+
+                <h2>
+
+                    ROI
+
+                    <span>
+                        &
+                    </span>
+
+                    REINE
+
+                </h2>
+
+
+                <p class="edition-name">
+                    ACTION OU VÉRITÉ · ÉDITION ROUGE
+                </p>
+
+
+
+                <div class="product-visual">
+
+
+                    <img
+                        src="images/cards/verso-carte.png"
+                        alt="ROI & REINE"
+                    >
+
+
+                    <div>
+
+
+                        <span>
+                            54 cartes
+                        </span>
+
+
+                        <strong id="productPrice">
+                            23,90 $
+                        </strong>
+
+
+                        <small id="selectedMarketName">
+                            Kinshasa · RDC
+                        </small>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="quantity-control">
+
+
+                    <span>
+                        Quantité
+                    </span>
+
+
+                    <div>
+
+                        <button
+                            type="button"
+                            id="decreaseQuantity"
+                        >
+                            −
+                        </button>
+
+
+                        <strong id="quantityValue">
+                            1
+                        </strong>
+
+
+                        <button
+                            type="button"
+                            id="increaseQuantity"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="total-row">
+
+
+                    <span>
+                        TOTAL
+                    </span>
+
+
+                    <strong id="orderTotal">
+                        23,90 $
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="available-markets">
+
+
+                    <span>
+                        DISPONIBLE À
+                    </span>
+
+
+                    <div>
+
+                        <button
+                            type="button"
+                            data-footer-market="kinshasa"
+                        >
+                            🇨🇩 Kinshasa
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-footer-market="brazzaville"
+                        >
+                            🇨🇬 Brazzaville
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-footer-market="libreville"
+                        >
+                            🇬🇦 Libreville
+                        </button>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- FORMULAIRE -->
+
+            <form
+                class="order-form"
+                id="orderForm"
+            >
+
+
+                <span class="mini-title">
+                    FINALISER LA COMMANDE
+                </span>
+
+
+                <h3>
+                    Votre jeu est presque à vous.
+                </h3>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="fullName">
+                            Nom complet
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="phone">
+                            Téléphone / WhatsApp
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            E-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            autocomplete="email"
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="city">
+                            Ville
+                        </label>
+
+
+                        <select
+                            id="city"
+                            required
+                        >
+
+                            <option value="Kinshasa">
+                                🇨🇩 Kinshasa
+                            </option>
+
+                            <option value="Brazzaville">
+                                🇨🇬 Brazzaville
+                            </option>
+
+                            <option value="Libreville">
+                                🇬🇦 Libreville
+                            </option>
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Adresse de livraison
+                    </label>
+
+                    <textarea
+                        id="address"
+                        rows="3"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     PAIEMENT
+                ================================================== -->
+
+                <section class="payment-section">
+
+
+                    <div class="payment-heading">
+
+
+                        <span class="mini-title">
+                            PAIEMENT
+                        </span>
+
+
+                        <h4>
+                            Comment souhaitez-vous payer ?
+                        </h4>
+
+
+                    </div>
+
+
+
+                    <div class="payment-method-grid">
+
+
+                        <label class="payment-method-card">
+
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="mobile-money"
+                                id="paymentMobileMoney"
+                                checked
+                            >
+
+
+                            <span class="payment-radio"></span>
+
+
+                            <span class="payment-method-copy">
+
+                                <strong>
+                                    Mobile Money
+                                </strong>
+
+                                <small>
+                                    M-Pesa ou Orange Money
+                                </small>
+
+                            </span>
+
+
+                        </label>
+
+
+
+                        <!-- Conservé pour compatibilité avec l'ancien script.js.
+                             Ce mode reste masqué tant qu'il n'est pas réactivé. -->
+                        <label class="payment-method-card" hidden aria-hidden="true">
+
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="livraison"
+                                id="paymentDelivery"
+                                disabled
+                            >
+
+
+                            <span class="payment-radio"></span>
+
+
+                            <span class="payment-method-copy">
+
+                                <strong>
+                                    À la livraison
+                                </strong>
+
+                                <small>
+                                    Paiement à réception
+                                </small>
+
+                            </span>
+
+
+                        </label>
+
+
+                    </div>
+
+
+
+                    <div
+                        class="payment-provider-box"
+                        id="paymentProviderWrapper"
+                    >
+
+
+                        <label for="paymentProvider">
+                            Choisissez votre service Mobile Money
+                        </label>
+
+
+                        <select id="paymentProvider" required>
+
+                            <option
+                                value="M-Pesa"
+                                data-payment-number="+243826787512"
+                            >
+                                M-Pesa — +243 826 787 512
+                            </option>
+
+                            <option
+                                value="Orange Money"
+                                data-payment-number="+243850691536"
+                            >
+                                Orange Money — +243 850 691 536
+                            </option>
+
+                        </select>
+
+
+
+                        <p id="paymentInformation">
+
+                            M-Pesa : +243 826 787 512<br>
+                            Orange Money : +243 850 691 536<br>
+                            Après le paiement, la commande sera finalisée
+                            et confirmée via WhatsApp au +243 850 691 536.
+
+                        </p>
+
+
+                    </div>
+
+
+
+                    <div class="payment-total">
+
+
+                        <span>
+                            Montant
+                        </span>
+
+
+                        <strong id="paymentTotal">
+                            23,90 $
+                        </strong>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+                <div class="form-group">
+
+                    <label for="note">
+                        Note facultative
+                    </label>
+
+                    <textarea
+                        id="note"
+                        rows="3"
+                        placeholder="Précision pour la livraison..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="button-primary order-submit"
+                >
+                    Confirmer ma commande
+                    <span>→</span>
+                </button>
+
+
+
+                <small class="order-privacy">
+
+                    Vos informations sont utilisées
+                    uniquement pour traiter votre commande.
+
+                </small>
+
+
+            </form>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div class="footer-brand">
+
+            <strong>
+
+                ROI
+
+                <span>
+                    &
+                </span>
+
+                REINE
+
+            </strong>
+
+
+            <small>
+                ACTION OU VÉRITÉ · ÉDITION ROUGE
+            </small>
+
+        </div>
+
+
+
+        <div class="footer-markets">
+
+
+            <button
+                type="button"
+                data-footer-market="kinshasa"
+            >
+                🇨🇩 Kinshasa
+            </button>
+
+
+            <button
+                type="button"
+                data-footer-market="brazzaville"
+            >
+                🇨🇬 Brazzaville
+            </button>
+
+
+            <button
+                type="button"
+                data-footer-market="libreville"
+            >
+                🇬🇦 Libreville
+            </button>
+
+
+        </div>
+
+
+
+        <div class="footer-info">
+
+            <span>
+                18+ · Consentement · Respect
+            </span>
+
+
+            <small>
+                © 2026 ROI & REINE.
+                Tous droits réservés.
+            </small>
+
+        </div>
+
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
