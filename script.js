@@ -1,125 +1,48 @@
 /* ============================================================
    ROI & REINE — ÉDITION ROUGE
    SCRIPT COMPLET
-   Curiosité • Marchés • Paiements • Commande • Animations
+   Marchés • Livraison • Commande • WhatsApp • Animations
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
+    "use strict";
 
     /* =========================================================
        1. CONFIGURATION DES MARCHÉS
     ========================================================= */
 
     const MARKETS = {
-
         kinshasa: {
-
             key: "kinshasa",
             city: "Kinshasa",
             country: "RDC",
             flag: "🇨🇩",
             price: 23.90,
-            currency: "USD",
-
-            paymentProviders: [
-
-                {
-                    name: "M-Pesa",
-                    number: "+243826787512"
-                },
-
-                {
-                    name: "Orange Money",
-                    number: "+243850691536"
-                }
-
-            ]
-
+            currency: "USD"
         },
 
-
         brazzaville: {
-
             key: "brazzaville",
             city: "Brazzaville",
             country: "Congo",
             flag: "🇨🇬",
             price: 13500,
-            currency: "XAF",
-
-            paymentProviders: [
-
-                {
-                    name: "M-Pesa",
-                    number: "+243826787512"
-                },
-
-                {
-                    name: "Orange Money",
-                    number: "+243850691536"
-                }
-
-            ]
-
+            currency: "XAF"
         },
 
-
         libreville: {
-
             key: "libreville",
             city: "Libreville",
             country: "Gabon",
             flag: "🇬🇦",
-
             price: null,
-
-            currency: "XAF",
-
-            paymentProviders: [
-
-                {
-                    name: "M-Pesa",
-                    number: "+243826787512"
-                },
-
-                {
-                    name: "Orange Money",
-                    number: "+243850691536"
-                }
-
-            ]
-
+            currency: "XAF"
         }
-
     };
 
 
     /* =========================================================
-       2. CONFIGURATION DES PAIEMENTS
-    ========================================================= */
-
-    const PAYMENT_ACCOUNTS = {
-
-        "M-Pesa": {
-
-            name: "M-Pesa",
-            number: "+243826787512"
-
-        },
-
-
-        "Orange Money": {
-
-            name: "Orange Money",
-            number: "+243850691536"
-
-        }
-
-    };
-
-
-    /* =========================================================
-       API ROI & REINE
+       2. API ROI & REINE
     ========================================================= */
 
     const API_BASE_URL =
@@ -130,20 +53,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       3. NUMÉRO WHATSAPP DES COMMANDES
+       3. WHATSAPP COMMANDES
     ========================================================= */
 
-    /*
-        IMPORTANT :
-
-        Pour wa.me :
-
-        - pas de +
-        - pas d'espace
-        - pas de tiret
-    */
-
-    const OWNER_WHATSAPP = "243850691536";
+    const OWNER_WHATSAPP =
+        "243850691536";
 
 
     /* =========================================================
@@ -154,271 +68,129 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.getItem("roiReineMarket")
         || "kinshasa";
 
-
     if (!MARKETS[currentMarket]) {
-
-        currentMarket =
-            "kinshasa";
-
+        currentMarket = "kinshasa";
     }
 
-
     let quantity = 1;
-
     let mobileMenuOpened = false;
+    let submittingOrder = false;
 
 
     /* =========================================================
-       5. RÉCUPÉRATION DES ÉLÉMENTS HTML
+       5. ÉLÉMENTS HTML
     ========================================================= */
 
     const body =
         document.body;
 
-
-    /* AGE */
-
     const ageScreen =
-        document.getElementById(
-            "ageScreen"
-        );
+        document.getElementById("ageScreen");
 
     const enterSite =
-        document.getElementById(
-            "enterSite"
-        );
+        document.getElementById("enterSite");
 
     const leaveSite =
-        document.getElementById(
-            "leaveSite"
-        );
-
-
-    /* HEADER */
+        document.getElementById("leaveSite");
 
     const siteHeader =
-        document.getElementById(
-            "siteHeader"
-        );
+        document.getElementById("siteHeader");
 
     const scrollProgressBar =
-        document.getElementById(
-            "scrollProgressBar"
-        );
-
-
-    /* MENU MOBILE */
+        document.getElementById("scrollProgressBar");
 
     const mobileMenuButton =
-        document.getElementById(
-            "mobileMenuButton"
-        );
+        document.getElementById("mobileMenuButton");
 
     const mobileMenu =
-        document.getElementById(
-            "mobileMenu"
-        );
+        document.getElementById("mobileMenu");
 
     const mobileMenuLinks =
-        document.querySelectorAll(
-            ".mobile-menu a"
-        );
-
-
-    /* MARCHÉS */
+        document.querySelectorAll(".mobile-menu a");
 
     const marketButton =
-        document.getElementById(
-            "marketButton"
-        );
+        document.getElementById("marketButton");
 
     const mobileMarketButton =
-        document.getElementById(
-            "mobileMarketButton"
-        );
+        document.getElementById("mobileMarketButton");
 
     const marketModal =
-        document.getElementById(
-            "marketModal"
-        );
+        document.getElementById("marketModal");
 
     const marketModalClose =
-        document.getElementById(
-            "marketModalClose"
-        );
+        document.getElementById("marketModalClose");
 
     const marketChoices =
-        document.querySelectorAll(
-            ".market-choice"
-        );
+        document.querySelectorAll(".market-choice");
 
     const marketShortcutButtons =
-        document.querySelectorAll(
-            "[data-footer-market]"
-        );
-
-
-    /* COMMANDE */
+        document.querySelectorAll("[data-footer-market]");
 
     const productPrice =
-        document.getElementById(
-            "productPrice"
-        );
+        document.getElementById("productPrice");
 
     const selectedMarketName =
-        document.getElementById(
-            "selectedMarketName"
-        );
+        document.getElementById("selectedMarketName");
 
     const quantityValue =
-        document.getElementById(
-            "quantityValue"
-        );
+        document.getElementById("quantityValue");
 
     const decreaseQuantity =
-        document.getElementById(
-            "decreaseQuantity"
-        );
+        document.getElementById("decreaseQuantity");
 
     const increaseQuantity =
-        document.getElementById(
-            "increaseQuantity"
-        );
+        document.getElementById("increaseQuantity");
 
     const orderTotal =
-        document.getElementById(
-            "orderTotal"
-        );
+        document.getElementById("orderTotal");
 
     const paymentTotal =
-        document.getElementById(
-            "paymentTotal"
-        );
+        document.getElementById("paymentTotal");
 
     const citySelect =
-        document.getElementById(
-            "city"
-        );
+        document.getElementById("city");
 
     const orderForm =
-        document.getElementById(
-            "orderForm"
-        );
+        document.getElementById("orderForm");
 
+    const localityLabel =
+        document.getElementById("localityLabel");
 
-    /* PAIEMENT */
+    const localityHelp =
+        document.getElementById("localityHelp");
 
-    const paymentMobileMoney =
-        document.getElementById(
-            "paymentMobileMoney"
-        );
-
-    const paymentDelivery =
-        document.getElementById(
-            "paymentDelivery"
-        );
-
-    const paymentProviderWrapper =
-        document.getElementById(
-            "paymentProviderWrapper"
-        );
-
-    const paymentProvider =
-        document.getElementById(
-            "paymentProvider"
-        );
-
-    const paymentInformation =
-        document.getElementById(
-            "paymentInformation"
-        );
+    const preferredDeliveryDate =
+        document.getElementById("preferredDeliveryDate");
 
 
     /* =========================================================
-       6. BLOQUER / LIBÉRER LE SCROLL
+       6. OUTILS
     ========================================================= */
 
-    function updateBodyScroll() {
-
-        const ageVisible =
-            ageScreen
-            &&
-            ageScreen.style.display !== "none";
-
-
-        const marketVisible =
-            marketModal
-            &&
-            marketModal.classList.contains(
-                "active"
-            );
-
-
-        const mobileVisible =
-            mobileMenu
-            &&
-            mobileMenu.classList.contains(
-                "active"
-            );
-
-
-        if (
-            ageVisible
-            ||
-            marketVisible
-            ||
-            mobileVisible
-        ) {
-
-            body.classList.add(
-                "no-scroll"
-            );
-
-        }
-
-        else {
-
-            body.classList.remove(
-                "no-scroll"
-            );
-
-        }
-
+    function cleanValue(value) {
+        return typeof value === "string"
+            ? value.trim()
+            : "";
     }
 
-
-    /* =========================================================
-       7. FORMATAGE DES PRIX
-    ========================================================= */
 
     function formatPrice(
         value,
         marketKey = currentMarket
     ) {
-
         const market =
             MARKETS[marketKey];
 
-
         if (
             !market
-            ||
-            value === null
-            ||
-            typeof value !== "number"
+            || value === null
+            || typeof value !== "number"
+            || Number.isNaN(value)
         ) {
-
             return "Prix à confirmer";
-
         }
 
-
-        /* BRAZZAVILLE / LIBREVILLE */
-
-        if (
-            market.currency === "XAF"
-        ) {
-
+        if (market.currency === "XAF") {
             return (
                 new Intl.NumberFormat(
                     "fr-FR",
@@ -429,11 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 +
                 " F CFA"
             );
-
         }
-
-
-        /* KINSHASA */
 
         return (
             new Intl.NumberFormat(
@@ -446,355 +214,227 @@ document.addEventListener("DOMContentLoaded", () => {
             +
             " $"
         );
-
     }
 
 
-    /* =========================================================
-       8. CALCUL DU TOTAL
-    ========================================================= */
-
     function calculateTotal() {
-
         const market =
             MARKETS[currentMarket];
 
-
         if (
             !market
-            ||
-            market.price === null
+            || market.price === null
         ) {
-
             return null;
-
         }
-
 
         return (
             market.price
             *
             quantity
         );
-
     }
 
 
-    /* =========================================================
-       9. FOURNISSEURS MOBILE MONEY
-    ========================================================= */
+    function formatDeliveryTimeSlot(value) {
+        switch (value) {
+            case "matin":
+                return "Matin";
 
-    function updatePaymentProviders() {
+            case "apres_midi":
+                return "Après-midi";
 
-        if (!paymentProvider) {
+            case "soir":
+                return "Soir";
 
-            return;
-
+            default:
+                return "À confirmer avec l’équipe";
         }
-
-
-        const market =
-            MARKETS[currentMarket];
-
-
-        if (!market) {
-
-            return;
-
-        }
-
-
-        const previousProvider =
-            paymentProvider.value;
-
-
-        paymentProvider.innerHTML =
-            "";
-
-
-        market
-            .paymentProviders
-            .forEach(provider => {
-
-
-                const option =
-                    document.createElement(
-                        "option"
-                    );
-
-
-                option.value =
-                    provider.name;
-
-
-                option.dataset.paymentNumber =
-                    provider.number;
-
-
-                option.textContent =
-                    `${provider.name} — ${formatPhoneNumber(provider.number)}`;
-
-
-                paymentProvider.appendChild(
-                    option
-                );
-
-
-            });
-
-
-        const stillExists =
-            market
-                .paymentProviders
-                .some(
-                    provider =>
-                        provider.name === previousProvider
-                );
-
-
-        if (stillExists) {
-
-            paymentProvider.value =
-                previousProvider;
-
-        }
-
-
-        updatePaymentInformation();
-
     }
 
 
-    /* =========================================================
-       10. FORMATAGE NUMÉRO
-    ========================================================= */
+    function buildDeliveryAddress({
+        city,
+        locality,
+        neighborhood,
+        street,
+        houseNumber,
+        landmark
+    }) {
+        let localityPrefix =
+            "Localité";
 
-    function formatPhoneNumber(number) {
-
-        if (!number) {
-
-            return "";
-
+        if (city === "Kinshasa") {
+            localityPrefix =
+                "Commune de";
         }
 
-
-        const cleaned =
-            number
-                .replace(/\s+/g, "");
-
-
-        if (
-            cleaned === "+243826787512"
-        ) {
-
-            return "+243 826 787 512";
-
+        if (city === "Brazzaville") {
+            localityPrefix =
+                "Arrondissement";
         }
 
+        const parts = [
+            houseNumber
+                ? `N° ${houseNumber}`
+                : null,
 
-        if (
-            cleaned === "+243850691536"
-        ) {
+            street,
 
-            return "+243 850 691 536";
+            neighborhood
+                ? `Quartier ${neighborhood}`
+                : null,
 
-        }
+            locality
+                ? `${localityPrefix} ${locality}`
+                : null,
 
+            city,
 
-        return number;
+            landmark
+                ? `Repère : ${landmark}`
+                : null
+        ];
 
+        return parts
+            .filter(Boolean)
+            .join(", ");
     }
 
 
-    /* =========================================================
-       11. RÉCUPÉRER LE NUMÉRO DE PAIEMENT
-    ========================================================= */
+    function getTodayForInput() {
+        const now =
+            new Date();
 
-    function getSelectedPaymentAccount() {
-
-        if (!paymentProvider) {
-
-            return null;
-
-        }
-
-
-        const providerName =
-            paymentProvider.value;
-
-
-        return (
-            PAYMENT_ACCOUNTS[providerName]
-            ||
-            null
-        );
-
-    }
-
-
-    /* =========================================================
-       12. INFORMATIONS DU PAIEMENT
-    ========================================================= */
-
-    function updatePaymentInformation() {
-
-        if (!paymentInformation) {
-
-            return;
-
-        }
-
-
-        const account =
-            getSelectedPaymentAccount();
-
-
-        if (!account) {
-
-            paymentInformation.innerHTML =
-                "Sélectionnez un moyen de paiement.";
-
-            return;
-
-        }
-
-
-        const total =
-            calculateTotal();
-
-
-        const totalText =
-            formatPrice(
-                total,
-                currentMarket
+        const localDate =
+            new Date(
+                now.getTime()
+                -
+                now.getTimezoneOffset() * 60000
             );
 
-
-        let priceMessage =
-            `Montant à payer : <strong>${totalText}</strong>`;
-
-
-        if (total === null) {
-
-            priceMessage =
-                "<strong>Le montant sera confirmé avant le paiement.</strong>";
-
-        }
-
-
-        paymentInformation.innerHTML =
-            `
-                <strong>${account.name}</strong><br>
-                Numéro de paiement :
-                <strong>${formatPhoneNumber(account.number)}</strong><br><br>
-
-                ${priceMessage}<br><br>
-
-                Après le paiement, cliquez sur
-                <strong>« Confirmer ma commande »</strong>.<br>
-                La commande sera enregistrée sur notre serveur
-                puis une confirmation WhatsApp pourra être envoyée.
-            `;
-
+        return localDate
+            .toISOString()
+            .slice(0, 10);
     }
 
 
     /* =========================================================
-       13. AFFICHAGE MOBILE MONEY
+       7. SCROLL / ÉCRANS OUVERTS
     ========================================================= */
 
-    function updatePaymentMethodDisplay() {
+    function updateBodyScroll() {
+        const ageVisible =
+            ageScreen
+            &&
+            ageScreen.style.display !== "none";
 
-        if (!paymentProviderWrapper) {
+        const marketVisible =
+            marketModal
+            &&
+            marketModal.classList.contains(
+                "active"
+            );
 
-            return;
+        const mobileVisible =
+            mobileMenu
+            &&
+            mobileMenu.classList.contains(
+                "active"
+            );
 
-        }
-
-
-        const mobileSelected =
-            !paymentDelivery
-            ||
-            paymentMobileMoney?.checked
-            ||
-            paymentDelivery.disabled;
-
-
-        if (mobileSelected) {
-
-            paymentProviderWrapper.style.display =
-                "block";
-
-        }
-
-        else {
-
-            paymentProviderWrapper.style.display =
-                "none";
-
-        }
-
-
-        updatePaymentInformation();
-
+        body.classList.toggle(
+            "no-scroll",
+            Boolean(
+                ageVisible
+                ||
+                marketVisible
+                ||
+                mobileVisible
+            )
+        );
     }
 
 
     /* =========================================================
-       14. MISE À JOUR PRIX / TOTAL / MARCHÉ
+       8. INFORMATIONS DE LIVRAISON PAR VILLE
+    ========================================================= */
+
+    function updateDeliveryContext() {
+        if (
+            !localityLabel
+            ||
+            !localityHelp
+        ) {
+            return;
+        }
+
+        if (
+            currentMarket ===
+            "brazzaville"
+        ) {
+            localityLabel.textContent =
+                "Arrondissement";
+
+            localityHelp.textContent =
+                "Indiquez votre arrondissement.";
+
+            return;
+        }
+
+        if (
+            currentMarket ===
+            "libreville"
+        ) {
+            localityLabel.textContent =
+                "Arrondissement / commune";
+
+            localityHelp.textContent =
+                "Indiquez votre arrondissement ou commune.";
+
+            return;
+        }
+
+        localityLabel.textContent =
+            "Commune";
+
+        localityHelp.textContent =
+            "Indiquez votre commune.";
+    }
+
+
+    /* =========================================================
+       9. AFFICHAGE PRIX / QUANTITÉ / MARCHÉ
     ========================================================= */
 
     function updateOrderDisplay() {
-
         const market =
             MARKETS[currentMarket];
 
-
         if (!market) {
-
             return;
-
         }
-
 
         const total =
             calculateTotal();
 
-
-        /* QUANTITÉ */
-
         if (quantityValue) {
-
             quantityValue.textContent =
-                quantity;
-
+                String(quantity);
         }
 
-
-        /* PRIX UNITAIRE */
-
         if (productPrice) {
-
             productPrice.textContent =
                 formatPrice(
                     market.price,
                     currentMarket
                 );
-
         }
-
-
-        /* MARCHÉ */
 
         if (selectedMarketName) {
-
             selectedMarketName.textContent =
                 `${market.city} · ${market.country}`;
-
         }
-
-
-        /* TOTAL */
 
         const totalText =
             formatPrice(
@@ -802,484 +442,295 @@ document.addEventListener("DOMContentLoaded", () => {
                 currentMarket
             );
 
-
         if (orderTotal) {
-
             orderTotal.textContent =
                 totalText;
-
         }
-
 
         if (paymentTotal) {
-
             paymentTotal.textContent =
                 totalText;
-
         }
-
-
-        updatePaymentInformation();
-
     }
 
 
     /* =========================================================
-       15. APPLIQUER UN MARCHÉ
+       10. MARCHÉS
     ========================================================= */
+
+    function openMarketModal() {
+        if (!marketModal) {
+            return;
+        }
+
+        marketModal.classList.add(
+            "active"
+        );
+
+        updateBodyScroll();
+    }
+
+
+    function closeMarketModal() {
+        if (!marketModal) {
+            return;
+        }
+
+        marketModal.classList.remove(
+            "active"
+        );
+
+        updateBodyScroll();
+    }
+
 
     function applyMarket(
         marketKey,
         closeModalAfter = true
     ) {
-
         if (!MARKETS[marketKey]) {
-
             return;
-
         }
-
 
         currentMarket =
             marketKey;
 
-
         const market =
             MARKETS[currentMarket];
-
 
         localStorage.setItem(
             "roiReineMarket",
             currentMarket
         );
 
-
         const marketLabel =
             `${market.flag} ${market.city}`;
 
-
-        /* HEADER */
-
         if (marketButton) {
-
             marketButton.textContent =
                 marketLabel;
-
         }
-
-
-        /* MOBILE */
 
         if (mobileMarketButton) {
-
             mobileMarketButton.textContent =
                 marketLabel;
-
         }
-
-
-        /* FORMULAIRE */
 
         if (citySelect) {
-
             citySelect.value =
                 market.city;
-
         }
-
-
-        updatePaymentProviders();
 
         updateOrderDisplay();
-
-        updatePaymentMethodDisplay();
-
+        updateDeliveryContext();
 
         if (closeModalAfter) {
-
             closeMarketModal();
-
         }
-
-    }
-
-
-    /* =========================================================
-       16. MODAL MARCHÉS
-    ========================================================= */
-
-    function openMarketModal() {
-
-        if (!marketModal) {
-
-            return;
-
-        }
-
-
-        marketModal.classList.add(
-            "active"
-        );
-
-
-        updateBodyScroll();
-
-    }
-
-
-    function closeMarketModal() {
-
-        if (!marketModal) {
-
-            return;
-
-        }
-
-
-        marketModal.classList.remove(
-            "active"
-        );
-
-
-        updateBodyScroll();
-
     }
 
 
     if (marketButton) {
-
         marketButton.addEventListener(
             "click",
             openMarketModal
         );
-
     }
 
 
     if (mobileMarketButton) {
-
         mobileMarketButton.addEventListener(
             "click",
             () => {
-
                 closeMobileMenu();
 
-
-                setTimeout(
+                window.setTimeout(
                     openMarketModal,
                     220
                 );
-
             }
         );
-
     }
 
 
     if (marketModalClose) {
-
         marketModalClose.addEventListener(
             "click",
             closeMarketModal
         );
-
     }
 
 
     if (marketModal) {
-
         marketModal.addEventListener(
             "click",
             event => {
-
                 if (
                     event.target ===
                     marketModal
                 ) {
-
                     closeMarketModal();
-
                 }
-
             }
         );
-
     }
 
 
     marketChoices.forEach(choice => {
-
         choice.addEventListener(
             "click",
             () => {
-
-
                 const marketKey =
                     choice.dataset.market;
-
 
                 applyMarket(
                     marketKey
                 );
-
-
             }
         );
-
     });
 
 
-    /* =========================================================
-       17. BOUTONS MARCHÉS BAS DE PAGE
-    ========================================================= */
-
     marketShortcutButtons.forEach(button => {
-
         button.addEventListener(
             "click",
             () => {
-
-
                 const marketKey =
                     button.dataset.footerMarket;
-
 
                 applyMarket(
                     marketKey,
                     false
                 );
 
-
                 const orderSection =
                     document.getElementById(
                         "commander"
                     );
 
-
                 if (orderSection) {
-
                     orderSection.scrollIntoView(
                         {
                             behavior: "smooth",
                             block: "start"
                         }
                     );
-
                 }
-
-
             }
         );
-
     });
 
 
-    /* =========================================================
-       18. CHANGEMENT DE VILLE
-    ========================================================= */
-
     if (citySelect) {
-
         citySelect.addEventListener(
             "change",
             () => {
-
-
                 const selectedCity =
                     citySelect.value;
 
-
-                switch (
-                    selectedCity
-                ) {
-
+                switch (selectedCity) {
                     case "Brazzaville":
-
                         applyMarket(
                             "brazzaville",
                             false
                         );
-
                         break;
 
-
                     case "Libreville":
-
                         applyMarket(
                             "libreville",
                             false
                         );
-
                         break;
 
-
                     default:
-
                         applyMarket(
                             "kinshasa",
                             false
                         );
-
+                        break;
                 }
-
-
             }
         );
-
     }
 
 
     /* =========================================================
-       19. CHANGEMENT DU SERVICE DE PAIEMENT
+       11. ÉCRAN 18+
     ========================================================= */
 
-    if (paymentProvider) {
+    function showAgeScreen() {
+        if (!ageScreen) {
+            return;
+        }
 
-        paymentProvider.addEventListener(
-            "change",
-            () => {
+        ageScreen.style.display =
+            "flex";
 
-                updatePaymentInformation();
-
-            }
-        );
-
+        updateBodyScroll();
     }
 
 
-    if (paymentMobileMoney) {
+    function hideAgeScreen() {
+        if (!ageScreen) {
+            return;
+        }
 
-        paymentMobileMoney.addEventListener(
-            "change",
-            updatePaymentMethodDisplay
-        );
+        ageScreen.style.display =
+            "none";
 
+        updateBodyScroll();
     }
 
-
-    if (paymentDelivery) {
-
-        paymentDelivery.addEventListener(
-            "change",
-            updatePaymentMethodDisplay
-        );
-
-    }
-
-
-    /* =========================================================
-       20. ÉCRAN 18+
-    ========================================================= */
 
     const ageAccepted =
         localStorage.getItem(
             "roiReineAgeAccepted"
         );
 
-
-    function showAgeScreen() {
-
-        if (!ageScreen) {
-
-            return;
-
-        }
-
-
-        ageScreen.style.display =
-            "flex";
-
-
-        updateBodyScroll();
-
-    }
-
-
-    function hideAgeScreen() {
-
-        if (!ageScreen) {
-
-            return;
-
-        }
-
-
-        ageScreen.style.display =
-            "none";
-
-
-        updateBodyScroll();
-
-    }
-
-
     if (
-        ageAccepted === "true"
+        ageAccepted ===
+        "true"
     ) {
-
         hideAgeScreen();
-
     }
-
     else {
-
         showAgeScreen();
-
     }
 
 
     if (enterSite) {
-
         enterSite.addEventListener(
             "click",
             () => {
-
-
                 localStorage.setItem(
                     "roiReineAgeAccepted",
                     "true"
                 );
 
-
                 hideAgeScreen();
-
-
-                /*
-                    Première visite :
-                    on demande le marché.
-                */
 
                 const savedMarket =
                     localStorage.getItem(
                         "roiReineMarket"
                     );
 
-
                 if (!savedMarket) {
-
-                    setTimeout(
+                    window.setTimeout(
                         openMarketModal,
                         500
                     );
-
                 }
-
-
             }
         );
-
     }
 
 
     if (leaveSite) {
-
         leaveSite.addEventListener(
             "click",
             () => {
-
-
-                document.body.innerHTML =
-                    `
+                document.body.innerHTML = `
                     <main
                         style="
                             min-height:100vh;
@@ -1298,13 +749,11 @@ document.addEventListener("DOMContentLoaded", () => {
                             font-family:Arial,sans-serif;
                         "
                     >
-
                         <div
                             style="
                                 max-width:550px;
                             "
                         >
-
                             <h1
                                 style="
                                     margin-bottom:18px;
@@ -1327,191 +776,126 @@ document.addEventListener("DOMContentLoaded", () => {
                                 exclusivement aux personnes
                                 âgées de 18 ans ou plus.
                             </p>
-
                         </div>
-
                     </main>
-                    `;
-
-
+                `;
             }
         );
-
     }
 
 
     /* =========================================================
-       21. MENU MOBILE
+       12. MENU MOBILE
     ========================================================= */
 
     function openMobileMenu() {
-
         if (
             !mobileMenu
             ||
             !mobileMenuButton
         ) {
-
             return;
-
         }
-
 
         mobileMenu.classList.add(
             "active"
         );
 
-
         mobileMenuButton.classList.add(
             "active"
         );
 
-
         mobileMenuOpened =
             true;
 
-
         updateBodyScroll();
-
     }
 
 
     function closeMobileMenu() {
-
         if (
             !mobileMenu
             ||
             !mobileMenuButton
         ) {
-
             return;
-
         }
-
 
         mobileMenu.classList.remove(
             "active"
         );
 
-
         mobileMenuButton.classList.remove(
             "active"
         );
 
-
         mobileMenuOpened =
             false;
 
-
         updateBodyScroll();
-
     }
 
 
     if (mobileMenuButton) {
-
         mobileMenuButton.addEventListener(
             "click",
             () => {
-
-
                 if (mobileMenuOpened) {
-
                     closeMobileMenu();
-
                 }
-
                 else {
-
                     openMobileMenu();
-
                 }
-
-
             }
         );
-
     }
 
 
     mobileMenuLinks.forEach(link => {
-
         link.addEventListener(
             "click",
             closeMobileMenu
         );
-
     });
 
 
     /* =========================================================
-       22. HEADER
+       13. HEADER / PROGRESSION
     ========================================================= */
 
     function updateHeader() {
-
         if (!siteHeader) {
-
             return;
-
         }
 
-
-        if (
+        siteHeader.classList.toggle(
+            "scrolled",
             window.scrollY > 55
-        ) {
-
-            siteHeader.classList.add(
-                "scrolled"
-            );
-
-        }
-
-        else {
-
-            siteHeader.classList.remove(
-                "scrolled"
-            );
-
-        }
-
+        );
     }
 
 
-    /* =========================================================
-       23. BARRE DE PROGRESSION
-    ========================================================= */
-
     function updateScrollProgress() {
-
         if (!scrollProgressBar) {
-
             return;
-
         }
-
 
         const scrollTop =
             window.scrollY;
-
 
         const scrollHeight =
             document.documentElement.scrollHeight
             -
             window.innerHeight;
 
-
         if (
             scrollHeight <= 0
         ) {
-
             scrollProgressBar.style.width =
                 "0%";
 
             return;
-
         }
-
 
         const progress =
             (
@@ -1522,15 +906,19 @@ document.addEventListener("DOMContentLoaded", () => {
             *
             100;
 
-
         scrollProgressBar.style.width =
-            `${progress}%`;
-
+            `${Math.min(
+                100,
+                Math.max(
+                    0,
+                    progress
+                )
+            )}%`;
     }
 
 
     /* =========================================================
-       24. ANIMATIONS D'APPARITION
+       14. ANIMATIONS D’APPARITION
     ========================================================= */
 
     const revealElements =
@@ -1554,23 +942,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     revealElements.forEach(element => {
-
-
         element.style.opacity =
             "0";
-
 
         element.style.transform =
             "translateY(42px)";
 
-
         element.style.transition =
             `
-            opacity 0.9s cubic-bezier(.2,.7,.2,1),
-            transform 0.9s cubic-bezier(.2,.7,.2,1)
+            opacity .9s cubic-bezier(.2,.7,.2,1),
+            transform .9s cubic-bezier(.2,.7,.2,1)
             `;
-
-
     });
 
 
@@ -1578,85 +960,53 @@ document.addEventListener("DOMContentLoaded", () => {
         "IntersectionObserver"
         in window
     ) {
-
-
         const revealObserver =
             new IntersectionObserver(
-
                 entries => {
-
-
                     entries.forEach(entry => {
-
-
                         if (
-                            entry.isIntersecting
+                            !entry.isIntersecting
                         ) {
-
-
-                            entry.target.style.opacity =
-                                "1";
-
-
-                            entry.target.style.transform =
-                                "translateY(0)";
-
-
-                            revealObserver.unobserve(
-                                entry.target
-                            );
-
-
+                            return;
                         }
 
+                        entry.target.style.opacity =
+                            "1";
 
+                        entry.target.style.transform =
+                            "translateY(0)";
+
+                        revealObserver.unobserve(
+                            entry.target
+                        );
                     });
-
-
                 },
-
                 {
-
                     threshold: 0.13,
-
                     rootMargin:
                         "0px 0px -40px 0px"
-
                 }
-
             );
 
-
         revealElements.forEach(element => {
-
             revealObserver.observe(
                 element
             );
-
         });
-
-
     }
-
     else {
-
-
         revealElements.forEach(element => {
-
             element.style.opacity =
                 "1";
 
             element.style.transform =
                 "none";
-
         });
-
-
     }
 
 
     /* =========================================================
-       25. PARALLAX DES GRANDES IMAGES
+       15. PARALLAX
     ========================================================= */
 
     const parallaxImages =
@@ -1670,29 +1020,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function updateParallax() {
-
-
         if (
             window.innerWidth <= 760
         ) {
-
-
             parallaxImages.forEach(image => {
-
                 image.style.translate =
                     "";
-
             });
 
-
             return;
-
         }
 
-
         parallaxImages.forEach(image => {
-
-
             const parent =
                 image.closest(
                     `
@@ -1702,18 +1041,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     `
                 );
 
-
             if (!parent) {
-
                 return;
-
             }
-
 
             const rect =
                 parent
                     .getBoundingClientRect();
-
 
             if (
                 rect.bottom < 0
@@ -1721,46 +1055,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 rect.top >
                 window.innerHeight
             ) {
-
                 return;
-
             }
-
 
             const sectionCenter =
                 rect.top
                 +
                 rect.height / 2;
 
-
             const viewportCenter =
                 window.innerHeight / 2;
-
 
             const distance =
                 sectionCenter
                 -
                 viewportCenter;
 
-
             const movement =
                 distance
                 *
                 -0.022;
 
-
             image.style.translate =
                 `0 ${movement}px`;
-
-
         });
-
-
     }
 
 
     /* =========================================================
-       26. EFFET HERO
+       16. EFFET HERO
     ========================================================= */
 
     const hero =
@@ -1780,25 +1103,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (hero) {
-
-
         hero.addEventListener(
             "mousemove",
             event => {
-
-
                 if (
-                    window.innerWidth <= 760
+                    window.innerWidth <=
+                    760
                 ) {
-
                     return;
-
                 }
 
-
                 const rect =
-                    hero.getBoundingClientRect();
-
+                    hero
+                        .getBoundingClientRect();
 
                 const x =
                     (
@@ -1811,7 +1128,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     -
                     0.5;
 
-
                 const y =
                     (
                         event.clientY
@@ -1823,348 +1139,426 @@ document.addEventListener("DOMContentLoaded", () => {
                     -
                     0.5;
 
-
                 if (heroProduct) {
-
                     heroProduct.style.translate =
                         `${x * 12}px ${y * 10}px`;
-
                 }
-
 
                 if (heroRedLight) {
-
                     heroRedLight.style.translate =
                         `${x * 35}px ${y * 30}px`;
-
                 }
-
-
             }
         );
-
 
         hero.addEventListener(
             "mouseleave",
             () => {
-
-
                 if (heroProduct) {
-
                     heroProduct.style.translate =
                         "0 0";
-
                 }
-
 
                 if (heroRedLight) {
-
                     heroRedLight.style.translate =
                         "0 0";
-
                 }
-
-
             }
         );
-
-
     }
 
 
     /* =========================================================
-       27. QUANTITÉ
+       17. QUANTITÉ
     ========================================================= */
 
     if (increaseQuantity) {
-
         increaseQuantity.addEventListener(
             "click",
             () => {
-
-
                 if (
-                    quantity < 20
+                    quantity >= 20
                 ) {
-
-
-                    quantity++;
-
-
-                    updateOrderDisplay();
-
-
+                    return;
                 }
 
+                quantity += 1;
 
+                updateOrderDisplay();
             }
         );
-
     }
 
 
     if (decreaseQuantity) {
-
         decreaseQuantity.addEventListener(
             "click",
             () => {
-
-
                 if (
-                    quantity > 1
+                    quantity <= 1
                 ) {
-
-
-                    quantity--;
-
-
-                    updateOrderDisplay();
-
-
+                    return;
                 }
 
+                quantity -= 1;
 
+                updateOrderDisplay();
             }
         );
-
     }
 
 
     /* =========================================================
-       28. FORMULAIRE DE COMMANDE
+       18. DATE MINIMALE DE LIVRAISON
+    ========================================================= */
+
+    if (preferredDeliveryDate) {
+        preferredDeliveryDate.min =
+            getTodayForInput();
+    }
+
+
+    /* =========================================================
+       19. FORMULAIRE DE COMMANDE
     ========================================================= */
 
     if (orderForm) {
-
         orderForm.addEventListener(
             "submit",
             async event => {
-
-
                 event.preventDefault();
 
+                if (submittingOrder) {
+                    return;
+                }
+
+                const market =
+                    MARKETS[currentMarket];
+
+                if (!market) {
+                    alert(
+                        "Le marché sélectionné est invalide."
+                    );
+
+                    return;
+                }
+
+
+                /* =================================================
+                   LIBREVILLE RESTE BLOQUÉ
+                ================================================= */
+
+                if (
+                    currentMarket ===
+                    "libreville"
+                    ||
+                    market.price ===
+                    null
+                ) {
+                    alert(
+                        "Le prix de ROI & REINE à Libreville n'est pas encore configuré. La demande ne peut pas encore être envoyée pour ce marché."
+                    );
+
+                    return;
+                }
+
+
+                /* =================================================
+                   INFORMATIONS CLIENT
+                ================================================= */
 
                 const fullName =
-                    document
-                        .getElementById(
-                            "fullName"
-                        )
-                        .value
-                        .trim();
-
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "fullName"
+                            )
+                            ?.value
+                    );
 
                 const phone =
-                    document
-                        .getElementById(
-                            "phone"
-                        )
-                        .value
-                        .trim();
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "phone"
+                            )
+                            ?.value
+                    );
 
+                const whatsappPhone =
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "whatsappPhone"
+                            )
+                            ?.value
+                    );
 
                 const email =
-                    document
-                        .getElementById(
-                            "email"
-                        )
-                        .value
-                        .trim();
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "email"
+                            )
+                            ?.value
+                    );
 
 
-                const address =
-                    document
-                        .getElementById(
-                            "address"
-                        )
-                        .value
-                        .trim();
+                /* =================================================
+                   ADRESSE
+                ================================================= */
 
+                const locality =
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "locality"
+                            )
+                            ?.value
+                    );
+
+                const neighborhood =
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "neighborhood"
+                            )
+                            ?.value
+                    );
+
+                const street =
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "street"
+                            )
+                            ?.value
+                    );
+
+                const houseNumber =
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "houseNumber"
+                            )
+                            ?.value
+                    );
+
+                const landmark =
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "landmark"
+                            )
+                            ?.value
+                    );
+
+
+                /* =================================================
+                   LIVRAISON
+                ================================================= */
+
+                const deliveryDate =
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "preferredDeliveryDate"
+                            )
+                            ?.value
+                    );
+
+                const deliveryTimeSlot =
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "deliveryTimeSlot"
+                            )
+                            ?.value
+                    )
+                    ||
+                    "a_confirmer";
 
                 const note =
-                    document
-                        .getElementById(
-                            "note"
-                        )
-                        .value
-                        .trim();
+                    cleanValue(
+                        document
+                            .getElementById(
+                                "note"
+                            )
+                            ?.value
+                    );
 
+
+                /* =================================================
+                   VALIDATION
+                ================================================= */
 
                 if (
                     !fullName
                     ||
                     !phone
                     ||
-                    !address
-                ) {
-
-
-                    alert(
-                        "Veuillez renseigner votre nom, votre téléphone et votre adresse de livraison."
-                    );
-
-
-                    return;
-
-
-                }
-
-
-                const market =
-                    MARKETS[currentMarket];
-
-
-                if (!market) {
-
-                    alert(
-                        "Le marché sélectionné est invalide."
-                    );
-
-                    return;
-
-                }
-
-
-                /*
-                    Libreville reste volontairement bloqué
-                    tant que le prix officiel n'a pas été communiqué.
-                */
-
-                if (
-                    currentMarket === "libreville"
+                    !locality
                     ||
-                    market.price === null
+                    !neighborhood
+                    ||
+                    !street
+                    ||
+                    !landmark
                 ) {
-
                     alert(
-                        "Le prix de ROI & REINE à Libreville n'est pas encore configuré. La commande ne peut pas encore être validée pour ce marché."
+                        "Veuillez renseigner votre nom, votre téléphone et toutes les informations obligatoires de livraison."
                     );
 
                     return;
-
                 }
 
 
                 /* =================================================
-                   PAIEMENT
+                   ADRESSE COMPLÈTE
                 ================================================= */
 
-                const account =
-                    getSelectedPaymentAccount();
+                const deliveryAddress =
+                    buildDeliveryAddress(
+                        {
+                            city:
+                                market.city,
 
+                            locality:
+                                locality,
 
-                if (!account) {
+                            neighborhood:
+                                neighborhood,
 
-                    alert(
-                        "Veuillez sélectionner un moyen de paiement."
+                            street:
+                                street,
+
+                            houseNumber:
+                                houseNumber,
+
+                            landmark:
+                                landmark
+                        }
                     );
-
-                    return;
-
-                }
-
-
-                const provider =
-                    account.name;
-
-
-                const paymentNumber =
-                    account.number;
 
 
                 /* =================================================
                    DONNÉES ENVOYÉES À L'API
 
-                   IMPORTANT :
-                   aucun prix n'est envoyé.
-                   Le serveur calcule lui-même le prix officiel.
+                   AUCUN PRIX N'EST ENVOYÉ.
+                   LE SERVEUR CALCULE LE PRIX OFFICIEL.
                 ================================================= */
 
                 const orderPayload = {
-
                     customerName:
                         fullName,
 
                     phone:
                         phone,
 
+                    whatsAppPhone:
+                        whatsappPhone
+                        ||
+                        phone,
+
                     email:
-                        email || null,
+                        email
+                        ||
+                        null,
 
                     city:
                         market.city,
 
+                    locality:
+                        locality,
+
+                    neighborhood:
+                        neighborhood,
+
+                    street:
+                        street,
+
+                    houseNumber:
+                        houseNumber
+                        ||
+                        null,
+
+                    landmark:
+                        landmark,
+
                     deliveryAddress:
-                        address,
+                        deliveryAddress,
+
+                    preferredDeliveryDate:
+                        deliveryDate
+                        ||
+                        null,
+
+                    deliveryTimeSlot:
+                        deliveryTimeSlot,
 
                     quantity:
                         quantity,
 
-                    paymentProvider:
-                        provider,
-
-                    paymentPhone:
-                        phone,
-
                     notes:
-                        note || null
-
+                        note
+                        ||
+                        null
                 };
 
+
+                /* =================================================
+                   BOUTON
+                ================================================= */
 
                 const submitButton =
                     orderForm.querySelector(
                         'button[type="submit"]'
                     );
 
-
                 const originalButtonContent =
                     submitButton
                         ? submitButton.innerHTML
                         : "";
 
+                submittingOrder =
+                    true;
 
                 if (submitButton) {
-
                     submitButton.disabled =
                         true;
 
                     submitButton.innerHTML =
                         `
-                            Enregistrement...
-                            <span>→</span>
+                        Envoi de la demande...
+                        <span>→</span>
                         `;
-
                 }
 
 
                 try {
-
-
                     /* =============================================
-                       CRÉATION RÉELLE DE LA COMMANDE
+                       CRÉATION RÉELLE DE LA DEMANDE
                     ============================================= */
 
                     const response =
                         await fetch(
                             ORDER_API_URL,
                             {
-                                method: "POST",
+                                method:
+                                    "POST",
 
                                 headers: {
-
                                     "Content-Type":
                                         "application/json",
 
                                     "Accept":
                                         "application/json"
-
                                 },
 
                                 body:
                                     JSON.stringify(
                                         orderPayload
                                     )
-
                             }
                         );
 
@@ -2172,21 +1566,15 @@ document.addEventListener("DOMContentLoaded", () => {
                     let result =
                         null;
 
-
                     try {
-
                         result =
                             await response.json();
-
                     }
-
                     catch (jsonError) {
-
                         console.error(
                             "Réponse API non JSON :",
                             jsonError
                         );
-
                     }
 
 
@@ -2195,26 +1583,22 @@ document.addEventListener("DOMContentLoaded", () => {
                         ||
                         !result
                         ||
-                        result.success !== true
+                        result.success !==
+                        true
                     ) {
-
-
                         const apiMessage =
                             result?.message
                             ||
                             `Erreur serveur (${response.status}).`;
 
-
                         throw new Error(
                             apiMessage
                         );
-
                     }
 
 
                     const apiOrder =
                         result.order;
-
 
                     const apiPayment =
                         result.payment;
@@ -2222,19 +1606,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     if (
                         !apiOrder
-                        ||
-                        !apiOrder.reference
+                        ?.
+                        reference
                     ) {
-
                         throw new Error(
-                            "La commande a été créée, mais la référence retournée par le serveur est invalide."
+                            "La demande a été enregistrée, mais la référence retournée par le serveur est invalide."
                         );
-
                     }
 
 
                     /* =============================================
-                       MÉMORISER LA DERNIÈRE COMMANDE
+                       MÉMORISER LA RÉFÉRENCE
                     ============================================= */
 
                     localStorage.setItem(
@@ -2244,7 +1626,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                     /* =============================================
-                       MONTANTS OFFICIELS RETOURNÉS PAR LE SERVEUR
+                       MONTANTS OFFICIELS DU SERVEUR
                     ============================================= */
 
                     const unitPriceText =
@@ -2255,7 +1637,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             currentMarket
                         );
 
-
                     const totalText =
                         formatPrice(
                             Number(
@@ -2265,83 +1646,101 @@ document.addEventListener("DOMContentLoaded", () => {
                         );
 
 
-                    /* =============================================
-                       MESSAGE DE CONFIRMATION WHATSAPP
+                    const slotText =
+                        formatDeliveryTimeSlot(
+                            apiOrder.deliveryTimeSlot
+                            ||
+                            deliveryTimeSlot
+                        );
 
-                       WhatsApp n'enregistre pas la commande.
-                       La commande est déjà enregistrée dans l'API.
+
+                    const requestedDateText =
+                        apiOrder.preferredDeliveryDate
+                        ||
+                        deliveryDate
+                        ||
+                        "À confirmer";
+
+
+                    /* =============================================
+                       WHATSAPP
                     ============================================= */
 
                     const message =
-`❤️ ROI & REINE — COMMANDE ENREGISTRÉE
+`❤️ ROI & REINE — DEMANDE DE COMMANDE
 
 ✅ RÉFÉRENCE
 ${apiOrder.reference}
 
 👤 CLIENT
 Nom : ${apiOrder.customerName}
-Téléphone / WhatsApp : ${apiOrder.phone}
+Téléphone : ${apiOrder.phone}
+WhatsApp : ${apiOrder.whatsAppPhone || apiOrder.phone}
 E-mail : ${apiOrder.email || "Non renseigné"}
 
 📍 LIVRAISON
 Marché : ${market.flag} ${apiOrder.city}
 Pays : ${apiOrder.country}
+Commune / arrondissement : ${apiOrder.locality}
+Quartier : ${apiOrder.neighborhood}
+Avenue / rue : ${apiOrder.street}
+N° maison / parcelle : ${apiOrder.houseNumber || "Non renseigné"}
+Point de repère : ${apiOrder.landmark}
 Adresse : ${apiOrder.deliveryAddress}
+
+🗓️ PRÉFÉRENCE DE LIVRAISON
+Date souhaitée : ${requestedDateText}
+Créneau : ${slotText}
 
 🎴 PRODUIT
 ${apiOrder.productName}
 Quantité : ${apiOrder.quantity}
-
-💰 COMMANDE
-Prix unitaire officiel : ${unitPriceText}
-Total officiel : ${totalText}
+Prix unitaire : ${unitPriceText}
+Total : ${totalText}
 
 💳 PAIEMENT
-Mode : Mobile Money
-Service : ${apiPayment?.provider || provider}
-Numéro de paiement : ${formatPhoneNumber(paymentNumber)}
-Statut : ${apiOrder.paymentStatus}
+Mode : Paiement à la livraison
+Montant à régler à réception : ${totalText}
+Statut : En attente de confirmation
 
 🧾 RÉFÉRENCE PAIEMENT
 ${apiPayment?.paymentReference || "En attente"}
 
 📝 NOTE
-${note || "Aucune"}
+${apiOrder.notes || note || "Aucune"}
 
-La commande est déjà enregistrée sur le serveur.
-Le paiement reste en attente de confirmation.
-
-18+ · Consentement · Respect`;
+La demande est enregistrée sur le serveur.
+Merci de confirmer la disponibilité, l’adresse et le créneau de livraison.`;
 
 
                     /* =============================================
-                       FEEDBACK UTILISATEUR
+                       CONFIRMATION UTILISATEUR
                     ============================================= */
 
                     if (submitButton) {
-
                         submitButton.innerHTML =
                             `
-                                Commande enregistrée ✓
-                                <span>→</span>
+                            Demande enregistrée ✓
+                            <span>→</span>
                             `;
-
                     }
 
 
                     alert(
-                        `Commande enregistrée avec succès.\n\nRéférence : ${apiOrder.reference}\nMontant : ${totalText}\nStatut du paiement : ${apiOrder.paymentStatus}`
+                        `Demande de commande enregistrée avec succès.
+
+Référence : ${apiOrder.reference}
+Montant : ${totalText}
+
+Notre équipe vous contactera pour confirmer la livraison. Le paiement se fera à la réception.`
                     );
 
 
                     /* =============================================
-                       WHATSAPP = CONFIRMATION / ACCOMPAGNEMENT
-                       PAS TRAITEMENT DU PAIEMENT
+                       OUVERTURE WHATSAPP
                     ============================================= */
 
                     if (OWNER_WHATSAPP) {
-
-
                         const whatsappURL =
                             "https://wa.me/"
                             +
@@ -2353,82 +1752,79 @@ Le paiement reste en attente de confirmation.
                                 message
                             );
 
-
                         const whatsappWindow =
                             window.open(
                                 whatsappURL,
                                 "_blank"
                             );
 
-
                         if (!whatsappWindow) {
-
-                            console.log(
-                                "La fenêtre WhatsApp a été bloquée par le navigateur. Redirection vers WhatsApp."
-                            );
-
-
                             window.location.href =
                                 whatsappURL;
-
                         }
-
-
                     }
 
 
+                    /* =============================================
+                       RÉINITIALISATION
+                    ============================================= */
+
+                    orderForm.reset();
+
+                    quantity =
+                        1;
+
+                    if (citySelect) {
+                        citySelect.value =
+                            market.city;
+                    }
+
+                    if (preferredDeliveryDate) {
+                        preferredDeliveryDate.min =
+                            getTodayForInput();
+                    }
+
+                    updateOrderDisplay();
+                    updateDeliveryContext();
                 }
 
                 catch (error) {
-
-
                     console.error(
-                        "Erreur création commande ROI & REINE :",
+                        "Erreur demande ROI & REINE :",
                         error
                     );
-
 
                     alert(
                         error?.message
                         ||
-                        "Impossible d'enregistrer la commande pour le moment. Veuillez réessayer."
+                        "Impossible d'enregistrer votre demande pour le moment. Veuillez réessayer."
                     );
-
-
                 }
 
                 finally {
-
+                    submittingOrder =
+                        false;
 
                     if (submitButton) {
-
-                        setTimeout(
+                        window.setTimeout(
                             () => {
-
                                 submitButton.disabled =
                                     false;
 
                                 submitButton.innerHTML =
                                     originalButtonContent;
-
                             },
                             1200
                         );
-
                     }
-
-
                 }
-
-
             }
         );
-
     }
 
 
     /* =========================================================
-       29. SCROLL GLOBAL
+       20. SCROLL GLOBAL
     ========================================================= */
 
     let ticking =
@@ -2436,37 +1832,23 @@ Le paiement reste en attente de confirmation.
 
 
     function handleScroll() {
-
-
         if (ticking) {
-
             return;
-
         }
-
 
         window.requestAnimationFrame(
             () => {
-
-
                 updateHeader();
-
                 updateScrollProgress();
-
                 updateParallax();
-
 
                 ticking =
                     false;
-
-
             }
         );
 
-
         ticking =
             true;
-
     }
 
 
@@ -2480,90 +1862,70 @@ Le paiement reste en attente de confirmation.
 
 
     /* =========================================================
-       30. REDIMENSIONNEMENT
+       21. REDIMENSIONNEMENT
     ========================================================= */
 
     window.addEventListener(
         "resize",
         () => {
-
-
             updateScrollProgress();
-
             updateParallax();
 
-
             if (
-                window.innerWidth > 1150
+                window.innerWidth >
+                1150
                 &&
                 mobileMenuOpened
             ) {
-
-
                 closeMobileMenu();
-
-
             }
-
-
         }
     );
 
 
     /* =========================================================
-       31. TOUCHE ESC
+       22. TOUCHE ESC
     ========================================================= */
 
     document.addEventListener(
         "keydown",
         event => {
-
-
             if (
-                event.key !== "Escape"
+                event.key !==
+                "Escape"
             ) {
-
                 return;
-
             }
-
 
             if (
                 marketModal
                 &&
                 marketModal
                     .classList
-                    .contains("active")
+                    .contains(
+                        "active"
+                    )
             ) {
-
-
                 closeMarketModal();
-
-
             }
-
 
             if (
                 mobileMenu
                 &&
                 mobileMenu
                     .classList
-                    .contains("active")
+                    .contains(
+                        "active"
+                    )
             ) {
-
-
                 closeMobileMenu();
-
-
             }
-
-
         }
     );
 
 
     /* =========================================================
-       32. INITIALISATION
+       23. INITIALISATION
     ========================================================= */
 
     applyMarket(
@@ -2571,20 +1933,9 @@ Le paiement reste en attente de confirmation.
         false
     );
 
-
-    updatePaymentProviders();
-
-    updatePaymentMethodDisplay();
-
     updateOrderDisplay();
-
-    updatePaymentInformation();
-
+    updateDeliveryContext();
     updateHeader();
-
     updateScrollProgress();
-
     updateParallax();
-
-
 });

@@ -352,7 +352,7 @@
 
             <p>
                 Sélectionnez votre marché pour afficher
-                le prix et les moyens de paiement disponibles.
+                le prix et préparer votre demande de livraison.
             </p>
 
 
@@ -1563,18 +1563,24 @@
 
 
                 <span class="mini-title">
-                    FINALISER LA COMMANDE
+                    DEMANDE DE COMMANDE
                 </span>
 
 
                 <h3>
-                    Votre jeu est presque à vous.
+                    Où devons-nous livrer votre jeu ?
                 </h3>
 
 
+                <p class="order-privacy">
+                    Remplissez vos coordonnées avec précision.
+                    Notre équipe vous contactera avant la livraison pour confirmer la commande.
+                </p>
+
+
+                <!-- CLIENT -->
 
                 <div class="form-row">
-
 
                     <div class="form-group">
 
@@ -1586,58 +1592,77 @@
                             type="text"
                             id="fullName"
                             autocomplete="name"
+                            placeholder="Votre nom et prénom"
                             required
                         >
 
                     </div>
 
 
-
                     <div class="form-group">
 
                         <label for="phone">
-                            Téléphone / WhatsApp
+                            Téléphone principal
                         </label>
 
                         <input
                             type="tel"
                             id="phone"
                             autocomplete="tel"
+                            placeholder="Ex. +243..."
                             required
                         >
 
                     </div>
 
-
                 </div>
 
 
-
                 <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="whatsappPhone">
+                            WhatsApp
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="whatsappPhone"
+                            autocomplete="tel"
+                            placeholder="Si différent du numéro principal"
+                        >
+
+                    </div>
 
 
                     <div class="form-group">
 
                         <label for="email">
-                            E-mail
+                            E-mail <small>(facultatif)</small>
                         </label>
 
                         <input
                             type="email"
                             id="email"
                             autocomplete="email"
+                            placeholder="votre@email.com"
                         >
 
                     </div>
 
+                </div>
 
+
+                <!-- LOCALISATION -->
+
+                <div class="form-row">
 
                     <div class="form-group">
 
                         <label for="city">
                             Ville
                         </label>
-
 
                         <select
                             id="city"
@@ -1658,105 +1683,190 @@
 
                         </select>
 
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label
+                            for="locality"
+                            id="localityLabel"
+                        >
+                            Commune
+                        </label>
+
+                        <input
+                            type="text"
+                            id="locality"
+                            placeholder="Ex. Gombe"
+                            required
+                        >
+
+                        <small
+                            class="order-privacy"
+                            id="localityHelp"
+                        >
+                            Indiquez votre commune.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="neighborhood">
+                            Quartier
+                        </label>
+
+                        <input
+                            type="text"
+                            id="neighborhood"
+                            placeholder="Votre quartier"
+                            required
+                        >
 
                     </div>
 
 
+                    <div class="form-group">
+
+                        <label for="street">
+                            Avenue / rue
+                        </label>
+
+                        <input
+                            type="text"
+                            id="street"
+                            placeholder="Nom de l’avenue ou de la rue"
+                            required
+                        >
+
+                    </div>
+
                 </div>
 
 
+                <div class="form-row">
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label for="address">
-                        Adresse de livraison
-                    </label>
+                        <label for="houseNumber">
+                            N° maison / parcelle <small>(facultatif)</small>
+                        </label>
 
-                    <textarea
-                        id="address"
-                        rows="3"
-                        required
-                    ></textarea>
+                        <input
+                            type="text"
+                            id="houseNumber"
+                            placeholder="Ex. 10"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="landmark">
+                            Point de repère
+                        </label>
+
+                        <input
+                            type="text"
+                            id="landmark"
+                            placeholder="Ex. près du rond-point, école, église..."
+                            required
+                        >
+
+                    </div>
 
                 </div>
 
 
+                <!-- PRÉFÉRENCE DE LIVRAISON -->
 
-                <!-- =================================================
-                     PAIEMENT
-                ================================================== -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="preferredDeliveryDate">
+                            Date souhaitée <small>(facultatif)</small>
+                        </label>
+
+                        <input
+                            type="date"
+                            id="preferredDeliveryDate"
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="deliveryTimeSlot">
+                            Créneau souhaité
+                        </label>
+
+                        <select
+                            id="deliveryTimeSlot"
+                            required
+                        >
+
+                            <option value="a_confirmer" selected>
+                                À confirmer avec l’équipe
+                            </option>
+
+                            <option value="matin">
+                                Matin
+                            </option>
+
+                            <option value="apres_midi">
+                                Après-midi
+                            </option>
+
+                            <option value="soir">
+                                Soir
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAIEMENT -->
 
                 <section class="payment-section">
 
-
                     <div class="payment-heading">
-
 
                         <span class="mini-title">
                             PAIEMENT
                         </span>
 
-
                         <h4>
-                            Comment souhaitez-vous payer ?
+                            Paiement à la livraison
                         </h4>
-
 
                     </div>
 
 
-
                     <div class="payment-method-grid">
-
 
                         <label class="payment-method-card">
 
-
                             <input
                                 type="radio"
                                 name="paymentMethod"
-                                value="mobile-money"
-                                id="paymentMobileMoney"
+                                value="cash-on-delivery"
                                 checked
-                            >
-
-
-                            <span class="payment-radio"></span>
-
-
-                            <span class="payment-method-copy">
-
-                                <strong>
-                                    Mobile Money
-                                </strong>
-
-                                <small>
-                                    M-Pesa ou Orange Money
-                                </small>
-
-                            </span>
-
-
-                        </label>
-
-
-
-                        <!-- Conservé pour compatibilité avec l'ancien script.js.
-                             Ce mode reste masqué tant qu'il n'est pas réactivé. -->
-                        <label class="payment-method-card" hidden aria-hidden="true">
-
-
-                            <input
-                                type="radio"
-                                name="paymentMethod"
-                                value="livraison"
-                                id="paymentDelivery"
                                 disabled
                             >
 
-
                             <span class="payment-radio"></span>
-
 
                             <span class="payment-method-copy">
 
@@ -1765,115 +1875,71 @@
                                 </strong>
 
                                 <small>
-                                    Paiement à réception
+                                    Vous réglez votre commande au moment de la réception.
                                 </small>
 
                             </span>
 
-
                         </label>
-
 
                     </div>
 
 
+                    <div class="payment-provider-box">
 
-                    <div
-                        class="payment-provider-box"
-                        id="paymentProviderWrapper"
-                    >
-
-
-                        <label for="paymentProvider">
-                            Choisissez votre service Mobile Money
-                        </label>
-
-
-                        <select id="paymentProvider" required>
-
-                            <option
-                                value="M-Pesa"
-                                data-payment-number="+243826787512"
-                            >
-                                M-Pesa — +243 826 787 512
-                            </option>
-
-                            <option
-                                value="Orange Money"
-                                data-payment-number="+243850691536"
-                            >
-                                Orange Money — +243 850 691 536
-                            </option>
-
-                        </select>
-
-
-
-                        <p id="paymentInformation">
-
-                            M-Pesa : +243 826 787 512<br>
-                            Orange Money : +243 850 691 536<br>
-                            Après le paiement, la commande sera finalisée
-                            et confirmée via WhatsApp au +243 850 691 536.
-
+                        <p>
+                            Aucun paiement en ligne n’est demandé.
+                            Votre demande sera d’abord enregistrée,
+                            puis notre équipe vous contactera pour confirmer
+                            l’adresse, la disponibilité et le créneau de livraison.
                         </p>
 
-
                     </div>
-
 
 
                     <div class="payment-total">
 
-
                         <span>
-                            Montant
+                            Montant à régler à la livraison
                         </span>
-
 
                         <strong id="paymentTotal">
                             23,90 $
                         </strong>
 
-
                     </div>
 
-
                 </section>
-
 
 
                 <div class="form-group">
 
                     <label for="note">
-                        Note facultative
+                        Note pour la livraison <small>(facultatif)</small>
                     </label>
 
                     <textarea
                         id="note"
                         rows="3"
-                        placeholder="Précision pour la livraison..."
+                        placeholder="Ex. appeler avant d’arriver, précision sur l’entrée..."
                     ></textarea>
 
                 </div>
-
 
 
                 <button
                     type="submit"
                     class="button-primary order-submit"
                 >
-                    Confirmer ma commande
+                    Envoyer ma demande de commande
                     <span>→</span>
                 </button>
 
 
-
                 <small class="order-privacy">
-
-                    Vos informations sont utilisées
-                    uniquement pour traiter votre commande.
-
+                    En envoyant cette demande, vous autorisez notre équipe
+                    à vous contacter pour confirmer la commande et organiser la livraison.
+                    Le paiement s’effectue à la réception.
                 </small>
 
 
