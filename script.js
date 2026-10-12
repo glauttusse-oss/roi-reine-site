@@ -1,12 +1,11 @@
 /* ============================================================
    ROI & REINE — ÉDITION ROUGE
-   SCRIPT COMPLET — VERSION ALLÉGÉE
+   SCRIPT COMPLET — PRIX, LIVRAISON & COMMANDES
 
-   Marchés
-   Commandes
-   Livraison
-   WhatsApp
-   Animations
+   - Kinshasa : 23,90 USD + 2,50 USD de livraison
+   - Brazzaville : 13 500 XAF + 1 500 XAF de livraison
+   - Libreville : 15 500 XAF + 1 500 XAF de livraison
+   - Paiement avant livraison
 ============================================================ */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,72 +20,51 @@ document.addEventListener("DOMContentLoaded", () => {
     const MARKETS = {
 
         kinshasa: {
-
             key: "kinshasa",
-
             city: "Kinshasa",
-
             country: "RDC",
-
             flag: "🇨🇩",
-
             price: 23.90,
-
+            deliveryFee: 2.50,
             currency: "USD"
-
         },
-
 
         brazzaville: {
-
             key: "brazzaville",
-
             city: "Brazzaville",
-
             country: "Congo",
-
             flag: "🇨🇬",
-
             price: 13500,
-
+            deliveryFee: 1500,
             currency: "XAF"
-
         },
 
-
         libreville: {
-
             key: "libreville",
-
             city: "Libreville",
-
             country: "Gabon",
-
             flag: "🇬🇦",
-
-            price: null,
-
+            price: 15500,
+            deliveryFee: 1500,
             currency: "XAF"
-
         }
 
     };
 
 
     /* =========================================================
-       2. API ROI & REINE
+       2. API
     ========================================================= */
 
     const API_BASE_URL =
         "https://api.ky5globaltrade.com";
-
 
     const ORDER_API_URL =
         `${API_BASE_URL}/api/roi-reine/orders`;
 
 
     /* =========================================================
-       3. WHATSAPP COMMANDES
+       3. WHATSAPP
     ========================================================= */
 
     const OWNER_WHATSAPP =
@@ -94,29 +72,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================
-       4. ÉTAT DU SITE
+       4. ÉTAT
     ========================================================= */
 
     let currentMarket =
-        localStorage.getItem(
-            "roiReineMarket"
-        )
+        localStorage.getItem("roiReineMarket")
         ||
         "kinshasa";
 
-
     if (!MARKETS[currentMarket]) {
-
-        currentMarket =
-            "kinshasa";
-
+        currentMarket = "kinshasa";
     }
 
-
     let quantity = 1;
-
     let mobileMenuOpened = false;
-
     let submittingOrder = false;
 
 
@@ -127,155 +96,89 @@ document.addEventListener("DOMContentLoaded", () => {
     const body =
         document.body;
 
-
     const ageScreen =
-        document.getElementById(
-            "ageScreen"
-        );
-
+        document.getElementById("ageScreen");
 
     const enterSite =
-        document.getElementById(
-            "enterSite"
-        );
-
+        document.getElementById("enterSite");
 
     const leaveSite =
-        document.getElementById(
-            "leaveSite"
-        );
-
+        document.getElementById("leaveSite");
 
     const siteHeader =
-        document.getElementById(
-            "siteHeader"
-        );
-
+        document.getElementById("siteHeader");
 
     const scrollProgressBar =
-        document.getElementById(
-            "scrollProgressBar"
-        );
-
+        document.getElementById("scrollProgressBar");
 
     const mobileMenuButton =
-        document.getElementById(
-            "mobileMenuButton"
-        );
-
+        document.getElementById("mobileMenuButton");
 
     const mobileMenu =
-        document.getElementById(
-            "mobileMenu"
-        );
-
+        document.getElementById("mobileMenu");
 
     const mobileMenuLinks =
-        document.querySelectorAll(
-            ".mobile-menu a"
-        );
-
+        document.querySelectorAll(".mobile-menu a");
 
     const marketButton =
-        document.getElementById(
-            "marketButton"
-        );
-
+        document.getElementById("marketButton");
 
     const mobileMarketButton =
-        document.getElementById(
-            "mobileMarketButton"
-        );
-
+        document.getElementById("mobileMarketButton");
 
     const marketModal =
-        document.getElementById(
-            "marketModal"
-        );
-
+        document.getElementById("marketModal");
 
     const marketModalClose =
-        document.getElementById(
-            "marketModalClose"
-        );
-
+        document.getElementById("marketModalClose");
 
     const marketChoices =
-        document.querySelectorAll(
-            ".market-choice"
-        );
-
+        document.querySelectorAll(".market-choice");
 
     const marketShortcutButtons =
-        document.querySelectorAll(
-            "[data-footer-market]"
-        );
-
+        document.querySelectorAll("[data-footer-market]");
 
     const productPrice =
-        document.getElementById(
-            "productPrice"
-        );
-
+        document.getElementById("productPrice");
 
     const selectedMarketName =
-        document.getElementById(
-            "selectedMarketName"
-        );
-
+        document.getElementById("selectedMarketName");
 
     const quantityValue =
-        document.getElementById(
-            "quantityValue"
-        );
-
+        document.getElementById("quantityValue");
 
     const decreaseQuantity =
-        document.getElementById(
-            "decreaseQuantity"
-        );
-
+        document.getElementById("decreaseQuantity");
 
     const increaseQuantity =
-        document.getElementById(
-            "increaseQuantity"
-        );
+        document.getElementById("increaseQuantity");
 
+    const productSubtotal =
+        document.getElementById("productSubtotal");
+
+    const productSubtotalLabel =
+        document.getElementById("productSubtotalLabel");
+
+    const deliveryFeeElement =
+        document.getElementById("deliveryFee");
 
     const orderTotal =
-        document.getElementById(
-            "orderTotal"
-        );
-
+        document.getElementById("orderTotal");
 
     const citySelect =
-        document.getElementById(
-            "city"
-        );
-
+        document.getElementById("city");
 
     const orderForm =
-        document.getElementById(
-            "orderForm"
-        );
-
+        document.getElementById("orderForm");
 
     const localityLabel =
-        document.getElementById(
-            "localityLabel"
-        );
-
+        document.getElementById("localityLabel");
 
     const localityHelp =
-        document.getElementById(
-            "localityHelp"
-        );
-
+        document.getElementById("localityHelp");
 
     const preferredDeliveryDate =
-        document.getElementById(
-            "preferredDeliveryDate"
-        );
+        document.getElementById("preferredDeliveryDate");
 
 
     /* =========================================================
@@ -299,26 +202,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const market =
             MARKETS[marketKey];
 
-
         if (
             !market
-            ||
-            value === null
             ||
             typeof value !== "number"
             ||
             Number.isNaN(value)
         ) {
-
-            return "Prix à confirmer";
-
+            return "—";
         }
 
-
-        if (
-            market.currency ===
-            "XAF"
-        ) {
+        if (market.currency === "XAF") {
 
             return (
                 new Intl.NumberFormat(
@@ -332,7 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
         }
-
 
         return (
             new Intl.NumberFormat(
@@ -349,27 +242,33 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    function calculateSubtotal() {
+
+        const market =
+            MARKETS[currentMarket];
+
+        if (!market) {
+            return 0;
+        }
+
+        return market.price * quantity;
+
+    }
+
+
     function calculateTotal() {
 
         const market =
             MARKETS[currentMarket];
 
-
-        if (
-            !market
-            ||
-            market.price === null
-        ) {
-
-            return null;
-
+        if (!market) {
+            return 0;
         }
 
-
         return (
-            market.price
-            *
-            quantity
+            calculateSubtotal()
+            +
+            market.deliveryFee
         );
 
     }
@@ -380,22 +279,15 @@ document.addEventListener("DOMContentLoaded", () => {
         switch (value) {
 
             case "matin":
-
                 return "Matin";
 
-
             case "apres_midi":
-
                 return "Après-midi";
 
-
             case "soir":
-
                 return "Soir";
 
-
             default:
-
                 return "À confirmer avec l’équipe";
 
         }
@@ -404,47 +296,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function buildDeliveryAddress({
-
         city,
-
         locality,
-
         neighborhood,
-
         street,
-
         houseNumber,
-
         landmark
-
     }) {
-
 
         let localityPrefix =
             "Localité";
 
-
-        if (
-            city ===
-            "Kinshasa"
-        ) {
-
-            localityPrefix =
-                "Commune de";
-
+        if (city === "Kinshasa") {
+            localityPrefix = "Commune de";
         }
-
-
-        if (
-            city ===
-            "Brazzaville"
-        ) {
-
-            localityPrefix =
-                "Arrondissement";
-
+        else if (city === "Brazzaville") {
+            localityPrefix = "Arrondissement";
         }
-
+        else if (city === "Libreville") {
+            localityPrefix = "Arrondissement / commune";
+        }
 
         const parts = [
 
@@ -470,11 +341,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ];
 
-
         return parts
-
             .filter(Boolean)
-
             .join(", ");
 
     }
@@ -485,32 +353,22 @@ document.addEventListener("DOMContentLoaded", () => {
         const now =
             new Date();
 
-
         const localDate =
             new Date(
-
                 now.getTime()
-
                 -
-
-                now.getTimezoneOffset()
-                *
-                60000
-
+                now.getTimezoneOffset() * 60000
             );
 
-
         return localDate
-
             .toISOString()
-
             .slice(0, 10);
 
     }
 
 
     /* =========================================================
-       7. GESTION DU SCROLL
+       7. SCROLL DU BODY
     ========================================================= */
 
     function updateBodyScroll() {
@@ -518,47 +376,34 @@ document.addEventListener("DOMContentLoaded", () => {
         const ageVisible =
             ageScreen
             &&
-            ageScreen.style.display !==
-            "none";
-
+            ageScreen.style.display !== "none";
 
         const marketVisible =
             marketModal
             &&
-            marketModal
-                .classList
-                .contains("active");
-
+            marketModal.classList.contains("active");
 
         const mobileVisible =
             mobileMenu
             &&
-            mobileMenu
-                .classList
-                .contains("active");
-
+            mobileMenu.classList.contains("active");
 
         body.classList.toggle(
-
             "no-scroll",
-
             Boolean(
-
                 ageVisible
                 ||
                 marketVisible
                 ||
                 mobileVisible
-
             )
-
         );
 
     }
 
 
     /* =========================================================
-       8. LIVRAISON PAR VILLE
+       8. CONTEXTE DE LIVRAISON
     ========================================================= */
 
     function updateDeliveryContext() {
@@ -568,51 +413,33 @@ document.addEventListener("DOMContentLoaded", () => {
             ||
             !localityHelp
         ) {
-
             return;
-
         }
 
-
-        if (
-            currentMarket ===
-            "brazzaville"
-        ) {
+        if (currentMarket === "brazzaville") {
 
             localityLabel.textContent =
                 "Arrondissement";
 
-
             localityHelp.textContent =
                 "Indiquez votre arrondissement.";
 
-
             return;
-
         }
 
-
-        if (
-            currentMarket ===
-            "libreville"
-        ) {
+        if (currentMarket === "libreville") {
 
             localityLabel.textContent =
                 "Arrondissement / commune";
 
-
             localityHelp.textContent =
                 "Indiquez votre arrondissement ou commune.";
 
-
             return;
-
         }
-
 
         localityLabel.textContent =
             "Commune";
-
 
         localityHelp.textContent =
             "Indiquez votre commune.";
@@ -629,53 +456,61 @@ document.addEventListener("DOMContentLoaded", () => {
         const market =
             MARKETS[currentMarket];
 
-
         if (!market) {
-
             return;
-
         }
 
+        const subtotal =
+            calculateSubtotal();
 
         const total =
             calculateTotal();
 
-
         if (quantityValue) {
-
             quantityValue.textContent =
                 String(quantity);
-
         }
 
-
         if (productPrice) {
-
             productPrice.textContent =
                 formatPrice(
                     market.price,
                     currentMarket
                 );
-
         }
-
 
         if (selectedMarketName) {
-
             selectedMarketName.textContent =
                 `${market.city} · ${market.country}`;
-
         }
 
+        if (productSubtotalLabel) {
+            productSubtotalLabel.textContent =
+                `Prix du jeu × ${quantity}`;
+        }
+
+        if (productSubtotal) {
+            productSubtotal.textContent =
+                formatPrice(
+                    subtotal,
+                    currentMarket
+                );
+        }
+
+        if (deliveryFeeElement) {
+            deliveryFeeElement.textContent =
+                formatPrice(
+                    market.deliveryFee,
+                    currentMarket
+                );
+        }
 
         if (orderTotal) {
-
             orderTotal.textContent =
                 formatPrice(
                     total,
                     currentMarket
                 );
-
         }
 
     }
@@ -688,17 +523,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function openMarketModal() {
 
         if (!marketModal) {
-
             return;
-
         }
 
-
-        marketModal.classList.add(
-            "active"
-        );
-
-
+        marketModal.classList.add("active");
         updateBodyScroll();
 
     }
@@ -707,17 +535,10 @@ document.addEventListener("DOMContentLoaded", () => {
     function closeMarketModal() {
 
         if (!marketModal) {
-
             return;
-
         }
 
-
-        marketModal.classList.remove(
-            "active"
-        );
-
-
+        marketModal.classList.remove("active");
         updateBodyScroll();
 
     }
@@ -729,66 +550,43 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
 
         if (!MARKETS[marketKey]) {
-
             return;
-
         }
-
 
         currentMarket =
             marketKey;
 
-
         const market =
             MARKETS[currentMarket];
 
-
         localStorage.setItem(
-
             "roiReineMarket",
-
             currentMarket
-
         );
-
 
         const marketLabel =
             `${market.flag} ${market.city}`;
 
-
         if (marketButton) {
-
             marketButton.textContent =
                 marketLabel;
-
         }
-
 
         if (mobileMarketButton) {
-
             mobileMarketButton.textContent =
                 marketLabel;
-
         }
-
 
         if (citySelect) {
-
             citySelect.value =
                 market.city;
-
         }
 
-
         updateOrderDisplay();
-
         updateDeliveryContext();
 
-
         if (closeModalAfter) {
-
             closeMarketModal();
-
         }
 
     }
@@ -797,11 +595,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (marketButton) {
 
         marketButton.addEventListener(
-
             "click",
-
             openMarketModal
-
         );
 
     }
@@ -810,24 +605,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mobileMarketButton) {
 
         mobileMarketButton.addEventListener(
-
             "click",
-
             () => {
 
                 closeMobileMenu();
 
-
                 window.setTimeout(
-
                     openMarketModal,
-
                     220
-
                 );
 
             }
-
         );
 
     }
@@ -836,11 +624,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (marketModalClose) {
 
         marketModalClose.addEventListener(
-
             "click",
-
             closeMarketModal
-
         );
 
     }
@@ -849,117 +634,83 @@ document.addEventListener("DOMContentLoaded", () => {
     if (marketModal) {
 
         marketModal.addEventListener(
-
             "click",
-
             event => {
 
                 if (
                     event.target ===
                     marketModal
                 ) {
-
                     closeMarketModal();
-
                 }
 
             }
-
         );
 
     }
 
 
     marketChoices.forEach(
-
         choice => {
 
             choice.addEventListener(
-
                 "click",
-
                 () => {
 
-                    const marketKey =
-                        choice.dataset.market;
-
-
                     applyMarket(
-                        marketKey
+                        choice.dataset.market
                     );
 
                 }
-
             );
 
         }
-
     );
 
 
     marketShortcutButtons.forEach(
-
         button => {
 
             button.addEventListener(
-
                 "click",
-
                 () => {
 
                     const marketKey =
                         button.dataset.footerMarket;
 
-
                     applyMarket(
-
                         marketKey,
-
                         false
-
                     );
-
 
                     const orderSection =
                         document.getElementById(
                             "commander"
                         );
 
-
                     if (orderSection) {
 
                         orderSection.scrollIntoView({
-
                             behavior: "smooth",
-
                             block: "start"
-
                         });
 
                     }
 
                 }
-
             );
 
         }
-
     );
 
 
     if (citySelect) {
 
         citySelect.addEventListener(
-
             "change",
-
             () => {
 
-                const selectedCity =
-                    citySelect.value;
-
-
-                switch (selectedCity) {
+                switch (citySelect.value) {
 
                     case "Brazzaville":
 
@@ -993,7 +744,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
             }
-
         );
 
     }
@@ -1006,15 +756,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function showAgeScreen() {
 
         if (!ageScreen) {
-
             return;
-
         }
-
 
         ageScreen.style.display =
             "flex";
-
 
         updateBodyScroll();
 
@@ -1024,15 +770,11 @@ document.addEventListener("DOMContentLoaded", () => {
     function hideAgeScreen() {
 
         if (!ageScreen) {
-
             return;
-
         }
-
 
         ageScreen.style.display =
             "none";
-
 
         updateBodyScroll();
 
@@ -1044,11 +786,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "roiReineAgeAccepted"
         );
 
-
-    if (
-        ageAccepted ===
-        "true"
-    ) {
+    if (ageAccepted === "true") {
 
         hideAgeScreen();
 
@@ -1063,43 +801,31 @@ document.addEventListener("DOMContentLoaded", () => {
     if (enterSite) {
 
         enterSite.addEventListener(
-
             "click",
-
             () => {
 
                 localStorage.setItem(
-
                     "roiReineAgeAccepted",
-
                     "true"
-
                 );
 
-
                 hideAgeScreen();
-
 
                 const savedMarket =
                     localStorage.getItem(
                         "roiReineMarket"
                     );
 
-
                 if (!savedMarket) {
 
                     window.setTimeout(
-
                         openMarketModal,
-
                         500
-
                     );
 
                 }
 
             }
-
         );
 
     }
@@ -1108,9 +834,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (leaveSite) {
 
         leaveSite.addEventListener(
-
             "click",
-
             () => {
 
                 document.body.innerHTML = `
@@ -1170,7 +894,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 `;
 
             }
-
         );
 
     }
@@ -1187,25 +910,19 @@ document.addEventListener("DOMContentLoaded", () => {
             ||
             !mobileMenuButton
         ) {
-
             return;
-
         }
-
 
         mobileMenu.classList.add(
             "active"
         );
 
-
         mobileMenuButton.classList.add(
             "active"
         );
 
-
         mobileMenuOpened =
             true;
-
 
         updateBodyScroll();
 
@@ -1219,25 +936,19 @@ document.addEventListener("DOMContentLoaded", () => {
             ||
             !mobileMenuButton
         ) {
-
             return;
-
         }
-
 
         mobileMenu.classList.remove(
             "active"
         );
 
-
         mobileMenuButton.classList.remove(
             "active"
         );
 
-
         mobileMenuOpened =
             false;
-
 
         updateBodyScroll();
 
@@ -1247,9 +958,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mobileMenuButton) {
 
         mobileMenuButton.addEventListener(
-
             "click",
-
             () => {
 
                 if (mobileMenuOpened) {
@@ -1264,48 +973,36 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
             }
-
         );
 
     }
 
 
     mobileMenuLinks.forEach(
-
         link => {
 
             link.addEventListener(
-
                 "click",
-
                 closeMobileMenu
-
             );
 
         }
-
     );
 
 
     /* =========================================================
-       13. HEADER
+       13. HEADER / SCROLL
     ========================================================= */
 
     function updateHeader() {
 
         if (!siteHeader) {
-
             return;
-
         }
 
-
         siteHeader.classList.toggle(
-
             "scrolled",
-
             window.scrollY > 55
-
         );
 
     }
@@ -1314,34 +1011,24 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateScrollProgress() {
 
         if (!scrollProgressBar) {
-
             return;
-
         }
-
 
         const scrollTop =
             window.scrollY;
-
 
         const scrollHeight =
             document.documentElement.scrollHeight
             -
             window.innerHeight;
 
-
-        if (
-            scrollHeight <= 0
-        ) {
+        if (scrollHeight <= 0) {
 
             scrollProgressBar.style.width =
                 "0%";
 
-
             return;
-
         }
-
 
         const progress =
             (
@@ -1351,7 +1038,6 @@ document.addEventListener("DOMContentLoaded", () => {
             )
             *
             100;
-
 
         scrollProgressBar.style.width =
             `${Math.min(
@@ -1382,27 +1068,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     revealElements.forEach(
-
         element => {
 
             element.style.opacity =
                 "0";
 
-
             element.style.transform =
                 "translateY(38px)";
-
 
             element.style.transition = `
 
                 opacity .8s cubic-bezier(.2,.7,.2,1),
-
                 transform .8s cubic-bezier(.2,.7,.2,1)
 
             `;
 
         }
-
     );
 
 
@@ -1413,54 +1094,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const revealObserver =
             new IntersectionObserver(
-
                 entries => {
 
                     entries.forEach(
-
                         entry => {
 
                             if (
                                 !entry.isIntersecting
                             ) {
-
                                 return;
-
                             }
-
 
                             entry.target.style.opacity =
                                 "1";
 
-
                             entry.target.style.transform =
                                 "translateY(0)";
-
 
                             revealObserver.unobserve(
                                 entry.target
                             );
 
                         }
-
                     );
 
                 },
-
                 {
-
                     threshold: 0.12,
 
                     rootMargin:
                         "0px 0px -30px 0px"
-
                 }
-
             );
 
 
         revealElements.forEach(
-
             element => {
 
                 revealObserver.observe(
@@ -1468,32 +1136,28 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
             }
-
         );
 
     }
     else {
 
         revealElements.forEach(
-
             element => {
 
                 element.style.opacity =
                     "1";
 
-
                 element.style.transform =
                     "none";
 
             }
-
         );
 
     }
 
 
     /* =========================================================
-       15. PARALLAX DES DEUX IMAGES
+       15. PARALLAX DES IMAGES
     ========================================================= */
 
     const parallaxImages =
@@ -1505,21 +1169,17 @@ document.addEventListener("DOMContentLoaded", () => {
     function updateParallax() {
 
         if (
-            window.innerWidth <=
-            760
+            window.innerWidth <= 760
         ) {
 
             parallaxImages.forEach(
-
                 image => {
 
                     image.style.translate =
                         "";
 
                 }
-
             );
-
 
             return;
 
@@ -1527,7 +1187,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         parallaxImages.forEach(
-
             image => {
 
                 const parent =
@@ -1535,18 +1194,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         ".experience-panel"
                     );
 
-
                 if (!parent) {
-
                     return;
-
                 }
 
-
                 const rect =
-                    parent
-                        .getBoundingClientRect();
-
+                    parent.getBoundingClientRect();
 
                 if (
                     rect.bottom < 0
@@ -1554,39 +1207,31 @@ document.addEventListener("DOMContentLoaded", () => {
                     rect.top >
                     window.innerHeight
                 ) {
-
                     return;
-
                 }
-
 
                 const sectionCenter =
                     rect.top
                     +
                     rect.height / 2;
 
-
                 const viewportCenter =
                     window.innerHeight / 2;
-
 
                 const distance =
                     sectionCenter
                     -
                     viewportCenter;
 
-
                 const movement =
                     distance
                     *
                     -0.018;
 
-
                 image.style.translate =
                     `0 ${movement}px`;
 
             }
-
         );
 
     }
@@ -1601,12 +1246,10 @@ document.addEventListener("DOMContentLoaded", () => {
             ".hero"
         );
 
-
     const heroProduct =
         document.querySelector(
             ".hero-product"
         );
-
 
     const heroRedLight =
         document.querySelector(
@@ -1617,25 +1260,17 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hero) {
 
         hero.addEventListener(
-
             "mousemove",
-
             event => {
 
                 if (
-                    window.innerWidth <=
-                    760
+                    window.innerWidth <= 760
                 ) {
-
                     return;
-
                 }
 
-
                 const rect =
-                    hero
-                        .getBoundingClientRect();
-
+                    hero.getBoundingClientRect();
 
                 const x =
                     (
@@ -1648,7 +1283,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     -
                     0.5;
 
-
                 const y =
                     (
                         event.clientY
@@ -1660,14 +1294,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     -
                     0.5;
 
-
                 if (heroProduct) {
 
                     heroProduct.style.translate =
                         `${x * 12}px ${y * 10}px`;
 
                 }
-
 
                 if (heroRedLight) {
 
@@ -1677,14 +1309,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
             }
-
         );
 
 
         hero.addEventListener(
-
             "mouseleave",
-
             () => {
 
                 if (heroProduct) {
@@ -1694,7 +1323,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
-
                 if (heroRedLight) {
 
                     heroRedLight.style.translate =
@@ -1703,7 +1331,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
             }
-
         );
 
     }
@@ -1716,27 +1343,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (increaseQuantity) {
 
         increaseQuantity.addEventListener(
-
             "click",
-
             () => {
 
                 if (
                     quantity >= 20
                 ) {
-
                     return;
-
                 }
 
-
                 quantity += 1;
-
 
                 updateOrderDisplay();
 
             }
-
         );
 
     }
@@ -1745,27 +1365,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (decreaseQuantity) {
 
         decreaseQuantity.addEventListener(
-
             "click",
-
             () => {
 
                 if (
                     quantity <= 1
                 ) {
-
                     return;
-
                 }
 
-
                 quantity -= 1;
-
 
                 updateOrderDisplay();
 
             }
-
         );
 
     }
@@ -1790,18 +1403,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (orderForm) {
 
         orderForm.addEventListener(
-
             "submit",
-
             async event => {
 
                 event.preventDefault();
 
 
                 if (submittingOrder) {
-
                     return;
-
                 }
 
 
@@ -1815,29 +1424,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         "Le marché sélectionné est invalide."
                     );
 
-
-                    return;
-
-                }
-
-
-                /* =================================================
-                   LIBREVILLE RESTE BLOQUÉ
-                ================================================= */
-
-                if (
-                    currentMarket ===
-                    "libreville"
-                    ||
-                    market.price ===
-                    null
-                ) {
-
-                    alert(
-                        "Le prix de ROI & REINE à Libreville n'est pas encore configuré. La commande n'est pas encore disponible pour cette ville."
-                    );
-
-
                     return;
 
                 }
@@ -1849,49 +1435,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const fullName =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "fullName"
                             )
                             ?.value
-
                     );
 
 
                 const phone =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "phone"
                             )
                             ?.value
-
                     );
 
 
                 const whatsappPhone =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "whatsappPhone"
                             )
                             ?.value
-
                     );
 
 
                 const email =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "email"
                             )
                             ?.value
-
                     );
 
 
@@ -1901,61 +1479,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const locality =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "locality"
                             )
                             ?.value
-
                     );
 
 
                 const neighborhood =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "neighborhood"
                             )
                             ?.value
-
                     );
 
 
                 const street =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "street"
                             )
                             ?.value
-
                     );
 
 
                 const houseNumber =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "houseNumber"
                             )
                             ?.value
-
                     );
 
 
                 const landmark =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "landmark"
                             )
                             ?.value
-
                     );
 
 
@@ -1965,25 +1533,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const deliveryDate =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "preferredDeliveryDate"
                             )
                             ?.value
-
                     );
 
 
                 const deliveryTimeSlot =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "deliveryTimeSlot"
                             )
                             ?.value
-
                     )
                     ||
                     "a_confirmer";
@@ -1991,13 +1555,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const note =
                     cleanValue(
-
                         document
                             .getElementById(
                                 "note"
                             )
                             ?.value
-
                     );
 
 
@@ -2022,7 +1584,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     alert(
                         "Veuillez renseigner votre nom, votre téléphone et toutes les informations obligatoires de livraison."
                     );
-
 
                     return;
 
@@ -2168,9 +1729,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const response =
                         await fetch(
-
                             ORDER_API_URL,
-
                             {
 
                                 method:
@@ -2192,7 +1751,6 @@ document.addEventListener("DOMContentLoaded", () => {
                                     )
 
                             }
-
                         );
 
 
@@ -2209,11 +1767,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     catch (jsonError) {
 
                         console.error(
-
                             "Réponse API non JSON :",
-
                             jsonError
-
                         );
 
                     }
@@ -2224,8 +1779,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         ||
                         !result
                         ||
-                        result.success !==
-                        true
+                        result.success !== true
                     ) {
 
                         const apiMessage =
@@ -2259,11 +1813,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     ============================================= */
 
                     localStorage.setItem(
-
                         "roiReineLastOrderReference",
-
                         apiOrder.reference
-
                     );
 
 
@@ -2277,6 +1828,34 @@ document.addEventListener("DOMContentLoaded", () => {
                             Number(
                                 apiOrder.unitPrice
                             ),
+
+                            currentMarket
+
+                        );
+
+
+                    const subtotalText =
+                        formatPrice(
+
+                            Number(
+                                apiOrder.unitPrice
+                            )
+                            *
+                            Number(
+                                apiOrder.quantity
+                                ||
+                                quantity
+                            ),
+
+                            currentMarket
+
+                        );
+
+
+                    const deliveryFeeText =
+                        formatPrice(
+
+                            market.deliveryFee,
 
                             currentMarket
 
@@ -2299,9 +1878,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         formatDeliveryTimeSlot(
 
                             apiOrder.deliveryTimeSlot
-
                             ||
-
                             deliveryTimeSlot
 
                         );
@@ -2351,17 +1928,23 @@ Créneau : ${slotText}
 Produit : ${apiOrder.productName}
 Quantité : ${apiOrder.quantity}
 Prix unitaire : ${unitPriceText}
-Total : ${totalText}
+Sous-total produits : ${subtotalText}
+Frais de livraison : ${deliveryFeeText}
+TOTAL À PAYER : ${totalText}
+
+💳 PAIEMENT
+Paiement obligatoire avant livraison.
+La préparation et la livraison commencent après confirmation du paiement.
 
 📝 NOTE
 ${apiOrder.notes || note || "Aucune"}
 
 La commande a été enregistrée.
-Merci de contacter le client pour confirmer les informations de livraison.`;
+Merci de contacter le client pour confirmer les modalités de paiement et de livraison.`;
 
 
                     /* =============================================
-                       CONFIRMATION
+                       CONFIRMATION CLIENT
                     ============================================= */
 
                     if (submitButton) {
@@ -2381,9 +1964,15 @@ Merci de contacter le client pour confirmer les informations de livraison.`;
 `Votre demande de commande a bien été enregistrée.
 
 Référence : ${apiOrder.reference}
-Total : ${totalText}
+Prix du jeu : ${unitPriceText}
+Frais de livraison : ${deliveryFeeText}
+Total à payer : ${totalText}
 
-Notre équipe vous contactera pour confirmer les informations de livraison.`
+PAIEMENT AVANT LIVRAISON
+
+Notre équipe vous contactera pour vous communiquer les modalités de paiement.
+
+La préparation et la livraison commencent après confirmation du paiement.`
                     );
 
 
@@ -2407,11 +1996,8 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
 
                         const whatsappWindow =
                             window.open(
-
                                 whatsappURL,
-
                                 "_blank"
-
                             );
 
 
@@ -2460,11 +2046,8 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
                 catch (error) {
 
                     console.error(
-
                         "Erreur commande ROI & REINE :",
-
                         error
-
                     );
 
 
@@ -2488,7 +2071,6 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
                     if (submitButton) {
 
                         window.setTimeout(
-
                             () => {
 
                                 submitButton.disabled =
@@ -2499,9 +2081,7 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
                                     originalButtonContent;
 
                             },
-
                             1200
-
                         );
 
                     }
@@ -2509,7 +2089,6 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
                 }
 
             }
-
         );
 
     }
@@ -2526,14 +2105,11 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
     function handleScroll() {
 
         if (ticking) {
-
             return;
-
         }
 
 
         window.requestAnimationFrame(
-
             () => {
 
                 updateHeader();
@@ -2547,7 +2123,6 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
                     false;
 
             }
-
         );
 
 
@@ -2558,15 +2133,11 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
 
 
     window.addEventListener(
-
         "scroll",
-
         handleScroll,
-
         {
             passive: true
         }
-
     );
 
 
@@ -2575,9 +2146,7 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
     ========================================================= */
 
     window.addEventListener(
-
         "resize",
-
         () => {
 
             updateScrollProgress();
@@ -2586,8 +2155,7 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
 
 
             if (
-                window.innerWidth >
-                1150
+                window.innerWidth > 1150
                 &&
                 mobileMenuOpened
             ) {
@@ -2597,7 +2165,6 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
             }
 
         }
-
     );
 
 
@@ -2606,18 +2173,13 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
     ========================================================= */
 
     document.addEventListener(
-
         "keydown",
-
         event => {
 
             if (
-                event.key !==
-                "Escape"
+                event.key !== "Escape"
             ) {
-
                 return;
-
             }
 
 
@@ -2651,7 +2213,6 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
             }
 
         }
-
     );
 
 
@@ -2660,11 +2221,8 @@ Notre équipe vous contactera pour confirmer les informations de livraison.`
     ========================================================= */
 
     applyMarket(
-
         currentMarket,
-
         false
-
     );
 
 

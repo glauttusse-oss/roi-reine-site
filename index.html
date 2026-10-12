@@ -29,6 +29,127 @@
         href="style.css"
     >
 
+
+    <style>
+
+        /* =========================================================
+           PRIX / LIVRAISON / PAIEMENT
+        ========================================================= */
+
+        .market-choice .market-fee {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            opacity: 0.72;
+        }
+
+
+        .order-price-breakdown {
+            margin-top: 22px;
+            padding: 18px 0;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, 0.12);
+
+            border-bottom:
+                1px solid
+                rgba(255, 255, 255, 0.12);
+        }
+
+
+        .price-detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 18px;
+
+            padding: 7px 0;
+        }
+
+
+        .price-detail-row span {
+            color:
+                rgba(255, 255, 255, 0.68);
+
+            font-size: 0.82rem;
+        }
+
+
+        .price-detail-row strong {
+            color: #ffffff;
+
+            font-size: 0.92rem;
+            font-weight: 700;
+
+            text-align: right;
+        }
+
+
+        .total-row.total-row-final {
+            margin-top: 16px;
+        }
+
+
+        .payment-before-delivery {
+            margin-top: 18px;
+
+            padding: 16px 18px;
+
+            border:
+                1px solid
+                rgba(190, 28, 50, 0.34);
+
+            background:
+                rgba(123, 12, 29, 0.18);
+        }
+
+
+        .payment-before-delivery strong {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #ffffff;
+
+            font-size: 0.78rem;
+            font-weight: 800;
+
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
+        }
+
+
+        .payment-before-delivery p {
+            margin: 0;
+
+            color:
+                rgba(255, 255, 255, 0.72);
+
+            font-size: 0.8rem;
+
+            line-height: 1.6;
+        }
+
+
+        @media (max-width: 680px) {
+
+            .price-detail-row {
+                align-items: flex-start;
+            }
+
+            .price-detail-row span,
+            .price-detail-row strong {
+                font-size: 0.78rem;
+            }
+
+        }
+
+    </style>
+
 </head>
 
 
@@ -53,6 +174,7 @@
 
         </div>
 
+
         <div class="age-screen-darkness"></div>
 
 
@@ -64,15 +186,23 @@
 
 
             <h1>
+
                 ROI
-                <span>&</span>
+
+                <span>
+                    &
+                </span>
+
                 REINE
+
             </h1>
 
 
             <p class="age-question">
+
                 Êtes-vous vraiment prêt
                 à découvrir la prochaine carte ?
+
             </p>
 
 
@@ -319,7 +449,7 @@
 
             <p>
                 Sélectionnez votre ville pour afficher
-                le prix correspondant.
+                le prix et les frais de livraison correspondants.
             </p>
 
 
@@ -338,23 +468,33 @@
                         🇨🇩
                     </span>
 
+
                     <span class="market-country">
                         RDC
                     </span>
+
 
                     <strong>
                         Kinshasa
                     </strong>
 
+
                     <b>
                         23,90 $
                     </b>
 
+
+                    <span class="market-fee">
+                        + 2,50 $ de livraison
+                    </span>
+
+
                     <small>
-                        Commander à Kinshasa
+                        Total : 26,40 $
                     </small>
 
                 </button>
+
 
 
                 <!-- BRAZZAVILLE -->
@@ -369,23 +509,33 @@
                         🇨🇬
                     </span>
 
+
                     <span class="market-country">
                         CONGO
                     </span>
+
 
                     <strong>
                         Brazzaville
                     </strong>
 
+
                     <b>
                         13 500 F CFA
                     </b>
 
+
+                    <span class="market-fee">
+                        + 1 500 F CFA de livraison
+                    </span>
+
+
                     <small>
-                        Commander à Brazzaville
+                        Total : 15 000 F CFA
                     </small>
 
                 </button>
+
 
 
                 <!-- LIBREVILLE -->
@@ -400,20 +550,29 @@
                         🇬🇦
                     </span>
 
+
                     <span class="market-country">
                         GABON
                     </span>
+
 
                     <strong>
                         Libreville
                     </strong>
 
+
                     <b id="librevilleModalPrice">
-                        Prix à confirmer
+                        15 500 F CFA
                     </b>
 
+
+                    <span class="market-fee">
+                        + 1 500 F CFA de livraison
+                    </span>
+
+
                     <small>
-                        Commander à Libreville
+                        Total : 17 000 F CFA
                     </small>
 
                 </button>
@@ -451,6 +610,7 @@
 
 
             <div class="hero-darkness"></div>
+
             <div class="hero-red-light"></div>
 
 
@@ -531,7 +691,6 @@
 
                 </div>
 
-
             </div>
 
 
@@ -542,6 +701,7 @@
                     class="floating-card floating-card-one"
                     alt="Carte ROI & REINE"
                 >
+
 
                 <img
                     src="images/cards/verso-carte.png"
@@ -576,6 +736,7 @@
 
         <section class="statement-section">
 
+
             <span>
                 54 CARTES
             </span>
@@ -591,13 +752,13 @@
 
             </h2>
 
+
         </section>
 
 
 
         <!-- =====================================================
              EXPÉRIENCE
-             SEULEMENT 2 IMAGES
         ====================================================== -->
 
         <section
@@ -626,6 +787,7 @@
 
                 <div class="experience-copy">
 
+
                     <span class="experience-count">
                         01
                     </span>
@@ -650,6 +812,7 @@
                         Une carte suffit parfois
                         pour changer toute l’ambiance.
                     </small>
+
 
                 </div>
 
@@ -678,6 +841,7 @@
 
                 <div class="experience-copy">
 
+
                     <span class="experience-count">
                         02
                     </span>
@@ -703,6 +867,7 @@
                         Action ou Vérité.
                         À vous de choisir.
                     </small>
+
 
                 </div>
 
@@ -780,7 +945,9 @@
 
 
 
-            <!-- PRODUIT -->
+            <!-- =================================================
+                 PRODUIT
+            ================================================== -->
 
             <div class="order-product">
 
@@ -843,6 +1010,8 @@
 
 
 
+                <!-- QUANTITÉ -->
+
                 <div class="quantity-control">
 
 
@@ -852,6 +1021,7 @@
 
 
                     <div>
+
 
                         <button
                             type="button"
@@ -875,6 +1045,7 @@
                             +
                         </button>
 
+
                     </div>
 
 
@@ -882,22 +1053,89 @@
 
 
 
-                <div class="total-row">
+                <!-- DÉTAIL DU PRIX -->
+
+                <div class="order-price-breakdown">
+
+
+                    <div class="price-detail-row">
+
+
+                        <span id="productSubtotalLabel">
+                            Prix du jeu × 1
+                        </span>
+
+
+                        <strong id="productSubtotal">
+                            23,90 $
+                        </strong>
+
+
+                    </div>
+
+
+                    <div class="price-detail-row">
+
+
+                        <span>
+                            Frais de livraison
+                        </span>
+
+
+                        <strong id="deliveryFee">
+                            2,50 $
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- TOTAL -->
+
+                <div class="total-row total-row-final">
 
 
                     <span>
-                        TOTAL
+                        TOTAL À PAYER
                     </span>
 
 
                     <strong id="orderTotal">
-                        23,90 $
+                        26,40 $
                     </strong>
 
 
                 </div>
 
 
+
+                <!-- PAIEMENT -->
+
+                <div class="payment-before-delivery">
+
+
+                    <strong>
+                        Paiement avant livraison
+                    </strong>
+
+
+                    <p>
+                        Le paiement intégral de la commande,
+                        y compris les frais de livraison,
+                        doit être effectué et confirmé avant
+                        la préparation et la livraison du jeu.
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- VILLES -->
 
                 <div class="available-markets">
 
@@ -908,6 +1146,7 @@
 
 
                     <div>
+
 
                         <button
                             type="button"
@@ -931,6 +1170,7 @@
                         >
                             🇬🇦 Libreville
                         </button>
+
 
                     </div>
 
@@ -963,9 +1203,18 @@
 
 
                 <p class="order-privacy">
+
                     Remplissez vos coordonnées avec précision.
-                    Notre équipe vous contactera pour confirmer la commande
-                    et organiser la livraison.
+
+                    Notre équipe vous contactera pour confirmer
+                    votre commande, vous communiquer les
+                    instructions de paiement et organiser
+                    la livraison.
+
+                    <strong>
+                        Le paiement doit être confirmé avant la livraison.
+                    </strong>
+
                 </p>
 
 
@@ -977,9 +1226,11 @@
 
                     <div class="form-group">
 
+
                         <label for="fullName">
                             Nom complet
                         </label>
+
 
                         <input
                             type="text"
@@ -989,14 +1240,18 @@
                             required
                         >
 
+
                     </div>
+
 
 
                     <div class="form-group">
 
+
                         <label for="phone">
                             Téléphone principal
                         </label>
+
 
                         <input
                             type="tel"
@@ -1005,6 +1260,7 @@
                             placeholder="Ex. +243..."
                             required
                         >
+
 
                     </div>
 
@@ -1018,9 +1274,11 @@
 
                     <div class="form-group">
 
+
                         <label for="whatsappPhone">
                             WhatsApp
                         </label>
+
 
                         <input
                             type="tel"
@@ -1029,10 +1287,13 @@
                             placeholder="Si différent du numéro principal"
                         >
 
+
                     </div>
 
 
+
                     <div class="form-group">
+
 
                         <label for="email">
 
@@ -1044,12 +1305,14 @@
 
                         </label>
 
+
                         <input
                             type="email"
                             id="email"
                             autocomplete="email"
                             placeholder="votre@email.com"
                         >
+
 
                     </div>
 
@@ -1065,33 +1328,42 @@
 
                     <div class="form-group">
 
+
                         <label for="city">
                             Ville
                         </label>
+
 
                         <select
                             id="city"
                             required
                         >
 
+
                             <option value="Kinshasa">
                                 🇨🇩 Kinshasa
                             </option>
+
 
                             <option value="Brazzaville">
                                 🇨🇬 Brazzaville
                             </option>
 
+
                             <option value="Libreville">
                                 🇬🇦 Libreville
                             </option>
 
+
                         </select>
+
 
                     </div>
 
 
+
                     <div class="form-group">
+
 
                         <label
                             for="locality"
@@ -1100,12 +1372,14 @@
                             Commune
                         </label>
 
+
                         <input
                             type="text"
                             id="locality"
                             placeholder="Ex. Gombe"
                             required
                         >
+
 
                         <small
                             class="order-privacy"
@@ -1114,6 +1388,7 @@
                             Indiquez votre commune.
                         </small>
 
+
                     </div>
 
 
@@ -1126,9 +1401,11 @@
 
                     <div class="form-group">
 
+
                         <label for="neighborhood">
                             Quartier
                         </label>
+
 
                         <input
                             type="text"
@@ -1137,14 +1414,18 @@
                             required
                         >
 
+
                     </div>
+
 
 
                     <div class="form-group">
 
+
                         <label for="street">
                             Avenue / rue
                         </label>
+
 
                         <input
                             type="text"
@@ -1152,6 +1433,7 @@
                             placeholder="Nom de l’avenue ou de la rue"
                             required
                         >
+
 
                     </div>
 
@@ -1164,6 +1446,7 @@
 
 
                     <div class="form-group">
+
 
                         <label for="houseNumber">
 
@@ -1175,20 +1458,25 @@
 
                         </label>
 
+
                         <input
                             type="text"
                             id="houseNumber"
                             placeholder="Ex. 10"
                         >
 
+
                     </div>
+
 
 
                     <div class="form-group">
 
+
                         <label for="landmark">
                             Point de repère
                         </label>
+
 
                         <input
                             type="text"
@@ -1196,6 +1484,7 @@
                             placeholder="Ex. près du rond-point, école, église..."
                             required
                         >
+
 
                     </div>
 
@@ -1211,6 +1500,7 @@
 
                     <div class="form-group">
 
+
                         <label for="preferredDeliveryDate">
 
                             Date souhaitée
@@ -1221,24 +1511,30 @@
 
                         </label>
 
+
                         <input
                             type="date"
                             id="preferredDeliveryDate"
                         >
 
+
                     </div>
 
 
+
                     <div class="form-group">
+
 
                         <label for="deliveryTimeSlot">
                             Créneau souhaité
                         </label>
 
+
                         <select
                             id="deliveryTimeSlot"
                             required
                         >
+
 
                             <option
                                 value="a_confirmer"
@@ -1247,19 +1543,24 @@
                                 À confirmer avec l’équipe
                             </option>
 
+
                             <option value="matin">
                                 Matin
                             </option>
+
 
                             <option value="apres_midi">
                                 Après-midi
                             </option>
 
+
                             <option value="soir">
                                 Soir
                             </option>
 
+
                         </select>
+
 
                     </div>
 
@@ -1272,6 +1573,7 @@
 
                 <div class="form-group">
 
+
                     <label for="note">
 
                         Note pour la livraison
@@ -1282,11 +1584,13 @@
 
                     </label>
 
+
                     <textarea
                         id="note"
                         rows="3"
                         placeholder="Ex. appeler avant d’arriver, précision sur l’entrée..."
                     ></textarea>
+
 
                 </div>
 
@@ -1301,9 +1605,14 @@
                 </button>
 
 
+
                 <small class="order-privacy">
+
                     Vos informations sont utilisées uniquement
-                    pour traiter votre demande et organiser la livraison.
+                    pour traiter votre demande,
+                    confirmer le paiement
+                    et organiser la livraison.
+
                 </small>
 
 
@@ -1326,6 +1635,7 @@
 
         <div class="footer-brand">
 
+
             <strong>
 
                 ROI
@@ -1342,6 +1652,7 @@
             <small>
                 ACTION OU VÉRITÉ · ÉDITION ROUGE
             </small>
+
 
         </div>
 
@@ -1380,6 +1691,7 @@
 
         <div class="footer-info">
 
+
             <span>
                 18+ · Consentement · Respect
             </span>
@@ -1389,6 +1701,7 @@
                 © 2026 ROI & REINE.
                 Tous droits réservés.
             </small>
+
 
         </div>
 
@@ -1409,19 +1722,726 @@
         aria-label="Contacter ROI & REINE sur WhatsApp"
     >
 
+
         <span class="whatsapp-float-icon">
             ☏
         </span>
+
 
         <span class="whatsapp-float-text">
             WhatsApp
         </span>
 
+
     </a>
 
 
 
+    <!-- =========================================================
+         SCRIPT PRINCIPAL EXISTANT
+    ========================================================== -->
+
     <script src="script.js"></script>
+
+
+
+    <!-- =========================================================
+         PRIX + LIVRAISON
+    ========================================================== -->
+
+    <script>
+
+        (() => {
+
+
+            const pricing = {
+
+
+                kinshasa: {
+
+                    city:
+                        "Kinshasa",
+
+                    marketName:
+                        "Kinshasa · RDC",
+
+                    unitPrice:
+                        23.90,
+
+                    deliveryFee:
+                        2.50,
+
+                    currency:
+                        "USD"
+
+                },
+
+
+                brazzaville: {
+
+                    city:
+                        "Brazzaville",
+
+                    marketName:
+                        "Brazzaville · Congo",
+
+                    unitPrice:
+                        13500,
+
+                    deliveryFee:
+                        1500,
+
+                    currency:
+                        "XAF"
+
+                },
+
+
+                libreville: {
+
+                    city:
+                        "Libreville",
+
+                    marketName:
+                        "Libreville · Gabon",
+
+                    unitPrice:
+                        15500,
+
+                    deliveryFee:
+                        1500,
+
+                    currency:
+                        "XAF"
+
+                }
+
+
+            };
+
+
+
+            let currentPricingMarket =
+                "kinshasa";
+
+
+
+            const marketButton =
+                document.getElementById(
+                    "marketButton"
+                );
+
+
+            const mobileMarketButton =
+                document.getElementById(
+                    "mobileMarketButton"
+                );
+
+
+            const citySelect =
+                document.getElementById(
+                    "city"
+                );
+
+
+            const quantityValue =
+                document.getElementById(
+                    "quantityValue"
+                );
+
+
+            const productPrice =
+                document.getElementById(
+                    "productPrice"
+                );
+
+
+            const selectedMarketName =
+                document.getElementById(
+                    "selectedMarketName"
+                );
+
+
+            const productSubtotal =
+                document.getElementById(
+                    "productSubtotal"
+                );
+
+
+            const productSubtotalLabel =
+                document.getElementById(
+                    "productSubtotalLabel"
+                );
+
+
+            const deliveryFeeElement =
+                document.getElementById(
+                    "deliveryFee"
+                );
+
+
+            const orderTotal =
+                document.getElementById(
+                    "orderTotal"
+                );
+
+
+            const librevilleModalPrice =
+                document.getElementById(
+                    "librevilleModalPrice"
+                );
+
+
+
+            function normalizeMarket(value) {
+
+                return String(
+                    value || ""
+                )
+                    .trim()
+                    .toLowerCase();
+
+            }
+
+
+
+            function marketFromCity(value) {
+
+                const normalized =
+                    normalizeMarket(
+                        value
+                    );
+
+
+                if (
+                    normalized.includes(
+                        "brazzaville"
+                    )
+                ) {
+
+                    return "brazzaville";
+
+                }
+
+
+                if (
+                    normalized.includes(
+                        "libreville"
+                    )
+                ) {
+
+                    return "libreville";
+
+                }
+
+
+                return "kinshasa";
+
+            }
+
+
+
+            function getQuantity() {
+
+                const quantity =
+                    Number.parseInt(
+                        quantityValue?.textContent
+                        || "1",
+                        10
+                    );
+
+
+                if (
+                    Number.isFinite(
+                        quantity
+                    )
+                    &&
+                    quantity > 0
+                ) {
+
+                    return quantity;
+
+                }
+
+
+                return 1;
+
+            }
+
+
+
+            function formatMoney(
+                amount,
+                currency
+            ) {
+
+
+                if (
+                    currency === "USD"
+                ) {
+
+                    return new Intl.NumberFormat(
+                        "fr-FR",
+                        {
+                            minimumFractionDigits:
+                                2,
+
+                            maximumFractionDigits:
+                                2
+                        }
+                    ).format(
+                        amount
+                    ) + " $";
+
+                }
+
+
+                return new Intl.NumberFormat(
+                    "fr-FR",
+                    {
+                        maximumFractionDigits:
+                            0
+                    }
+                ).format(
+                    amount
+                ) + " F CFA";
+
+            }
+
+
+
+            function marketFlag(
+                market
+            ) {
+
+
+                if (
+                    market ===
+                    "brazzaville"
+                ) {
+
+                    return "🇨🇬";
+
+                }
+
+
+                if (
+                    market ===
+                    "libreville"
+                ) {
+
+                    return "🇬🇦";
+
+                }
+
+
+                return "🇨🇩";
+
+            }
+
+
+
+            function renderPricing(
+                marketKey
+            ) {
+
+
+                const key =
+                    pricing[marketKey]
+                        ? marketKey
+                        : "kinshasa";
+
+
+                const market =
+                    pricing[key];
+
+
+                currentPricingMarket =
+                    key;
+
+
+                const quantity =
+                    getQuantity();
+
+
+                const subtotal =
+                    market.unitPrice
+                    *
+                    quantity;
+
+
+                const total =
+                    subtotal
+                    +
+                    market.deliveryFee;
+
+
+
+                if (
+                    productPrice
+                ) {
+
+                    productPrice.textContent =
+                        formatMoney(
+                            market.unitPrice,
+                            market.currency
+                        );
+
+                }
+
+
+
+                if (
+                    selectedMarketName
+                ) {
+
+                    selectedMarketName.textContent =
+                        market.marketName;
+
+                }
+
+
+
+                if (
+                    productSubtotalLabel
+                ) {
+
+                    productSubtotalLabel.textContent =
+                        `Prix du jeu × ${quantity}`;
+
+                }
+
+
+
+                if (
+                    productSubtotal
+                ) {
+
+                    productSubtotal.textContent =
+                        formatMoney(
+                            subtotal,
+                            market.currency
+                        );
+
+                }
+
+
+
+                if (
+                    deliveryFeeElement
+                ) {
+
+                    deliveryFeeElement.textContent =
+                        formatMoney(
+                            market.deliveryFee,
+                            market.currency
+                        );
+
+                }
+
+
+
+                if (
+                    orderTotal
+                ) {
+
+                    orderTotal.textContent =
+                        formatMoney(
+                            total,
+                            market.currency
+                        );
+
+                }
+
+
+
+                if (
+                    citySelect
+                    &&
+                    citySelect.value !==
+                    market.city
+                ) {
+
+                    citySelect.value =
+                        market.city;
+
+                }
+
+
+
+                const headerLabel =
+                    `${marketFlag(key)} ${market.city}`;
+
+
+
+                if (
+                    marketButton
+                ) {
+
+                    marketButton.textContent =
+                        headerLabel;
+
+                }
+
+
+
+                if (
+                    mobileMarketButton
+                ) {
+
+                    mobileMarketButton.textContent =
+                        headerLabel;
+
+                }
+
+
+
+                document.documentElement.dataset.roiMarket =
+                    key;
+
+            }
+
+
+
+            if (
+                librevilleModalPrice
+            ) {
+
+                librevilleModalPrice.textContent =
+                    "15 500 F CFA";
+
+            }
+
+
+
+            document
+                .querySelectorAll(
+                    "[data-market]"
+                )
+                .forEach(
+                    button => {
+
+
+                        button.addEventListener(
+                            "click",
+                            () => {
+
+
+                                const market =
+                                    normalizeMarket(
+                                        button.dataset.market
+                                    );
+
+
+                                setTimeout(
+                                    () => {
+
+                                        renderPricing(
+                                            market
+                                        );
+
+                                    },
+                                    0
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+
+            document
+                .querySelectorAll(
+                    "[data-footer-market]"
+                )
+                .forEach(
+                    button => {
+
+
+                        button.addEventListener(
+                            "click",
+                            () => {
+
+
+                                const market =
+                                    normalizeMarket(
+                                        button.dataset.footerMarket
+                                    );
+
+
+                                setTimeout(
+                                    () => {
+
+                                        renderPricing(
+                                            market
+                                        );
+
+                                    },
+                                    0
+                                );
+
+
+                            }
+                        );
+
+
+                    }
+                );
+
+
+
+            if (
+                citySelect
+            ) {
+
+
+                citySelect.addEventListener(
+                    "change",
+                    () => {
+
+
+                        renderPricing(
+                            marketFromCity(
+                                citySelect.value
+                            )
+                        );
+
+
+                    }
+                );
+
+
+            }
+
+
+
+            const increaseButton =
+                document.getElementById(
+                    "increaseQuantity"
+                );
+
+
+            const decreaseButton =
+                document.getElementById(
+                    "decreaseQuantity"
+                );
+
+
+
+            if (
+                increaseButton
+            ) {
+
+
+                increaseButton.addEventListener(
+                    "click",
+                    () => {
+
+
+                        setTimeout(
+                            () => {
+
+                                renderPricing(
+                                    currentPricingMarket
+                                );
+
+                            },
+                            0
+                        );
+
+
+                    }
+                );
+
+
+            }
+
+
+
+            if (
+                decreaseButton
+            ) {
+
+
+                decreaseButton.addEventListener(
+                    "click",
+                    () => {
+
+
+                        setTimeout(
+                            () => {
+
+                                renderPricing(
+                                    currentPricingMarket
+                                );
+
+                            },
+                            0
+                        );
+
+
+                    }
+                );
+
+
+            }
+
+
+
+            if (
+                quantityValue
+            ) {
+
+
+                const quantityObserver =
+                    new MutationObserver(
+                        () => {
+
+
+                            renderPricing(
+                                currentPricingMarket
+                            );
+
+
+                        }
+                    );
+
+
+                quantityObserver.observe(
+                    quantityValue,
+                    {
+                        childList:
+                            true,
+
+                        characterData:
+                            true,
+
+                        subtree:
+                            true
+                    }
+                );
+
+
+            }
+
+
+
+            renderPricing(
+                marketFromCity(
+                    citySelect?.value
+                    ||
+                    "Kinshasa"
+                )
+            );
+
+
+        })();
+
+    </script>
 
 
 </body>
