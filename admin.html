@@ -2416,6 +2416,546 @@
             }
         }
 
+
+        /* =========================================================
+           ANALYSE COMMERCIALE — PRODUCTION
+        ========================================================= */
+
+        .commercial-section {
+            margin: 28px 0 24px;
+        }
+
+        .commercial-heading {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 14px;
+        }
+
+        .commercial-heading-copy {
+            max-width: 720px;
+        }
+
+        .commercial-kicker {
+            margin-bottom: 8px;
+            color: #a74b5b;
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.19em;
+        }
+
+        .commercial-heading h3 {
+            color: #ddd7d4;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .commercial-heading p {
+            margin-top: 7px;
+            color: #5f5a58;
+            font-size: 9px;
+            line-height: 1.7;
+        }
+
+        .live-data-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            min-height: 31px;
+            padding: 0 11px;
+            border: 1px solid rgba(66, 183, 120, 0.12);
+            border-radius: 999px;
+            background: rgba(66, 183, 120, 0.035);
+            color: #70aa8a;
+            font-size: 8px;
+            font-weight: 750;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .live-data-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #42b778;
+            box-shadow: 0 0 0 4px rgba(66, 183, 120, 0.06);
+        }
+
+        .commercial-kpis {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 13px;
+            margin-bottom: 15px;
+        }
+
+        .commercial-kpi {
+            position: relative;
+            min-height: 132px;
+            padding: 18px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.025),
+                    rgba(255,255,255,0.006)
+                );
+        }
+
+        .commercial-kpi::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 2px;
+            opacity: 0.82;
+        }
+
+        .commercial-kpi.wine::before {
+            background: linear-gradient(90deg, #7e1020, #c23b50);
+        }
+
+        .commercial-kpi.bronze::before {
+            background: linear-gradient(90deg, #715434, #c39a61);
+        }
+
+        .commercial-kpi.plum::before {
+            background: linear-gradient(90deg, #58344e, #9b688d);
+        }
+
+        .commercial-kpi.slate::before {
+            background: linear-gradient(90deg, #3e5562, #7894a2);
+        }
+
+        .commercial-kpi-label {
+            color: #6f6967;
+            font-size: 8px;
+            font-weight: 750;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+        }
+
+        .commercial-kpi-value {
+            margin-top: 19px;
+            color: #eee9e6;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 30px;
+            font-weight: 400;
+            letter-spacing: -0.035em;
+        }
+
+        .commercial-kpi-value small {
+            margin-left: 4px;
+            color: #746e6c;
+            font-family: Inter, "Segoe UI", sans-serif;
+            font-size: 10px;
+        }
+
+        .commercial-kpi-note {
+            margin-top: 6px;
+            color: #4f4b49;
+            font-size: 8px;
+            line-height: 1.5;
+        }
+
+        .market-analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 13px;
+            margin-bottom: 15px;
+        }
+
+        .market-analysis-card {
+            --market-accent: #a91b31;
+            --market-glow: rgba(169,27,49,0.10);
+            position: relative;
+            min-height: 225px;
+            padding: 19px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background:
+                radial-gradient(
+                    circle at 100% 0,
+                    var(--market-glow),
+                    transparent 42%
+                ),
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.022),
+                    rgba(255,255,255,0.004)
+                );
+        }
+
+        .market-analysis-card.kinshasa {
+            --market-accent: #b9213a;
+            --market-glow: rgba(185,33,58,0.12);
+        }
+
+        .market-analysis-card.brazzaville {
+            --market-accent: #a17a4d;
+            --market-glow: rgba(161,122,77,0.11);
+        }
+
+        .market-analysis-card.libreville {
+            --market-accent: #84638d;
+            --market-glow: rgba(132,99,141,0.11);
+        }
+
+        .market-analysis-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--market-accent);
+            opacity: 0.82;
+        }
+
+        .market-analysis-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .market-analysis-city {
+            color: #d6cfcc;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 18px;
+        }
+
+        .market-analysis-country {
+            margin-top: 4px;
+            color: #514d4b;
+            font-size: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.10em;
+        }
+
+        .market-analysis-conversion {
+            min-width: 72px;
+            padding: 7px 9px;
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            background: rgba(0,0,0,0.15);
+            text-align: right;
+        }
+
+        .market-analysis-conversion strong {
+            display: block;
+            color: #c9c3c0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 17px;
+            font-weight: 400;
+        }
+
+        .market-analysis-conversion span {
+            display: block;
+            margin-top: 2px;
+            color: #575250;
+            font-size: 7px;
+            text-transform: uppercase;
+        }
+
+        .market-analysis-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 8px;
+            margin-top: 25px;
+        }
+
+        .market-analysis-metric {
+            padding: 11px 10px;
+            border: 1px solid rgba(255,255,255,0.045);
+            border-radius: 10px;
+            background: rgba(255,255,255,0.008);
+        }
+
+        .market-analysis-metric span {
+            display: block;
+            color: #504b49;
+            font-size: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .market-analysis-metric strong {
+            display: block;
+            margin-top: 7px;
+            color: #bdb7b4;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        .market-audience {
+            margin-top: 19px;
+        }
+
+        .market-audience-head {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 7px;
+            color: #4f4a49;
+            font-size: 7px;
+        }
+
+        .market-audience-track {
+            height: 4px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #1b1a1b;
+        }
+
+        .market-audience-bar {
+            height: 100%;
+            width: 0;
+            border-radius: inherit;
+            background: var(--market-accent);
+            transition: width .45s ease;
+        }
+
+        .commercial-panels {
+            display: grid;
+            grid-template-columns: minmax(0, 1.2fr) minmax(310px, .8fr);
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .commercial-funnel {
+            padding: 19px;
+        }
+
+        .commercial-funnel-row {
+            display: grid;
+            grid-template-columns: 118px minmax(0, 1fr) 52px;
+            gap: 12px;
+            align-items: center;
+            min-height: 48px;
+        }
+
+        .commercial-funnel-name {
+            color: #716b69;
+            font-size: 9px;
+        }
+
+        .commercial-funnel-track {
+            height: 8px;
+            overflow: hidden;
+            border-radius: 999px;
+            background: #19191a;
+        }
+
+        .commercial-funnel-bar {
+            height: 100%;
+            width: 0;
+            border-radius: inherit;
+            background: linear-gradient(90deg, #73101d, #ba273e);
+            transition: width .5s ease;
+        }
+
+        .commercial-funnel-row:nth-child(2) .commercial-funnel-bar {
+            background: linear-gradient(90deg, #744526, #aa7b4e);
+        }
+
+        .commercial-funnel-row:nth-child(3) .commercial-funnel-bar {
+            background: linear-gradient(90deg, #56364f, #89637f);
+        }
+
+        .commercial-funnel-row:nth-child(4) .commercial-funnel-bar {
+            background: linear-gradient(90deg, #36515d, #678592);
+        }
+
+        .commercial-funnel-value {
+            color: #aaa4a2;
+            font-size: 10px;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .market-leaders {
+            padding: 18px;
+        }
+
+        .market-leader {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .market-leader:first-child {
+            padding-top: 0;
+        }
+
+        .market-leader:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .market-leader-label {
+            color: #514d4b;
+            font-size: 7px;
+            font-weight: 750;
+            text-transform: uppercase;
+            letter-spacing: .10em;
+        }
+
+        .market-leader-city {
+            margin-top: 7px;
+            color: #d0cac7;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 20px;
+        }
+
+        .market-leader-value {
+            margin-top: 4px;
+            color: #6f6967;
+            font-size: 8px;
+        }
+
+        .commercial-chart-body {
+            padding: 19px 20px 16px;
+        }
+
+        .commercial-chart-legend {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .commercial-legend {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #5a5553;
+            font-size: 7px;
+            text-transform: uppercase;
+        }
+
+        .commercial-legend::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 2px;
+            background: #a71931;
+        }
+
+        .commercial-legend.orders::before {
+            background: #88705c;
+        }
+
+        .commercial-chart {
+            height: 220px;
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            align-items: end;
+            gap: 11px;
+        }
+
+        .commercial-chart-column {
+            min-width: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .commercial-chart-values {
+            display: flex;
+            justify-content: center;
+            gap: 7px;
+            min-height: 14px;
+            color: #77716f;
+            font-size: 7px;
+        }
+
+        .commercial-bars {
+            height: 155px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 5px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .commercial-bar {
+            width: min(18px, 38%);
+            border-radius: 6px 6px 2px 2px;
+            transition: height .45s ease;
+        }
+
+        .commercial-bar.visits {
+            background: linear-gradient(180deg, #bb213a, #64101d);
+        }
+
+        .commercial-bar.orders {
+            background: linear-gradient(180deg, #aa8a6a, #584637);
+        }
+
+        .commercial-chart-label {
+            color: #55504e;
+            font-size: 7px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 1180px) {
+            .commercial-kpis {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .market-analysis-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .commercial-panels {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .commercial-heading {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .commercial-kpis {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 9px;
+            }
+
+            .commercial-kpi {
+                min-height: 118px;
+                padding: 14px;
+            }
+
+            .commercial-kpi-value {
+                font-size: 25px;
+            }
+
+            .commercial-funnel-row {
+                grid-template-columns: 88px minmax(0, 1fr) 36px;
+            }
+
+            .commercial-chart {
+                gap: 6px;
+            }
+
+            .commercial-bars {
+                height: 135px;
+                gap: 3px;
+            }
+        }
+
         /* =========================================================
            MOBILE OVERLAY
         ========================================================= */
@@ -3482,6 +4022,230 @@
                     </section>
 
 
+                    <!-- =================================================
+                         ANALYSE COMMERCIALE
+                    ================================================== -->
+
+                    <section class="commercial-section">
+
+                        <div class="commercial-heading">
+
+                            <div class="commercial-heading-copy">
+
+                                <div class="commercial-kicker">
+                                    Intelligence commerciale
+                                </div>
+
+                                <h3>
+                                    Performance réelle des marchés
+                                </h3>
+
+                                <p>
+                                    Conversion, commandes et comparaison
+                                    entre Kinshasa, Brazzaville et Libreville.
+                                </p>
+
+                            </div>
+
+                            <div class="live-data-badge">
+                                <span class="live-data-dot"></span>
+                                Données réelles
+                            </div>
+
+                        </div>
+
+
+                        <div class="commercial-kpis">
+
+                            <article class="commercial-kpi wine">
+                                <div class="commercial-kpi-label">
+                                    Taux de conversion
+                                </div>
+                                <div id="commercialConversion" class="commercial-kpi-value">
+                                    —
+                                </div>
+                                <div class="commercial-kpi-note">
+                                    Visites transformées en commandes
+                                </div>
+                            </article>
+
+                            <article class="commercial-kpi bronze">
+                                <div class="commercial-kpi-label">
+                                    Commandes
+                                </div>
+                                <div id="commercialOrders" class="commercial-kpi-value">
+                                    —
+                                </div>
+                                <div class="commercial-kpi-note">
+                                    Commandes réellement enregistrées
+                                </div>
+                            </article>
+
+                            <article class="commercial-kpi plum">
+                                <div class="commercial-kpi-label">
+                                    Confirmées
+                                </div>
+                                <div id="commercialConfirmed" class="commercial-kpi-value">
+                                    —
+                                </div>
+                                <div class="commercial-kpi-note">
+                                    Commandes entrées en traitement
+                                </div>
+                            </article>
+
+                            <article class="commercial-kpi slate">
+                                <div class="commercial-kpi-label">
+                                    Livrées
+                                </div>
+                                <div id="commercialDelivered" class="commercial-kpi-value">
+                                    —
+                                </div>
+                                <div class="commercial-kpi-note">
+                                    Commandes finalisées
+                                </div>
+                            </article>
+
+                        </div>
+
+
+                        <div id="marketAnalysisGrid" class="market-analysis-grid">
+
+                            <div
+                                class="loading-state"
+                                style="grid-column:1/-1; min-height:180px;"
+                            >
+                                Chargement des marchés...
+                            </div>
+
+                        </div>
+
+
+                        <div class="commercial-panels">
+
+                            <div class="panel">
+
+                                <div class="panel-header">
+                                    <div class="panel-title">
+                                        <h3>Entonnoir commercial</h3>
+                                        <p>Du trafic jusqu'à la livraison</p>
+                                    </div>
+                                </div>
+
+                                <div class="commercial-funnel">
+
+                                    <div class="commercial-funnel-row">
+                                        <span class="commercial-funnel-name">Visites</span>
+                                        <div class="commercial-funnel-track">
+                                            <div id="funnelVisitsBar" class="commercial-funnel-bar"></div>
+                                        </div>
+                                        <span id="funnelVisitsValue" class="commercial-funnel-value">—</span>
+                                    </div>
+
+                                    <div class="commercial-funnel-row">
+                                        <span class="commercial-funnel-name">Commandes</span>
+                                        <div class="commercial-funnel-track">
+                                            <div id="funnelOrdersBar" class="commercial-funnel-bar"></div>
+                                        </div>
+                                        <span id="funnelOrdersValue" class="commercial-funnel-value">—</span>
+                                    </div>
+
+                                    <div class="commercial-funnel-row">
+                                        <span class="commercial-funnel-name">Confirmées</span>
+                                        <div class="commercial-funnel-track">
+                                            <div id="funnelConfirmedBar" class="commercial-funnel-bar"></div>
+                                        </div>
+                                        <span id="funnelConfirmedValue" class="commercial-funnel-value">—</span>
+                                    </div>
+
+                                    <div class="commercial-funnel-row">
+                                        <span class="commercial-funnel-name">Livrées</span>
+                                        <div class="commercial-funnel-track">
+                                            <div id="funnelDeliveredBar" class="commercial-funnel-bar"></div>
+                                        </div>
+                                        <span id="funnelDeliveredValue" class="commercial-funnel-value">—</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="panel">
+
+                                <div class="panel-header">
+                                    <div class="panel-title">
+                                        <h3>Marchés leaders</h3>
+                                        <p>Les marchés qui se distinguent actuellement</p>
+                                    </div>
+                                </div>
+
+                                <div class="market-leaders">
+
+                                    <div class="market-leader">
+                                        <div class="market-leader-label">
+                                            Plus forte audience
+                                        </div>
+                                        <div id="leaderActiveCity" class="market-leader-city">
+                                            —
+                                        </div>
+                                        <div id="leaderActiveValue" class="market-leader-value">
+                                            Aucune visite enregistrée
+                                        </div>
+                                    </div>
+
+                                    <div class="market-leader">
+                                        <div class="market-leader-label">
+                                            Plus de commandes
+                                        </div>
+                                        <div id="leaderSalesCity" class="market-leader-city">
+                                            —
+                                        </div>
+                                        <div id="leaderSalesValue" class="market-leader-value">
+                                            Aucune commande enregistrée
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+                                <div class="panel-title">
+                                    <h3>Activité commerciale — 7 jours</h3>
+                                    <p>Visites et commandes réelles par jour</p>
+                                </div>
+                            </div>
+
+                            <div class="commercial-chart-body">
+
+                                <div class="commercial-chart-legend">
+                                    <span class="commercial-legend">Visites</span>
+                                    <span class="commercial-legend orders">Commandes</span>
+                                </div>
+
+                                <div id="commercialActivityChart" class="commercial-chart">
+
+                                    <div
+                                        class="loading-state"
+                                        style="grid-column:1/-1; min-height:170px;"
+                                    >
+                                        Chargement de l'activité...
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
                     <!-- ANALYTICS -->
 
                     <div class="dashboard-grid">
@@ -4058,6 +4822,9 @@
 
         const VISITS_DASHBOARD_API =
             `${API_BASE_URL}/api/roi-reine/admin/visits/dashboard`;
+
+        const ANALYTICS_API =
+            `${API_BASE_URL}/api/roi-reine/admin/analytics`;
 
         const TOKEN_KEY =
             "roi_reine_admin_token";
@@ -4973,6 +5740,7 @@
             }
 
             await loadVisitStats();
+            await loadCommercialAnalytics();
         }
 
 
@@ -5218,6 +5986,769 @@
                                     </div>
 
                                     <div class="visit-chart-label">
+                                        ${escapeHtml(
+                                            label
+                                        )}
+                                    </div>
+
+                                </div>
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+        }
+
+
+        async function loadCommercialAnalytics() {
+
+            try {
+
+                const data =
+                    await apiFetch(
+                        ANALYTICS_API
+                    );
+
+                const commerce =
+                    data?.commerce
+                    || {};
+
+                const funnel =
+                    data?.funnel
+                    || {};
+
+                const leaders =
+                    data?.leaders
+                    || {};
+
+                const markets =
+                    Array.isArray(
+                        data?.markets
+                    )
+                        ? data.markets
+                        : [];
+
+                const last7Days =
+                    Array.isArray(
+                        data?.last7Days
+                    )
+                        ? data.last7Days
+                        : [];
+
+
+                setCommercialNumber(
+                    "commercialOrders",
+                    commerce.totalOrders
+                );
+
+                setCommercialNumber(
+                    "commercialConfirmed",
+                    commerce.confirmedOrders
+                );
+
+                setCommercialNumber(
+                    "commercialDelivered",
+                    commerce.deliveredOrders
+                );
+
+
+                const conversion =
+                    Number(
+                        commerce.conversionRate
+                        || 0
+                    );
+
+                const conversionElement =
+                    document.getElementById(
+                        "commercialConversion"
+                    );
+
+                if (conversionElement) {
+
+                    conversionElement.innerHTML =
+                        `
+                        ${formatNumber(
+                            conversion,
+                            2
+                        )}
+                        <small>%</small>
+                        `;
+
+                }
+
+
+                renderMarketAnalysis(
+                    markets
+                );
+
+                renderCommercialFunnel(
+                    funnel
+                );
+
+                renderMarketLeaders(
+                    leaders
+                );
+
+                renderCommercialActivity(
+                    last7Days
+                );
+
+            }
+            catch (error) {
+
+                const marketGrid =
+                    document.getElementById(
+                        "marketAnalysisGrid"
+                    );
+
+                const chart =
+                    document.getElementById(
+                        "commercialActivityChart"
+                    );
+
+                [
+                    "commercialConversion",
+                    "commercialOrders",
+                    "commercialConfirmed",
+                    "commercialDelivered"
+                ].forEach(
+                    id => {
+
+                        const element =
+                            document.getElementById(
+                                id
+                            );
+
+                        if (element) {
+                            element.textContent = "—";
+                        }
+
+                    }
+                );
+
+
+                if (marketGrid) {
+
+                    marketGrid.innerHTML =
+                        `
+                        <div
+                            class="empty-state"
+                            style="grid-column:1/-1;"
+                        >
+                            ${escapeHtml(
+                                error.message
+                            )}
+                        </div>
+                        `;
+
+                }
+
+
+                if (chart) {
+
+                    chart.innerHTML =
+                        `
+                        <div
+                            class="empty-state"
+                            style="grid-column:1/-1;"
+                        >
+                            ${escapeHtml(
+                                error.message
+                            )}
+                        </div>
+                        `;
+
+                }
+
+            }
+
+        }
+
+
+        function setCommercialNumber(
+            id,
+            value
+        ) {
+
+            const element =
+                document.getElementById(
+                    id
+                );
+
+            if (!element) {
+                return;
+            }
+
+            element.textContent =
+                new Intl.NumberFormat(
+                    "fr-FR"
+                ).format(
+                    Number(
+                        value
+                        || 0
+                    )
+                );
+
+        }
+
+
+        function renderMarketAnalysis(
+            markets
+        ) {
+
+            const container =
+                document.getElementById(
+                    "marketAnalysisGrid"
+                );
+
+            if (!container) {
+                return;
+            }
+
+
+            const meta = {
+
+                kinshasa: {
+                    country: "RDC",
+                    css: "kinshasa"
+                },
+
+                brazzaville: {
+                    country: "Congo",
+                    css: "brazzaville"
+                },
+
+                libreville: {
+                    country: "Gabon",
+                    css: "libreville"
+                }
+
+            };
+
+
+            if (
+                !Array.isArray(markets)
+                ||
+                markets.length === 0
+            ) {
+
+                container.innerHTML =
+                    `
+                    <div
+                        class="empty-state"
+                        style="grid-column:1/-1;"
+                    >
+                        Aucune donnée commerciale disponible.
+                    </div>
+                    `;
+
+                return;
+
+            }
+
+
+            const maximumVisits =
+                Math.max(
+                    1,
+                    ...markets.map(
+                        market =>
+                            Number(
+                                market.visits
+                                || 0
+                            )
+                    )
+                );
+
+
+            container.innerHTML =
+                markets
+                    .map(
+                        market => {
+
+                            const key =
+                                String(
+                                    market.key
+                                    || ""
+                                ).toLowerCase();
+
+                            const info =
+                                meta[key]
+                                || {
+                                    country: "",
+                                    css: ""
+                                };
+
+                            const visits =
+                                Number(
+                                    market.visits
+                                    || 0
+                                );
+
+                            const uniqueVisitors =
+                                Number(
+                                    market.uniqueVisitors
+                                    || 0
+                                );
+
+                            const orders =
+                                Number(
+                                    market.orders
+                                    || 0
+                                );
+
+                            const delivered =
+                                Number(
+                                    market.delivered
+                                    || 0
+                                );
+
+                            const conversion =
+                                Number(
+                                    market.conversionRate
+                                    || 0
+                                );
+
+                            const audienceWidth =
+                                visits <= 0
+                                    ? 0
+                                    : Math.max(
+                                        4,
+                                        Math.round(
+                                            visits
+                                            /
+                                            maximumVisits
+                                            *
+                                            100
+                                        )
+                                    );
+
+
+                            return `
+                                <article
+                                    class="market-analysis-card ${escapeAttribute(
+                                        info.css
+                                    )}"
+                                >
+
+                                    <div class="market-analysis-head">
+
+                                        <div>
+
+                                            <div class="market-analysis-city">
+                                                ${escapeHtml(
+                                                    market.city
+                                                    || "—"
+                                                )}
+                                            </div>
+
+                                            <div class="market-analysis-country">
+                                                ${escapeHtml(
+                                                    info.country
+                                                )}
+                                            </div>
+
+                                        </div>
+
+                                        <div class="market-analysis-conversion">
+
+                                            <strong>
+                                                ${formatNumber(
+                                                    conversion,
+                                                    2
+                                                )} %
+                                            </strong>
+
+                                            <span>
+                                                Conversion
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="market-analysis-metrics">
+
+                                        <div class="market-analysis-metric">
+                                            <span>Visites</span>
+                                            <strong>${formatNumber(visits, 0)}</strong>
+                                        </div>
+
+                                        <div class="market-analysis-metric">
+                                            <span>Commandes</span>
+                                            <strong>${formatNumber(orders, 0)}</strong>
+                                        </div>
+
+                                        <div class="market-analysis-metric">
+                                            <span>Livrées</span>
+                                            <strong>${formatNumber(delivered, 0)}</strong>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="market-audience">
+
+                                        <div class="market-audience-head">
+                                            <span>Audience du marché</span>
+                                            <span>${formatNumber(uniqueVisitors, 0)} unique(s)</span>
+                                        </div>
+
+                                        <div class="market-audience-track">
+                                            <div
+                                                class="market-audience-bar"
+                                                style="width:${audienceWidth}%"
+                                            ></div>
+                                        </div>
+
+                                    </div>
+
+                                </article>
+                            `;
+
+                        }
+                    )
+                    .join("");
+
+        }
+
+
+        function renderCommercialFunnel(
+            funnel
+        ) {
+
+            const values = {
+
+                Visits:
+                    Number(
+                        funnel?.visits
+                        || 0
+                    ),
+
+                Orders:
+                    Number(
+                        funnel?.orders
+                        || 0
+                    ),
+
+                Confirmed:
+                    Number(
+                        funnel?.confirmed
+                        || 0
+                    ),
+
+                Delivered:
+                    Number(
+                        funnel?.delivered
+                        || 0
+                    )
+
+            };
+
+
+            const maximum =
+                Math.max(
+                    1,
+                    ...Object.values(
+                        values
+                    )
+                );
+
+
+            Object.entries(
+                values
+            ).forEach(
+                ([key, value]) => {
+
+                    const valueElement =
+                        document.getElementById(
+                            `funnel${key}Value`
+                        );
+
+                    const barElement =
+                        document.getElementById(
+                            `funnel${key}Bar`
+                        );
+
+
+                    if (valueElement) {
+
+                        valueElement.textContent =
+                            new Intl.NumberFormat(
+                                "fr-FR"
+                            ).format(
+                                value
+                            );
+
+                    }
+
+
+                    if (barElement) {
+
+                        const width =
+                            value <= 0
+                                ? 0
+                                : Math.max(
+                                    5,
+                                    Math.round(
+                                        value
+                                        /
+                                        maximum
+                                        *
+                                        100
+                                    )
+                                );
+
+                        barElement.style.width =
+                            `${width}%`;
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        function renderMarketLeaders(
+            leaders
+        ) {
+
+            const active =
+                leaders?.mostActiveMarket
+                || null;
+
+            const sales =
+                leaders?.bestSellingMarket
+                || null;
+
+
+            const activeCity =
+                document.getElementById(
+                    "leaderActiveCity"
+                );
+
+            const activeValue =
+                document.getElementById(
+                    "leaderActiveValue"
+                );
+
+            const salesCity =
+                document.getElementById(
+                    "leaderSalesCity"
+                );
+
+            const salesValue =
+                document.getElementById(
+                    "leaderSalesValue"
+                );
+
+
+            if (activeCity) {
+
+                activeCity.textContent =
+                    active?.city
+                    || "—";
+
+            }
+
+
+            if (activeValue) {
+
+                activeValue.textContent =
+                    active
+                        ? `${formatNumber(
+                            Number(
+                                active.visits
+                                || 0
+                            ),
+                            0
+                        )} visite(s)`
+                        : "Aucune visite enregistrée";
+
+            }
+
+
+            if (salesCity) {
+
+                salesCity.textContent =
+                    sales?.city
+                    || "—";
+
+            }
+
+
+            if (salesValue) {
+
+                salesValue.textContent =
+                    sales
+                        ? `${formatNumber(
+                            Number(
+                                sales.orders
+                                || 0
+                            ),
+                            0
+                        )} commande(s)`
+                        : "Aucune commande enregistrée";
+
+            }
+
+        }
+
+
+        function renderCommercialActivity(
+            points
+        ) {
+
+            const chart =
+                document.getElementById(
+                    "commercialActivityChart"
+                );
+
+            if (!chart) {
+                return;
+            }
+
+
+            if (
+                !Array.isArray(points)
+                ||
+                points.length === 0
+            ) {
+
+                chart.innerHTML =
+                    `
+                    <div
+                        class="empty-state"
+                        style="grid-column:1/-1;"
+                    >
+                        Aucune activité disponible.
+                    </div>
+                    `;
+
+                return;
+
+            }
+
+
+            const maximum =
+                Math.max(
+                    1,
+                    ...points.map(
+                        item =>
+                            Math.max(
+                                Number(
+                                    item.visits
+                                    || 0
+                                ),
+                                Number(
+                                    item.orders
+                                    || 0
+                                )
+                            )
+                    )
+                );
+
+
+            chart.innerHTML =
+                points
+                    .map(
+                        item => {
+
+                            const visits =
+                                Number(
+                                    item.visits
+                                    || 0
+                                );
+
+                            const orders =
+                                Number(
+                                    item.orders
+                                    || 0
+                                );
+
+                            const visitHeight =
+                                visits <= 0
+                                    ? 0
+                                    : Math.max(
+                                        5,
+                                        Math.round(
+                                            visits
+                                            /
+                                            maximum
+                                            *
+                                            100
+                                        )
+                                    );
+
+                            const orderHeight =
+                                orders <= 0
+                                    ? 0
+                                    : Math.max(
+                                        5,
+                                        Math.round(
+                                            orders
+                                            /
+                                            maximum
+                                            *
+                                            100
+                                        )
+                                    );
+
+                            const date =
+                                new Date(
+                                    `${item.date}T12:00:00`
+                                );
+
+                            const label =
+                                Number.isNaN(
+                                    date.getTime()
+                                )
+                                    ? String(
+                                        item.date
+                                        || "—"
+                                    )
+                                    : new Intl.DateTimeFormat(
+                                        "fr-FR",
+                                        {
+                                            weekday: "short",
+                                            day: "2-digit"
+                                        }
+                                    ).format(
+                                        date
+                                    );
+
+
+                            return `
+                                <div class="commercial-chart-column">
+
+                                    <div class="commercial-chart-values">
+                                        <span>${formatNumber(visits, 0)}</span>
+                                        <span>${formatNumber(orders, 0)}</span>
+                                    </div>
+
+                                    <div class="commercial-bars">
+
+                                        <div
+                                            class="commercial-bar visits"
+                                            style="height:${visitHeight}%"
+                                            title="${escapeAttribute(
+                                                `${visits} visite(s)`
+                                            )}"
+                                        ></div>
+
+                                        <div
+                                            class="commercial-bar orders"
+                                            style="height:${orderHeight}%"
+                                            title="${escapeAttribute(
+                                                `${orders} commande(s)`
+                                            )}"
+                                        ></div>
+
+                                    </div>
+
+                                    <div class="commercial-chart-label">
                                         ${escapeHtml(
                                             label
                                         )}
