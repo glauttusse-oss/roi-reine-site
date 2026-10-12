@@ -2253,6 +2253,169 @@
             line-height: 1.5;
         }
 
+
+        /* =========================================================
+           AUDIENCE / VISITES
+        ========================================================= */
+
+        .visits-section {
+            margin-bottom: 24px;
+        }
+
+        .visits-kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 13px;
+            margin-bottom: 15px;
+        }
+
+        .visit-card {
+            position: relative;
+            min-height: 118px;
+            padding: 17px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.022),
+                    rgba(255,255,255,0.006)
+                );
+        }
+
+        .visit-card::after {
+            content: "";
+            position: absolute;
+            width: 78px;
+            height: 78px;
+            right: -34px;
+            top: -34px;
+            border-radius: 50%;
+            background: rgba(125, 16, 31, 0.07);
+        }
+
+        .visit-card-label {
+            color: #6f6967;
+            font-size: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .visit-card-value {
+            margin-top: 19px;
+            color: #e9e5e2;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+        }
+
+        .visit-card-note {
+            margin-top: 5px;
+            color: #4c4847;
+            font-size: 8px;
+        }
+
+        .visits-chart-body {
+            padding: 20px 20px 16px;
+        }
+
+        .visits-chart {
+            height: 190px;
+            display: grid;
+            grid-template-columns: repeat(7, minmax(0, 1fr));
+            align-items: end;
+            gap: 12px;
+        }
+
+        .visit-chart-column {
+            min-width: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: stretch;
+            gap: 8px;
+        }
+
+        .visit-chart-value {
+            min-height: 15px;
+            color: #8f8987;
+            font-size: 8px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .visit-chart-track {
+            position: relative;
+            height: 130px;
+            display: flex;
+            align-items: flex-end;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .visit-chart-bar {
+            width: 100%;
+            min-height: 0;
+            border-radius: 8px 8px 2px 2px;
+            background:
+                linear-gradient(
+                    180deg,
+                    #bc1d34,
+                    #65101d
+                );
+            box-shadow:
+                0 12px 30px
+                rgba(125, 16, 31, 0.13);
+            transition: height 0.45s ease;
+        }
+
+        .visit-chart-label {
+            color: #555150;
+            font-size: 8px;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .visits-explanation {
+            padding: 0 20px 18px;
+            color: #4f4a49;
+            font-size: 8px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 1180px) {
+            .visits-kpi-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 680px) {
+            .visits-kpi-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 9px;
+            }
+
+            .visit-card {
+                min-height: 108px;
+                padding: 14px;
+            }
+
+            .visit-card-value {
+                font-size: 24px;
+            }
+
+            .visits-chart {
+                gap: 7px;
+            }
+
+            .visit-chart-label {
+                font-size: 7px;
+            }
+        }
+
         /* =========================================================
            MOBILE OVERLAY
         ========================================================= */
@@ -2944,8 +3107,8 @@
                             </h1>
 
                             <p>
-                                Suivi des commandes, des livraisons
-                                et de l'activité commerciale.
+                                Suivi des commandes, des livraisons,
+                                de l'audience et de l'activité commerciale.
                             </p>
 
                         </div>
@@ -3133,6 +3296,191 @@
                         </article>
 
                     </div>
+
+
+                    <!-- =================================================
+                         AUDIENCE / VISITES
+                    ================================================== -->
+
+                    <section class="visits-section">
+
+                        <div class="panel-header"
+                             style="
+                                 padding-left:0;
+                                 padding-right:0;
+                                 border-bottom:0;
+                                 min-height:auto;
+                                 margin-bottom:12px;
+                             ">
+
+                            <div class="panel-title">
+
+                                <h3>
+                                    Audience du site
+                                </h3>
+
+                                <p>
+                                    Sessions anonymes enregistrées sur le site public
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="visits-kpi-grid">
+
+                            <article class="visit-card">
+
+                                <div class="visit-card-label">
+                                    Aujourd'hui
+                                </div>
+
+                                <div
+                                    id="visitToday"
+                                    class="visit-card-value"
+                                >
+                                    —
+                                </div>
+
+                                <div class="visit-card-note">
+                                    Visites du jour
+                                </div>
+
+                            </article>
+
+
+                            <article class="visit-card">
+
+                                <div class="visit-card-label">
+                                    Cette semaine
+                                </div>
+
+                                <div
+                                    id="visitWeek"
+                                    class="visit-card-value"
+                                >
+                                    —
+                                </div>
+
+                                <div class="visit-card-note">
+                                    Depuis lundi
+                                </div>
+
+                            </article>
+
+
+                            <article class="visit-card">
+
+                                <div class="visit-card-label">
+                                    Ce mois
+                                </div>
+
+                                <div
+                                    id="visitMonth"
+                                    class="visit-card-value"
+                                >
+                                    —
+                                </div>
+
+                                <div class="visit-card-note">
+                                    Mois en cours
+                                </div>
+
+                            </article>
+
+
+                            <article class="visit-card">
+
+                                <div class="visit-card-label">
+                                    Total visites
+                                </div>
+
+                                <div
+                                    id="visitTotal"
+                                    class="visit-card-value"
+                                >
+                                    —
+                                </div>
+
+                                <div class="visit-card-note">
+                                    Depuis l'activation du suivi
+                                </div>
+
+                            </article>
+
+
+                            <article class="visit-card">
+
+                                <div class="visit-card-label">
+                                    Visiteurs uniques
+                                </div>
+
+                                <div
+                                    id="visitUnique"
+                                    class="visit-card-value"
+                                >
+                                    —
+                                </div>
+
+                                <div class="visit-card-note">
+                                    Navigateurs distincts
+                                </div>
+
+                            </article>
+
+                        </div>
+
+
+                        <div class="panel">
+
+                            <div class="panel-header">
+
+                                <div class="panel-title">
+
+                                    <h3>
+                                        Visites — 7 derniers jours
+                                    </h3>
+
+                                    <p>
+                                        Évolution quotidienne des sessions du site
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="visits-chart-body">
+
+                                <div
+                                    id="visitsChart"
+                                    class="visits-chart"
+                                >
+
+                                    <div class="loading-state"
+                                         style="
+                                             grid-column:1/-1;
+                                             min-height:150px;
+                                         ">
+                                        Chargement de l'audience...
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="visits-explanation">
+                                Une visite correspond à une session.
+                                Plusieurs actualisations dans une même session
+                                de 30 minutes ne sont pas comptées plusieurs fois.
+                            </div>
+
+                        </div>
+
+                    </section>
+
 
                     <!-- ANALYTICS -->
 
@@ -3707,6 +4055,9 @@
 
         const ADMIN_API =
             `${API_BASE_URL}/api/roi-reine/admin`;
+
+        const VISITS_DASHBOARD_API =
+            `${API_BASE_URL}/api/roi-reine/admin/visits/dashboard`;
 
         const TOKEN_KEY =
             "roi_reine_admin_token";
@@ -4620,6 +4971,265 @@
                     </div>
                     `;
             }
+
+            await loadVisitStats();
+        }
+
+
+        async function loadVisitStats() {
+
+            const chart =
+                document.getElementById(
+                    "visitsChart"
+                );
+
+            try {
+
+                const data =
+                    await apiFetch(
+                        VISITS_DASHBOARD_API
+                    );
+
+                const visits =
+                    data?.visits
+                    || {};
+
+                setVisitStat(
+                    "visitToday",
+                    visits.today
+                );
+
+                setVisitStat(
+                    "visitWeek",
+                    visits.week
+                );
+
+                setVisitStat(
+                    "visitMonth",
+                    visits.month
+                );
+
+                setVisitStat(
+                    "visitTotal",
+                    visits.total
+                );
+
+                setVisitStat(
+                    "visitUnique",
+                    visits.uniqueVisitors
+                );
+
+                renderVisitsChart(
+                    visits.last7Days
+                    || []
+                );
+
+            }
+            catch (error) {
+
+                [
+                    "visitToday",
+                    "visitWeek",
+                    "visitMonth",
+                    "visitTotal",
+                    "visitUnique"
+                ].forEach(
+                    id => {
+
+                        const element =
+                            document.getElementById(
+                                id
+                            );
+
+                        if (element) {
+                            element.textContent = "—";
+                        }
+
+                    }
+                );
+
+                if (chart) {
+
+                    chart.innerHTML =
+                        `
+                        <div
+                            class="empty-state"
+                            style="
+                                grid-column:1/-1;
+                                min-height:150px;
+                            "
+                        >
+                            ${escapeHtml(
+                                error.message
+                            )}
+                        </div>
+                        `;
+
+                }
+
+            }
+
+        }
+
+
+        function setVisitStat(
+            id,
+            value
+        ) {
+
+            const element =
+                document.getElementById(
+                    id
+                );
+
+            if (!element) {
+                return;
+            }
+
+            element.textContent =
+                new Intl.NumberFormat(
+                    "fr-FR"
+                ).format(
+                    Number(
+                        value
+                        || 0
+                    )
+                );
+
+        }
+
+
+        function renderVisitsChart(
+            points
+        ) {
+
+            const chart =
+                document.getElementById(
+                    "visitsChart"
+                );
+
+            if (!chart) {
+                return;
+            }
+
+            if (!Array.isArray(points) || !points.length) {
+
+                chart.innerHTML =
+                    `
+                    <div
+                        class="empty-state"
+                        style="
+                            grid-column:1/-1;
+                            min-height:150px;
+                        "
+                    >
+                        Aucune donnée de visite disponible.
+                    </div>
+                    `;
+
+                return;
+
+            }
+
+            const maximum =
+                Math.max(
+                    1,
+                    ...points.map(
+                        item =>
+                            Number(
+                                item.visits
+                                || 0
+                            )
+                    )
+                );
+
+            chart.innerHTML =
+                points
+                    .map(
+                        item => {
+
+                            const visits =
+                                Number(
+                                    item.visits
+                                    || 0
+                                );
+
+                            const height =
+                                visits <= 0
+                                    ? 0
+                                    : Math.max(
+                                        7,
+                                        Math.round(
+                                            visits
+                                            /
+                                            maximum
+                                            *
+                                            100
+                                        )
+                                    );
+
+                            const date =
+                                new Date(
+                                    `${item.date}T12:00:00`
+                                );
+
+                            const label =
+                                Number.isNaN(
+                                    date.getTime()
+                                )
+                                    ? String(
+                                        item.date
+                                        || "—"
+                                    )
+                                    : new Intl.DateTimeFormat(
+                                        "fr-FR",
+                                        {
+                                            weekday:
+                                                "short",
+
+                                            day:
+                                                "2-digit"
+                                        }
+                                    ).format(
+                                        date
+                                    );
+
+                            return `
+                                <div class="visit-chart-column">
+
+                                    <div class="visit-chart-value">
+                                        ${new Intl.NumberFormat(
+                                            "fr-FR"
+                                        ).format(
+                                            visits
+                                        )}
+                                    </div>
+
+                                    <div class="visit-chart-track">
+
+                                        <div
+                                            class="visit-chart-bar"
+                                            style="height:${height}%"
+                                            title="${escapeAttribute(
+                                                `${visits} visite(s)`
+                                            )}"
+                                        ></div>
+
+                                    </div>
+
+                                    <div class="visit-chart-label">
+                                        ${escapeHtml(
+                                            label
+                                        )}
+                                    </div>
+
+                                </div>
+                            `;
+
+                        }
+                    )
+                    .join("");
+
         }
 
 
